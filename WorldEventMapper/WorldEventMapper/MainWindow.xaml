@@ -1,0 +1,142 @@
+﻿<Window x:Class="WorldEventMapper.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        Title="World Event Mapper"
+        Height="900"
+        Width="1250"
+        WindowStartupLocation="CenterScreen"
+        Background="#0B0F19">
+
+    <Grid Margin="72" VerticalAlignment="Center">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/> <!-- WELCOME -->
+            <RowDefinition Height="Auto"/> <!-- to -->
+            <RowDefinition Height="Auto"/> <!-- WORLD EVENT -->
+            <RowDefinition Height="Auto"/> <!-- MAPPER -->
+            <RowDefinition Height="Auto"/> <!-- Button 1 -->
+            <RowDefinition Height="Auto"/> <!-- Button 2 -->
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- 1) WELCOME -->
+        <TextBlock Grid.Row="0"
+                   Text="WELCOME"
+                   Foreground="#93C5FD"
+                   FontWeight="SemiBold"
+                   FontSize="30"
+                   Margin="0,0,0,8"
+                   HorizontalAlignment="Center"
+                   TextAlignment="Center"/>
+
+        <!-- 2) to (lighter) -->
+        <TextBlock Grid.Row="1"
+                   Text="to"
+                   Foreground="#BFD9FF"
+                   FontWeight="SemiBold"
+                   FontSize="24"
+                   Margin="0,0,0,1"
+                   HorizontalAlignment="Center"
+                   TextAlignment="Center"/>
+
+        <!-- 3) WORLD EVENT -->
+        <TextBlock Grid.Row="2"
+                   Text="WORLD EVENT"
+                   Foreground="White"
+                   FontWeight="ExtraBold"
+                   FontSize="74"
+                   HorizontalAlignment="Center"
+                   TextAlignment="Center"/>
+
+        <!-- 4) MAPPER -->
+        <TextBlock Grid.Row="3"
+                   Text="MAPPER"
+                   Foreground="White"
+                   FontWeight="ExtraBold"
+                   FontSize="74"
+                   Margin="0,0,0,44"
+                   HorizontalAlignment="Center"
+                   TextAlignment="Center"/>
+
+        <!-- 5) Button 1 -->
+        <Button Grid.Row="4"
+                Width="720"
+                Height="74"
+                HorizontalAlignment="Center"
+                Padding="26,0"
+                Margin="0,0,0,18"
+                Background="#101827"
+                Foreground="White"
+                BorderBrush="#1E2A3D"
+                BorderThickness="1"
+                Cursor="Hand">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="18"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter VerticalAlignment="Center"
+                                          HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <fa:FontAwesome Icon="AngleRight"
+                                Foreground="#60A5FA"
+                                Width="20"
+                                Height="20"
+                                Margin="0,0,14,0"/>
+
+                <TextBlock Text="New here? Get started with an app tour."
+                           FontSize="20"
+                           FontWeight="SemiBold"
+                           Foreground="White"
+                           TextAlignment="Center"/>
+            </StackPanel>
+        </Button>
+
+        <!-- 6) Button 2 -->
+        <Button Grid.Row="5"
+                Width="720"
+                Height="74"
+                HorizontalAlignment="Center"
+                Padding="26,0"
+                Background="#0F172A"
+                Foreground="White"
+                BorderBrush="#1E2A3D"
+                BorderThickness="1"
+                Cursor="Hand">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="18"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter VerticalAlignment="Center"
+                                          HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <fa:FontAwesome Icon="AngleRight"
+                                Foreground="#60A5FA"
+                                Width="20"
+                                Height="20"
+                                Margin="0,0,14,0"/>
+
+                <TextBlock Text="Skip tour and go to app."
+                           FontSize="20"
+                           FontWeight="SemiBold"
+                           Foreground="White"
+                           TextAlignment="Center"/>
+            </StackPanel>
+        </Button>
+
+    </Grid>
+</Window>
