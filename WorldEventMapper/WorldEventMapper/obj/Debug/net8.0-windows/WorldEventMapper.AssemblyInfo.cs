@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WorldEventMapper")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b8cd810fea32a10a34244813230ad77c8dd20f28")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+12474e889a8416b29242ace64a2e99000e253c0e")]
 [assembly: System.Reflection.AssemblyProductAttribute("WorldEventMapper")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WorldEventMapper")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

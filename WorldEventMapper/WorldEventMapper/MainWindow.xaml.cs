@@ -8,17 +8,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WorldEventMapper.Home;
 
 namespace WorldEventMapper
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void GoToHomePage_Click(object sender, RoutedEventArgs e)
+        {
+            this.Content = new HomePage();
         }
     }
 }
