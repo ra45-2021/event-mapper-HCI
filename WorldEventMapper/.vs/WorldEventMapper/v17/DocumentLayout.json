@@ -38,8 +38,8 @@
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\WorldEventMapper\\MainWindow.xaml",
               "RelativeDocumentMoniker": "WorldEventMapper\\MainWindow.xaml",
-              "ToolTip": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\WorldEventMapper\\MainWindow.xaml*",
-              "RelativeToolTip": "WorldEventMapper\\MainWindow.xaml*",
+              "ToolTip": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\WorldEventMapper\\MainWindow.xaml",
+              "RelativeToolTip": "WorldEventMapper\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-04-09T12:30:48.65Z",
               "EditorCaption": ""
@@ -53,8 +53,7 @@
               "ToolTip": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\WorldEventMapper\\Home\\HomePage.xaml",
               "RelativeToolTip": "WorldEventMapper\\Home\\HomePage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-04-09T12:28:02.197Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-09T12:28:02.197Z"
             }
           ]
         }

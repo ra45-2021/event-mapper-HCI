@@ -11,10 +11,11 @@
         ResizeMode="NoResize">
 
     <Window.Resources>
+
         <Style x:Key="ModernActionButton" TargetType="Button">
-            <Setter Property="Width" Value="780"/>
-            <Setter Property="Height" Value="92"/>
-            <Setter Property="Padding" Value="28,0"/>
+            <Setter Property="Width" Value="520"/>
+            <Setter Property="Height" Value="96"/>
+            <Setter Property="Padding" Value="32,0"/>
             <Setter Property="FontSize" Value="22"/>
             <Setter Property="Foreground" Value="#1F2937"/>
             <Setter Property="Background" Value="White"/>
@@ -22,6 +23,7 @@
             <Setter Property="BorderThickness" Value="1.5"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
+
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -29,157 +31,276 @@
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="24"
+                                CornerRadius="16"
                                 Padding="{TemplateBinding Padding}">
+
                             <Border.Effect>
                                 <DropShadowEffect BlurRadius="18"
-                                                  ShadowDepth="3"
-                                                  Opacity="0.10"/>
+                                                  ShadowDepth="4"
+                                                  Opacity="0.14"/>
                             </Border.Effect>
+
                             <ContentPresenter VerticalAlignment="Center"
                                               HorizontalAlignment="Center"/>
                         </Border>
+
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="Bd" Property="Background" Value="#F8FBFF"/>
                                 <Setter TargetName="Bd" Property="BorderBrush" Value="#8CB4FF"/>
                             </Trigger>
+
                             <Trigger Property="IsPressed" Value="True">
                                 <Setter TargetName="Bd" Property="Background" Value="#EAF2FF"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
+
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
 
-        <Style x:Key="PrimaryActionButton" TargetType="Button" BasedOn="{StaticResource ModernActionButton}">
-            <Setter Property="Background" Value="#2563EB"/>
+        <Style x:Key="PrimaryActionButton"
+               TargetType="Button"
+               BasedOn="{StaticResource ModernActionButton}">
+
+            <Setter Property="Background" Value="#0078F2"/>
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderBrush" Value="#2563EB"/>
+            <Setter Property="BorderBrush" Value="#0078F2"/>
+            <Setter Property="Height" Value="100"/>
+
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border x:Name="Bd"
-                                Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="24"
+                                CornerRadius="16"
                                 Padding="{TemplateBinding Padding}">
+
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#0068E8" Offset="0"/>
+                                    <GradientStop Color="#00A3FF" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+
                             <Border.Effect>
-                                <DropShadowEffect BlurRadius="20"
-                                                  ShadowDepth="4"
-                                                  Opacity="0.16"/>
+                                <DropShadowEffect BlurRadius="24"
+                                                  ShadowDepth="6"
+                                                  Opacity="0.2"/>
                             </Border.Effect>
+
                             <ContentPresenter VerticalAlignment="Center"
                                               HorizontalAlignment="Center"/>
                         </Border>
+
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Bd" Property="Background" Value="#1D4ED8"/>
-                                <Setter TargetName="Bd" Property="BorderBrush" Value="#1D4ED8"/>
+                                <Setter TargetName="Bd" Property="Opacity" Value="0.93"/>
+                                <Setter TargetName="Bd" Property="BorderBrush" Value="DarkBlue"/>
                             </Trigger>
+
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="Bd" Property="Background" Value="#1E40AF"/>
-                                <Setter TargetName="Bd" Property="BorderBrush" Value="#1E40AF"/>
+                                <Setter TargetName="Bd" Property="Opacity" Value="0.85"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
+
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
+
     </Window.Resources>
 
-    <Grid Margin="60">
+    <Grid Background="#F3F6FB">
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="90"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="18"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <!-- Soft center glow -->
+        <Ellipse Width="1100"
+                 Height="720"
+                 Fill="#E8F3FF"
+                 Opacity="0.55"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center"
+                 IsHitTestVisible="False"
+                 Panel.ZIndex="0">
+            <Ellipse.Effect>
+                <BlurEffect Radius="75"/>
+            </Ellipse.Effect>
+        </Ellipse>
 
-<Image Source="/map.png"
-       Opacity="0.06"
-       Stretch="UniformToFill"
-       IsHitTestVisible="False"
-       Panel.ZIndex="0"/>
+        <!-- Real centered world map background -->
+        <Image Source="map.png"
+               Width="1650"
+               Height="760"
+               Stretch="Uniform"
+               Opacity="0.32"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               IsHitTestVisible="False"
+               RenderOptions.BitmapScalingMode="HighQuality"
+               Panel.ZIndex="1"/>
 
-        <!-- Title -->
-        <StackPanel Grid.Row="1" HorizontalAlignment="Center">
-            <TextBlock Text="Welcome to"
-                       Foreground="#4B5563"
-                       FontWeight="SemiBold"
-                       FontSize="26"
+        <!-- Main content -->
+        <Grid Margin="60"
+              Panel.ZIndex="2">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="72"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="24"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+
+            <!-- Help button -->
+            <Button Width="120"
+                Height="54"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Background="Transparent"
+                BorderThickness="0"
+                Cursor="Hand"
+                Panel.ZIndex="5"
+                Margin="0,0,0,0">
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd"
+                    Background="Transparent"
+                    CornerRadius="12"
+                    Padding="6">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#EEF6FF"/>
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#E0F0FF"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+
+                <StackPanel Orientation="Horizontal"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+
+                    <Border Width="42"
+                        Height="42"
+                        Background="#0E7EEC"
+                        CornerRadius="21"
+                        Margin="0,0,6,0">
+
+                        <TextBlock Text="?"
+                       Foreground="White"
+                       Background="#0E7EEC"
+                       FontSize="24"
                        HorizontalAlignment="Center"
-                       TextAlignment="Center"/>
+                       VerticalAlignment="Center"/>
+                    </Border>
 
-            <TextBlock Text="WORLD EVENT MAPPER"
-                       Foreground="#111827"
-                       FontWeight="ExtraBold"
-                       FontSize="64"
-                       Margin="0,8,0,0"
-                       HorizontalAlignment="Center"
-                       TextAlignment="Center"/>
-        </StackPanel>
-
-        <!-- Subtitle -->
-        <TextBlock Grid.Row="2"
-                   Text="Explore, organize, and experience world events through a cleaner and easier interface."
-                   Foreground="#6B7280"
-                   FontSize="20"
-                   TextWrapping="Wrap"
-                   TextAlignment="Center"
-                   HorizontalAlignment="Center"
-                   MaxWidth="700"
-                   Margin="0,24,0,0"/>
-
-        <!-- Button 1 -->
-        <Button Grid.Row="6"
-                Style="{StaticResource ModernActionButton}">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                <fa:FontAwesome Icon="MapOutline"
-                                Foreground="#2563EB"
-                                Width="31"
-                                Height="24"
-                                Margin="0,0,16,0"
-                                VerticalAlignment="Center"/>
-
-                <StackPanel VerticalAlignment="Center">
-                    <TextBlock Text="Take a quick app tour"
-                               FontSize="24"
-                               FontWeight="SemiBold"
-                               Foreground="#111827"/>
-                    <TextBlock Text="Best for first-time users"
-                               FontSize="15"
-                               Foreground="#6B7280"/>
+                    <TextBlock Text="Help"
+                   Foreground="#0E7EEC"
+                   FontSize="19"
+                   VerticalAlignment="Center"/>
                 </StackPanel>
+            </Button>
+
+
+            <!-- Title -->
+            <StackPanel Grid.Row="1"
+                        HorizontalAlignment="Center">
+
+                <TextBlock Text="Welcome to"
+                           Foreground="#4B5563"
+                           FontWeight="SemiBold"
+                           FontSize="30"
+                           HorizontalAlignment="Center"
+                           TextAlignment="Center"/>
+
+                <TextBlock Text="WORLD EVENT MAPPER"
+                           Foreground="#0F172A"
+                           FontWeight="ExtraBold"
+                           FontSize="62"
+                           Margin="0,10,0,0"
+                           HorizontalAlignment="Center"
+                           TextAlignment="Center"/>
             </StackPanel>
-        </Button>
 
-        <!-- Button 2 -->
-        <Button Grid.Row="4"
-                Style="{StaticResource PrimaryActionButton}"
-                Click="GoToHomePage_Click">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                <fa:FontAwesome Icon="ArrowRight"
-                                Foreground="White"
-                                Width="22"
-                                Height="22"
-                                Margin="0,0,16,0"
-                                VerticalAlignment="Center"/>
+            <!-- Subtitle -->
+            <TextBlock Grid.Row="2"
+                       Text="Explore, organize, and experience world events through a cleaner and easier interface."
+                       Foreground="#6B7280"
+                       FontSize="22"
+                       LineHeight="34"
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"
+                       HorizontalAlignment="Center"
+                       MaxWidth="720"
+                       Margin="0,26,0,0"/>
 
-                <StackPanel VerticalAlignment="Center">
+            <!-- Primary button -->
+            <Button Grid.Row="4"
+                    Style="{StaticResource PrimaryActionButton}"
+                    Click="GoToHomePage_Click">
+
+                <StackPanel Orientation="Horizontal"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
+
+                    <fa:FontAwesome Icon="ArrowRight"
+                                    Foreground="White"
+                                    Width="36"
+                                    Height="30"
+                                    Margin="0,10,26,0"
+                                    VerticalAlignment="Center"/>
+
                     <TextBlock Text="Enter the application"
-                               FontSize="24"
+                               FontSize="28"
                                FontWeight="SemiBold"
-                               Foreground="White"/>
+                               Foreground="White"
+                               VerticalAlignment="Center"/>
                 </StackPanel>
-            </StackPanel>
-        </Button>
+            </Button>
+
+            <!-- Secondary button -->
+            <Button Grid.Row="6"
+                    Style="{StaticResource ModernActionButton}">
+
+                <StackPanel Orientation="Horizontal"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left">
+
+                    <fa:FontAwesome Icon="MapOutline"
+                                    Foreground="#0078F2"
+                                    Width="48"
+                                    Height="40"
+                                   Margin="-27,25,22,0"
+                                    VerticalAlignment="Center"/>
+
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="Take a quick app tour"
+                                   FontSize="25"
+                                   FontWeight="SemiBold"
+                                   Foreground="#111827"/>
+
+                        <TextBlock Text="Best for first-time users"
+                                   FontSize="17"
+                                   Margin="2,2,0,0"
+                                   Foreground="#4F7FCF"/>
+                    </StackPanel>
+                </StackPanel>
+            </Button>
+
+        </Grid>
     </Grid>
 </Window>

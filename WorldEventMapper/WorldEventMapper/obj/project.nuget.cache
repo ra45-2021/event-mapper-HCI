@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "lXDBYGTxp3o=",
+  "dgSpecHash": "ssAmSBtc6w8=",
   "success": true,
   "projectFilePath": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\WorldEventMapper\\WorldEventMapper.csproj",
   "expectedPackageFiles": [
@@ -16,7 +16,7 @@
       "filePath": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\WorldEventMapper\\WorldEventMapper.csproj",
       "libraryId": "FontAwesome.WPF",
       "targetGraphs": [
-        "net8.0-windows7.0"
+        "net8.0-windows"
       ]
     }
   ]
