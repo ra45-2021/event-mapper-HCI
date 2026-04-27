@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\App.xaml
-2-1260643281
+3-861733831
 
-5273804934
+622924326
 199-851894621
-Home\HomePage.xaml;MainWindow.xaml;
+Event Management\EventManagement_Main.xaml;Home\HomePage.xaml;MainWindow.xaml;
 
 False
 

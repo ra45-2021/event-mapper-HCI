@@ -1,0 +1,6 @@
+# Visual Studio local workspace/cache files
+.vs/
+*.vsidx
+
+# Visual Studio FileContentIndex cache
+.vs/WorldEventMapper/FileContentIndex/

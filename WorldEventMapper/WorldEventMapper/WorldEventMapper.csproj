@@ -9,6 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="event-map.png" />
+    <None Remove="logo.png" />
     <None Remove="map.png" />
   </ItemGroup>
 
@@ -17,9 +19,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="event-map.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="logo.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="map.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Help\" />
+    <Folder Include="Event List\" />
   </ItemGroup>
 
 </Project>
