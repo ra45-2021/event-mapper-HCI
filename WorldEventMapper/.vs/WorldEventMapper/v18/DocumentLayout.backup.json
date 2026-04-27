@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8F0B4F23-4791-46E4-B90D-537088B9A677}|WorldEventMapper\\WorldEventMapper.csproj|c:\\users\\milic\\onedrive\\desktop\\event-mapper-hci\\worldeventmapper\\worldeventmapper\\home\\homepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{8F0B4F23-4791-46E4-B90D-537088B9A677}|WorldEventMapper\\WorldEventMapper.csproj|solutionrelative:worldeventmapper\\home\\homepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{8F0B4F23-4791-46E4-B90D-537088B9A677}|WorldEventMapper\\WorldEventMapper.csproj|c:\\users\\milic\\onedrive\\desktop\\event-mapper-hci\\worldeventmapper\\worldeventmapper\\worldeventmapper.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{8F0B4F23-4791-46E4-B90D-537088B9A677}|WorldEventMapper\\WorldEventMapper.csproj|solutionrelative:worldeventmapper\\worldeventmapper.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F0B4F23-4791-46E4-B90D-537088B9A677}|WorldEventMapper\\WorldEventMapper.csproj|c:\\users\\milic\\onedrive\\desktop\\event-mapper-hci\\worldeventmapper\\worldeventmapper\\home\\homepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F0B4F23-4791-46E4-B90D-537088B9A677}|WorldEventMapper\\WorldEventMapper.csproj|solutionrelative:worldeventmapper\\home\\homepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8F0B4F23-4791-46E4-B90D-537088B9A677}|WorldEventMapper\\WorldEventMapper.csproj|c:\\users\\milic\\onedrive\\desktop\\event-mapper-hci\\worldeventmapper\\worldeventmapper\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F0B4F23-4791-46E4-B90D-537088B9A677}|WorldEventMapper\\WorldEventMapper.csproj|solutionrelative:worldeventmapper\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F0B4F23-4791-46E4-B90D-537088B9A677}|WorldEventMapper\\WorldEventMapper.csproj|c:\\users\\milic\\onedrive\\desktop\\event-mapper-hci\\worldeventmapper\\worldeventmapper\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8F0B4F23-4791-46E4-B90D-537088B9A677}|WorldEventMapper\\WorldEventMapper.csproj|solutionrelative:worldeventmapper\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,27 +38,40 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "HomePage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\WorldEventMapper\\Home\\HomePage.xaml.cs",
-              "RelativeDocumentMoniker": "WorldEventMapper\\Home\\HomePage.xaml.cs",
-              "ToolTip": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\WorldEventMapper\\Home\\HomePage.xaml.cs",
-              "RelativeToolTip": "WorldEventMapper\\Home\\HomePage.xaml.cs",
-              "ViewState": "AgIAAK0AAAAAAAAAAAAYwNkAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T14:34:10.269Z",
+              "DocumentIndex": 0,
+              "Title": "WorldEventMapper",
+              "DocumentMoniker": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\WorldEventMapper\\WorldEventMapper.csproj",
+              "RelativeDocumentMoniker": "WorldEventMapper\\WorldEventMapper.csproj",
+              "ToolTip": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\WorldEventMapper\\WorldEventMapper.csproj",
+              "RelativeToolTip": "WorldEventMapper\\WorldEventMapper.csproj",
+              "ViewState": "AgIAABUAAAAAAAAAAAAqwBkAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-04-27T20:56:34.326Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HomePage.xaml",
-              "DocumentMoniker": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\WorldEventMapper\\Home\\HomePage.xaml",
-              "RelativeDocumentMoniker": "WorldEventMapper\\Home\\HomePage.xaml",
-              "ToolTip": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\WorldEventMapper\\Home\\HomePage.xaml*",
-              "RelativeToolTip": "WorldEventMapper\\Home\\HomePage.xaml*",
+              "DocumentIndex": 1,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\WorldEventMapper\\App.xaml.cs",
+              "RelativeDocumentMoniker": "WorldEventMapper\\App.xaml.cs",
+              "ToolTip": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\WorldEventMapper\\App.xaml.cs",
+              "RelativeToolTip": "WorldEventMapper\\App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-27T20:55:49.759Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\WorldEventMapper\\App.xaml",
+              "RelativeDocumentMoniker": "WorldEventMapper\\App.xaml",
+              "ToolTip": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\WorldEventMapper\\App.xaml",
+              "RelativeToolTip": "WorldEventMapper\\App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-04-24T15:57:47.308Z",
+              "WhenOpened": "2026-04-27T20:55:39.764Z",
               "EditorCaption": ""
             }
           ]

@@ -6,7 +6,11 @@ C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapp
 C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\bin\Debug\net8.0-windows\FontAwesome.WPF.dll
 C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\WorldEventMapper.csproj.AssemblyReference.cache
 C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\MainWindow.baml
+C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\Views\Event Management\EventManagement_Main.baml
+C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\Views\Home\HomePage.baml
 C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\MainWindow.g.cs
+C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\Views\Event Management\EventManagement_Main.g.cs
+C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\Views\Home\HomePage.g.cs
 C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\App.g.cs
 C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\WorldEventMapper_MarkupCompile.cache
 C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\WorldEventMapper.g.resources
@@ -21,7 +25,3 @@ C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapp
 C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\WorldEventMapper.pdb
 C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\WorldEventMapper.genruntimeconfig.cache
 C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\ref\WorldEventMapper.dll
-C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\Home\HomePage.baml
-C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\Home\HomePage.g.cs
-C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\Event Management\EventManagement_Main.baml
-C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\Event Management\EventManagement_Main.g.cs

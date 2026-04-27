@@ -1,38 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <UseWPF>true</UseWPF>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="event-map.png" />
-    <None Remove="logo.png" />
-    <None Remove="map.png" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
-  </ItemGroup>
+	<ItemGroup>
+		<Resource Include="Assets\event-map.png" />
+		<Resource Include="Assets\logo.png" />
+		<Resource Include="Assets\map.png" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Resource Include="event-map.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="logo.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="map.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Help\" />
-    <Folder Include="Event List\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="Views\Help\" />
+		<Folder Include="Views\Event List\" />
+	</ItemGroup>
 
 </Project>
