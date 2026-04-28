@@ -5,6 +5,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using WorldEventMapper.Event_Management;
+using WorldEventMapper.Event_List;
+using WorldEventMapper.Help;
 
 namespace WorldEventMapper.Home
 {
@@ -17,10 +19,33 @@ namespace WorldEventMapper.Home
             InitializeComponent();
         }
 
+        private void HomeLogo_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService?.Navigate(new HomePage());
+        }
+
         private void EventManagement_Click(object sender, RoutedEventArgs e)
         {
             EventManagement_Main eventManagementWindow = new EventManagement_Main();
             eventManagementWindow.Show();
+
+            Window currentWindow = Window.GetWindow(this);
+            currentWindow?.Close();
+        }
+
+        private void EventList_Click(object sender, RoutedEventArgs e)
+        {
+            EventList_Main eventListWindow = new EventList_Main();
+            eventListWindow.Show();
+
+            Window currentWindow = Window.GetWindow(this);
+            currentWindow?.Close();
+        }
+
+        private void Help_Click(object sender, RoutedEventArgs e)
+        {
+            Help_Main helpWindow = new Help_Main();
+            helpWindow.Show();
 
             Window currentWindow = Window.GetWindow(this);
             currentWindow?.Close();

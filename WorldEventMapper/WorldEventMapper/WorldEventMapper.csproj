@@ -18,9 +18,4 @@
 		<Resource Include="Assets\map.png" />
 	</ItemGroup>
 
-	<ItemGroup>
-		<Folder Include="Views\Help\" />
-		<Folder Include="Views\Event List\" />
-	</ItemGroup>
-
 </Project>

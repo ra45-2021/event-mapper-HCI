@@ -12,17 +12,28 @@
 
     <Window.Resources>
 
-        <Style x:Key="ModernActionButton" TargetType="Button">
-            <Setter Property="Width" Value="520"/>
-            <Setter Property="Height" Value="96"/>
-            <Setter Property="Padding" Value="32,0"/>
-            <Setter Property="FontSize" Value="22"/>
-            <Setter Property="Foreground" Value="#1F2937"/>
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="BorderBrush" Value="#D6DFEA"/>
-            <Setter Property="BorderThickness" Value="1.5"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Style x:Key="ModernActionButton"
+               TargetType="Button">
+            <Setter Property="Width"
+                    Value="520" />
+            <Setter Property="Height"
+                    Value="96" />
+            <Setter Property="Padding"
+                    Value="32,0" />
+            <Setter Property="FontSize"
+                    Value="22" />
+            <Setter Property="Foreground"
+                    Value="#1F2937" />
+            <Setter Property="Background"
+                    Value="White" />
+            <Setter Property="BorderBrush"
+                    Value="#D6DFEA" />
+            <Setter Property="BorderThickness"
+                    Value="1.5" />
+            <Setter Property="Cursor"
+                    Value="Hand" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
 
             <Setter Property="Template">
                 <Setter.Value>
@@ -37,21 +48,29 @@
                             <Border.Effect>
                                 <DropShadowEffect BlurRadius="18"
                                                   ShadowDepth="4"
-                                                  Opacity="0.14"/>
+                                                  Opacity="0.14" />
                             </Border.Effect>
 
                             <ContentPresenter VerticalAlignment="Center"
-                                              HorizontalAlignment="Center"/>
+                                              HorizontalAlignment="Center" />
                         </Border>
 
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Bd" Property="Background" Value="#F8FBFF"/>
-                                <Setter TargetName="Bd" Property="BorderBrush" Value="#8CB4FF"/>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter TargetName="Bd"
+                                        Property="Background"
+                                        Value="#F8FBFF" />
+                                <Setter TargetName="Bd"
+                                        Property="BorderBrush"
+                                        Value="#8CB4FF" />
                             </Trigger>
 
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="Bd" Property="Background" Value="#EAF2FF"/>
+                            <Trigger Property="IsPressed"
+                                     Value="True">
+                                <Setter TargetName="Bd"
+                                        Property="Background"
+                                        Value="#EAF2FF" />
                             </Trigger>
                         </ControlTemplate.Triggers>
 
@@ -64,10 +83,14 @@
                TargetType="Button"
                BasedOn="{StaticResource ModernActionButton}">
 
-            <Setter Property="Background" Value="#0078F2"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderBrush" Value="#0078F2"/>
-            <Setter Property="Height" Value="100"/>
+            <Setter Property="Background"
+                    Value="#0078F2" />
+            <Setter Property="Foreground"
+                    Value="White" />
+            <Setter Property="BorderBrush"
+                    Value="#0078F2" />
+            <Setter Property="Height"
+                    Value="100" />
 
             <Setter Property="Template">
                 <Setter.Value>
@@ -79,30 +102,41 @@
                                 Padding="{TemplateBinding Padding}">
 
                             <Border.Background>
-                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                    <GradientStop Color="#0068E8" Offset="0"/>
-                                    <GradientStop Color="#00A3FF" Offset="1"/>
+                                <LinearGradientBrush StartPoint="0,0"
+                                                     EndPoint="1,1">
+                                    <GradientStop Color="#0068E8"
+                                                  Offset="0" />
+                                    <GradientStop Color="#00A3FF"
+                                                  Offset="1" />
                                 </LinearGradientBrush>
                             </Border.Background>
 
                             <Border.Effect>
                                 <DropShadowEffect BlurRadius="24"
                                                   ShadowDepth="6"
-                                                  Opacity="0.2"/>
+                                                  Opacity="0.2" />
                             </Border.Effect>
 
                             <ContentPresenter VerticalAlignment="Center"
-                                              HorizontalAlignment="Center"/>
+                                              HorizontalAlignment="Center" />
                         </Border>
 
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Bd" Property="Opacity" Value="0.93"/>
-                                <Setter TargetName="Bd" Property="BorderBrush" Value="DarkBlue"/>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter TargetName="Bd"
+                                        Property="Opacity"
+                                        Value="0.93" />
+                                <Setter TargetName="Bd"
+                                        Property="BorderBrush"
+                                        Value="DarkBlue" />
                             </Trigger>
 
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="Bd" Property="Opacity" Value="0.85"/>
+                            <Trigger Property="IsPressed"
+                                     Value="True">
+                                <Setter TargetName="Bd"
+                                        Property="Opacity"
+                                        Value="0.85" />
                             </Trigger>
                         </ControlTemplate.Triggers>
 
@@ -125,7 +159,7 @@
                  IsHitTestVisible="False"
                  Panel.ZIndex="0">
             <Ellipse.Effect>
-                <BlurEffect Radius="75"/>
+                <BlurEffect Radius="75" />
             </Ellipse.Effect>
         </Ellipse>
 
@@ -139,79 +173,85 @@
                VerticalAlignment="Center"
                IsHitTestVisible="False"
                RenderOptions.BitmapScalingMode="HighQuality"
-               Panel.ZIndex="1"/>
+               Panel.ZIndex="1" />
 
         <!-- Main content -->
         <Grid Margin="60"
               Panel.ZIndex="2">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="72"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="24"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="72" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="24" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
 
             <!-- Help button -->
             <Button Width="120"
-                Height="54"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Top"
-                Background="Transparent"
-                BorderThickness="0"
-                Cursor="Hand"
-                Panel.ZIndex="5"
-                Margin="0,0,0,0">
+                    Height="54"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Cursor="Hand"
+                    Panel.ZIndex="5"
+                    Margin="0,0,0,0">
 
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border x:Name="Bd"
-                    Background="Transparent"
-                    CornerRadius="12"
-                    Padding="6">
+                                Background="Transparent"
+                                CornerRadius="12"
+                                Padding="6">
                             <ContentPresenter HorizontalAlignment="Center"
-                                  VerticalAlignment="Center"/>
+                                              VerticalAlignment="Center" />
                         </Border>
 
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Bd" Property="Background" Value="#EEF6FF"/>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter TargetName="Bd"
+                                        Property="Background"
+                                        Value="#EEF6FF" />
                             </Trigger>
 
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="Bd" Property="Background" Value="#E0F0FF"/>
+                            <Trigger Property="IsPressed"
+                                     Value="True">
+                                <Setter TargetName="Bd"
+                                        Property="Background"
+                                        Value="#E0F0FF" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Button.Template>
 
                 <StackPanel Orientation="Horizontal"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center">
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
 
                     <Border Width="42"
-                        Height="42"
-                        Background="#0E7EEC"
-                        CornerRadius="21"
-                        Margin="0,0,6,0">
+                            Height="42"
+                            Background="#0E7EEC"
+                            CornerRadius="21"
+                            Margin="0,0,6,0">
 
                         <TextBlock Text="?"
-                       Foreground="White"
-                       Background="#0E7EEC"
-                       FontSize="24"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"/>
+                                   Foreground="White"
+                                   Background="#0E7EEC"
+                                   FontSize="24"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
                     </Border>
 
                     <TextBlock Text="Help"
-                   Foreground="#0E7EEC"
-                   FontSize="19"
-                   VerticalAlignment="Center"/>
+                               Foreground="#0E7EEC"
+                               FontSize="19"
+                               VerticalAlignment="Center" />
                 </StackPanel>
             </Button>
 
@@ -225,7 +265,7 @@
                            FontWeight="SemiBold"
                            FontSize="30"
                            HorizontalAlignment="Center"
-                           TextAlignment="Center"/>
+                           TextAlignment="Center" />
 
                 <TextBlock Text="WORLD EVENT MAPPER"
                            Foreground="#0F172A"
@@ -233,7 +273,7 @@
                            FontSize="62"
                            Margin="0,10,0,0"
                            HorizontalAlignment="Center"
-                           TextAlignment="Center"/>
+                           TextAlignment="Center" />
             </StackPanel>
 
             <!-- Subtitle -->
@@ -246,7 +286,7 @@
                        TextAlignment="Center"
                        HorizontalAlignment="Center"
                        MaxWidth="720"
-                       Margin="0,26,0,0"/>
+                       Margin="0,26,0,0" />
 
             <!-- Primary button -->
             <Button Grid.Row="4"
@@ -262,13 +302,13 @@
                                     Width="36"
                                     Height="30"
                                     Margin="0,10,26,0"
-                                    VerticalAlignment="Center"/>
+                                    VerticalAlignment="Center" />
 
                     <TextBlock Text="Enter the application"
                                FontSize="28"
                                FontWeight="SemiBold"
                                Foreground="White"
-                               VerticalAlignment="Center"/>
+                               VerticalAlignment="Center" />
                 </StackPanel>
             </Button>
 
@@ -284,19 +324,19 @@
                                     Foreground="#0078F2"
                                     Width="48"
                                     Height="40"
-                                   Margin="-27,25,22,0"
-                                    VerticalAlignment="Center"/>
+                                    Margin="-27,25,22,0"
+                                    VerticalAlignment="Center" />
 
                     <StackPanel VerticalAlignment="Center">
                         <TextBlock Text="Take a quick app tour"
                                    FontSize="25"
                                    FontWeight="SemiBold"
-                                   Foreground="#111827"/>
+                                   Foreground="#111827" />
 
                         <TextBlock Text="Best for first-time users"
                                    FontSize="17"
                                    Margin="2,2,0,0"
-                                   Foreground="#4F7FCF"/>
+                                   Foreground="#4F7FCF" />
                     </StackPanel>
                 </StackPanel>
             </Button>

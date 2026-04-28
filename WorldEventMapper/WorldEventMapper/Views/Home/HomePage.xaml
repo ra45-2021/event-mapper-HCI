@@ -6,26 +6,44 @@
       Background="#F7F9FC">
 
     <Page.Resources>
-        <SolidColorBrush x:Key="AppBackground" Color="#F3F6FB"/>
-        <SolidColorBrush x:Key="SidebarBackground" Color="#FFFFFF"/>
-        <SolidColorBrush x:Key="PanelBackground" Color="#FFFFFF"/>
-        <SolidColorBrush x:Key="AccentBrush" Color="#0E7EEC"/>
-        <SolidColorBrush x:Key="TextBrush" Color="#0F172A"/>
-        <SolidColorBrush x:Key="MutedTextBrush" Color="#6B7280"/>
-        <SolidColorBrush x:Key="BorderBrushColor" Color="#D6DFEA"/>
+        <SolidColorBrush x:Key="AppBackground"
+                         Color="#F3F6FB" />
+        <SolidColorBrush x:Key="SidebarBackground"
+                         Color="#FFFFFF" />
+        <SolidColorBrush x:Key="PanelBackground"
+                         Color="#FFFFFF" />
+        <SolidColorBrush x:Key="AccentBrush"
+                         Color="#0E7EEC" />
+        <SolidColorBrush x:Key="TextBrush"
+                         Color="#0F172A" />
+        <SolidColorBrush x:Key="MutedTextBrush"
+                         Color="#6B7280" />
+        <SolidColorBrush x:Key="BorderBrushColor"
+                         Color="#D6DFEA" />
 
         <!-- Flat navbar button -->
-        <Style x:Key="NavButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Foreground" Value="#1F2937"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Padding" Value="18,0"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="FontSize" Value="18"/>
-            <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="Height" Value="58"/>
-            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Style x:Key="NavButtonStyle"
+               TargetType="Button">
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="Foreground"
+                    Value="#1F2937" />
+            <Setter Property="BorderBrush"
+                    Value="Transparent" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="Padding"
+                    Value="18,0" />
+            <Setter Property="Cursor"
+                    Value="Hand" />
+            <Setter Property="FontSize"
+                    Value="18" />
+            <Setter Property="FontWeight"
+                    Value="SemiBold" />
+            <Setter Property="Height"
+                    Value="58" />
+            <Setter Property="HorizontalContentAlignment"
+                    Value="Stretch" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -36,15 +54,21 @@
                                 CornerRadius="14"
                                 Padding="{TemplateBinding Padding}">
                             <ContentPresenter HorizontalAlignment="Stretch"
-                                              VerticalAlignment="Center"/>
+                                              VerticalAlignment="Center" />
                         </Border>
 
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Bd" Property="Background" Value="#EEF6FF"/>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter TargetName="Bd"
+                                        Property="Background"
+                                        Value="#EEF6FF" />
                             </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="Bd" Property="Background" Value="#E0F0FF"/>
+                            <Trigger Property="IsPressed"
+                                     Value="True">
+                                <Setter TargetName="Bd"
+                                        Property="Background"
+                                        Value="#E0F0FF" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -52,19 +76,31 @@
             </Setter>
         </Style>
 
-        <Style x:Key="ActiveNavButtonStyle" TargetType="Button" BasedOn="{StaticResource NavButtonStyle}">
-            <Setter Property="Background" Value="#EAF2FF"/>
-            <Setter Property="BorderBrush" Value="#D6E8FF"/>
-            <Setter Property="BorderThickness" Value="1"/>
+        <Style x:Key="ActiveNavButtonStyle"
+               TargetType="Button"
+               BasedOn="{StaticResource NavButtonStyle}">
+            <Setter Property="Background"
+                    Value="#EAF2FF" />
+            <Setter Property="BorderBrush"
+                    Value="#D6E8FF" />
+            <Setter Property="BorderThickness"
+                    Value="1" />
         </Style>
 
-        <Style x:Key="IconButtonStyle" TargetType="Button">
-            <Setter Property="Width" Value="44"/>
-            <Setter Property="Height" Value="44"/>
-            <Setter Property="Background" Value="#FFFFFF"/>
-            <Setter Property="BorderBrush" Value="#D6DFEA"/>
-            <Setter Property="BorderThickness" Value="1.5"/>
-            <Setter Property="Cursor" Value="Hand"/>
+        <Style x:Key="IconButtonStyle"
+               TargetType="Button">
+            <Setter Property="Width"
+                    Value="44" />
+            <Setter Property="Height"
+                    Value="44" />
+            <Setter Property="Background"
+                    Value="#FFFFFF" />
+            <Setter Property="BorderBrush"
+                    Value="#D6DFEA" />
+            <Setter Property="BorderThickness"
+                    Value="1.5" />
+            <Setter Property="Cursor"
+                    Value="Hand" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -74,15 +110,23 @@
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="12">
                             <ContentPresenter HorizontalAlignment="Center"
-                                              VerticalAlignment="Center"/>
+                                              VerticalAlignment="Center" />
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Bd" Property="Background" Value="#EEF6FF"/>
-                                <Setter TargetName="Bd" Property="BorderBrush" Value="#BFDFFF"/>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter TargetName="Bd"
+                                        Property="Background"
+                                        Value="#EEF6FF" />
+                                <Setter TargetName="Bd"
+                                        Property="BorderBrush"
+                                        Value="#BFDFFF" />
                             </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="Bd" Property="Background" Value="#E0F0FF"/>
+                            <Trigger Property="IsPressed"
+                                     Value="True">
+                                <Setter TargetName="Bd"
+                                        Property="Background"
+                                        Value="#E0F0FF" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -91,12 +135,18 @@
         </Style>
 
         <!-- Header Help button -->
-        <Style x:Key="TopHelpButtonStyle" TargetType="Button">
-            <Setter Property="Width" Value="120"/>
-            <Setter Property="Height" Value="54"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Cursor" Value="Hand"/>
+        <Style x:Key="TopHelpButtonStyle"
+               TargetType="Button">
+            <Setter Property="Width"
+                    Value="120" />
+            <Setter Property="Height"
+                    Value="54" />
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="Cursor"
+                    Value="Hand" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -105,15 +155,21 @@
                                 CornerRadius="12"
                                 Padding="6">
                             <ContentPresenter HorizontalAlignment="Center"
-                                              VerticalAlignment="Center"/>
+                                              VerticalAlignment="Center" />
                         </Border>
 
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Bd" Property="Background" Value="#EEF6FF"/>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter TargetName="Bd"
+                                        Property="Background"
+                                        Value="#EEF6FF" />
                             </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="Bd" Property="Background" Value="#E0F0FF"/>
+                            <Trigger Property="IsPressed"
+                                     Value="True">
+                                <Setter TargetName="Bd"
+                                        Property="Background"
+                                        Value="#E0F0FF" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -121,17 +177,21 @@
             </Setter>
         </Style>
 
-        <Style x:Key="EventListBoxStyle" TargetType="ListBox">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Padding" Value="0"/>
+        <Style x:Key="EventListBoxStyle"
+               TargetType="ListBox">
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="Padding"
+                    Value="0" />
         </Style>
     </Page.Resources>
 
     <Grid Background="{StaticResource AppBackground}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="280"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="280" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <!-- Sidebar -->
@@ -142,46 +202,48 @@
 
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="138"/>
-                    <RowDefinition Height="70"/>
-                    <RowDefinition Height="70"/>
-                    <RowDefinition Height="70"/>
-                    <RowDefinition Height="70"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="138" />
+                    <RowDefinition Height="70" />
+                    <RowDefinition Height="70" />
+                    <RowDefinition Height="70" />
+                    <RowDefinition Height="70" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="80" />
                 </Grid.RowDefinitions>
-
                 <!-- Logo -->
                 <Border Grid.Row="0"
                         BorderBrush="#E5ECF5"
                         BorderThickness="0,0,0,1"
-                        Padding="24">
-                    <StackPanel Orientation="Horizontal"
-                                VerticalAlignment="Center">
-                        <Border Width="58"
-                                Height="58"
-                                Background="White"
-                                CornerRadius="29"
-                                Margin="25,0,16,0">
-                            <Image Source="/Assets/logo.png"
-                                   Width="57"
-                                   Height="57"
-                                   Stretch="Uniform"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
-                        </Border>
+                        Padding="0">
 
-                        <TextBlock VerticalAlignment="Center"
-                                   Foreground="{StaticResource AccentBrush}"
-                                   FontWeight="Bold"
-                                   FontSize="20"
-                                   TextWrapping="Wrap">
-                            WORLD<LineBreak/>
-                            EVENT
-                            <LineBreak/>
-                            MAPPER
-                        </TextBlock>
-                    </StackPanel>
+                    <Button Background="Transparent"
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            Click="HomeLogo_Click"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch">
+
+                        <Grid HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch">
+
+                            <Border Width="702"
+                                    Height="702"
+                                    Background="White"
+                                    CornerRadius="36"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+
+                                <Image Source="/Assets/logo.png"
+                                       Width="200"
+                                       Height="200"
+                                       Stretch="Uniform"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       RenderOptions.BitmapScalingMode="HighQuality" />
+                            </Border>
+
+                        </Grid>
+                    </Button>
                 </Border>
 
                 <!-- Home -->
@@ -190,47 +252,48 @@
                         Margin="18,10,18,0">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="36"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="36" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
                         <fa:FontAwesome Grid.Column="0"
-                                    Icon="Home"
-                                    Foreground="{StaticResource AccentBrush}"
-                                    FontSize="30"
-                                    VerticalAlignment="Center"
-                                    Margin="-20,0,0,0"/>
+                                        Icon="Home"
+                                        Foreground="{StaticResource AccentBrush}"
+                                        FontSize="30"
+                                        VerticalAlignment="Center"
+                                        Margin="-20,0,0,0" />
 
                         <TextBlock Grid.Column="1"
                                    Text="Home"
                                    Foreground="#1F2937"
                                    FontSize="19"
-                                   VerticalAlignment="Center"/>
+                                   VerticalAlignment="Center" />
                     </Grid>
                 </Button>
 
                 <!-- Event List -->
                 <Button Grid.Row="2"
                         Style="{StaticResource NavButtonStyle}"
-                        Margin="18,8,18,0">
+                        Margin="18,8,18,0"
+                        Click="EventList_Click">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="36"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="36" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
                         <fa:FontAwesome Grid.Column="0"
-                                    Icon="List"
-                                    Foreground="{StaticResource AccentBrush}"
-                                    FontSize="30"
-                                    VerticalAlignment="Center"
-                                    Margin="-20,5,0,0"/>
+                                        Icon="List"
+                                        Foreground="{StaticResource AccentBrush}"
+                                        FontSize="30"
+                                        VerticalAlignment="Center"
+                                        Margin="-20,5,0,0" />
 
                         <TextBlock Grid.Column="1"
                                    Text="Event List"
                                    Foreground="#1F2937"
                                    FontSize="19"
-                                   VerticalAlignment="Center"/>
+                                   VerticalAlignment="Center" />
                     </Grid>
                 </Button>
 
@@ -241,78 +304,79 @@
                         Click="EventManagement_Click">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="36"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="36" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
                         <fa:FontAwesome Grid.Column="0"
-                                    Icon="Edit"
-                                    Foreground="{StaticResource AccentBrush}"
-                                    FontSize="30"
-                                    VerticalAlignment="Center"
-                                    Margin="-20,5,0,0"/>
+                                        Icon="Edit"
+                                        Foreground="{StaticResource AccentBrush}"
+                                        FontSize="30"
+                                        VerticalAlignment="Center"
+                                        Margin="-20,5,0,0" />
 
                         <TextBlock Grid.Column="1"
                                    Text="Event Management"
                                    Foreground="#1F2937"
                                    FontSize="18"
-                                   VerticalAlignment="Center"/>
+                                   VerticalAlignment="Center" />
                     </Grid>
                 </Button>
 
                 <!-- Help -->
                 <Button Grid.Row="4"
                         Style="{StaticResource NavButtonStyle}"
-                        Margin="18,8,18,0">
+                        Margin="18,8,18,0"
+                        Click="Help_Click">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="36"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="36" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
                         <fa:FontAwesome Grid.Column="0"
-                                    Icon="QuestionCircle"
-                                    Foreground="{StaticResource AccentBrush}"
-                                    FontSize="30"
-                                    VerticalAlignment="Center"
-                                    Margin="-20,5,0,0"/>
+                                        Icon="QuestionCircle"
+                                        Foreground="{StaticResource AccentBrush}"
+                                        FontSize="30"
+                                        VerticalAlignment="Center"
+                                        Margin="-20,5,0,0" />
 
                         <TextBlock Grid.Column="1"
                                    Text="Help"
                                    Foreground="#1F2937"
                                    FontSize="19"
-                                   VerticalAlignment="Center"/>
+                                   VerticalAlignment="Center" />
                     </Grid>
                 </Button>
 
                 <!-- Logout button -->
                 <Button Grid.Row="6"
-                    Style="{StaticResource NavButtonStyle}"
-                    Height="58"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Center"
-                    Margin="18,0,18,0"
-                    Click="CloseToMain_Click">
+                        Style="{StaticResource NavButtonStyle}"
+                        Height="58"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Center"
+                        Margin="18,0,18,0"
+                        Click="CloseToMain_Click">
 
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="36"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="36" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
                         <fa:FontAwesome Grid.Column="0"
-                        Icon="SignOut"
-                        Foreground="#DC2626"
-                        FontSize="28"
-                        VerticalAlignment="Center"
-                        Margin="-20,5,0,0"/>
+                                        Icon="SignOut"
+                                        Foreground="{StaticResource AccentBrush}"
+                                        FontSize="30"
+                                        VerticalAlignment="Center"
+                                        Margin="-20,5,0,0" />
 
                         <TextBlock Grid.Column="1"
-                       Text="Logout"
-                       Foreground="#1F2937"
-                       FontSize="19"
-                       FontWeight="SemiBold"
-                       VerticalAlignment="Center"/>
+                                   Text="Logout"
+                                   Foreground="#1F2937"
+                                   FontSize="19"
+                                   FontWeight="SemiBold"
+                                   VerticalAlignment="Center" />
                     </Grid>
                 </Button>
             </Grid>
@@ -320,55 +384,55 @@
 
         <!-- Main content -->
         <Grid Grid.Column="1"
-      Margin="32,20,32,32">
+              Margin="32,20,32,32">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="16"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="16" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
             <!-- Header -->
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Text="Home Page"
-                   Foreground="{StaticResource TextBrush}"
-                   FontSize="42"
-                   FontWeight="Bold"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"/>
+                           Foreground="{StaticResource TextBrush}"
+                           FontSize="42"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
 
                 <Button Grid.Column="1"
-                Style="{StaticResource TopHelpButtonStyle}"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center">
-
-                    <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Center"
+                        Style="{StaticResource TopHelpButtonStyle}"
+                        HorizontalAlignment="Right"
                         VerticalAlignment="Center">
 
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+
                         <Border Width="42"
-                        Height="42"
-                        Background="#0E7EEC"
-                        CornerRadius="21"
-                        Margin="0,0,6,0">
+                                Height="42"
+                                Background="#0E7EEC"
+                                CornerRadius="21"
+                                Margin="0,0,6,0">
 
                             <TextBlock Text="?"
-                               Foreground="White"
-                               FontSize="24"
-                               FontWeight="Bold"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"/>
+                                       Foreground="White"
+                                       FontSize="24"
+                                       FontWeight="Bold"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center" />
                         </Border>
 
                         <TextBlock Text="Help"
-                           Foreground="#0E7EEC"
-                           FontSize="19"
-                           VerticalAlignment="Center"/>
+                                   Foreground="#0E7EEC"
+                                   FontSize="19"
+                                   VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
             </Grid>
@@ -376,214 +440,306 @@
             <!-- Content -->
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="22"/>
-                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="22" />
+                    <ColumnDefinition Width="300" />
                 </Grid.ColumnDefinitions>
 
                 <!-- LEFT SIDE -->
                 <Grid Grid.Column="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="10"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
                     <!-- Instruction above map -->
                     <Border Grid.Row="0"
-                    Background="#FFFFFF"
-                    BorderBrush="#D6DFEA"
-                    BorderThickness="1.5"
-                    CornerRadius="14"
-                    Padding="14,12">
+                            Background="#FFFFFF"
+                            BorderBrush="#D6DFEA"
+                            BorderThickness="1.5"
+                            CornerRadius="14"
+                            Padding="14,12">
 
                         <StackPanel>
                             <TextBlock Text="Map Interaction"
-                               Foreground="#1F2937"
-                               FontSize="18"
-                               FontWeight="SemiBold"/>
+                                       Foreground="#1F2937"
+                                       FontSize="18"
+                                       FontWeight="SemiBold" />
 
                             <TextBlock Text="Drag and drop events from the list onto the map."
-                               Foreground="#4B5563"
-                               FontSize="14"
-                               Margin="0,4,0,0"/>
+                                       Foreground="#4B5563"
+                                       FontSize="14"
+                                       Margin="0,4,0,0" />
 
                             <TextBlock Text="Right-click a pin to remove it."
-                               Foreground="#6B7280"
-                               FontSize="13"
-                               Margin="0,2,0,0"/>
+                                       Foreground="#6B7280"
+                                       FontSize="13"
+                                       Margin="0,2,0,0" />
                         </StackPanel>
                     </Border>
 
                     <!-- Map -->
                     <Border Grid.Row="2"
-                    Background="#FFFFFF"
-                    BorderBrush="#D6DFEA"
-                    BorderThickness="1.5"
-                    CornerRadius="16"
-                    Padding="10">
+                            Background="#FFFFFF"
+                            BorderBrush="#D6DFEA"
+                            BorderThickness="1.5"
+                            CornerRadius="16"
+                            Padding="10">
 
                         <Grid>
                             <Image Source="/Assets/event-map.png"
-                           Stretch="UniformToFill"
-                           RenderOptions.BitmapScalingMode="HighQuality"/>
+                                   Stretch="UniformToFill"
+                                   RenderOptions.BitmapScalingMode="HighQuality" />
 
                             <Canvas x:Name="MapCanvas"
-                            Background="Transparent"
-                            AllowDrop="True"
-                            Drop="MapCanvas_Drop"
-                            DragOver="MapCanvas_DragOver"
-                            ClipToBounds="True"/>
+                                    Background="Transparent"
+                                    AllowDrop="True"
+                                    Drop="MapCanvas_Drop"
+                                    DragOver="MapCanvas_DragOver"
+                                    ClipToBounds="True" />
                         </Grid>
                     </Border>
                 </Grid>
 
                 <!-- RIGHT SIDE -->
                 <Border Grid.Column="2"
-                Background="#FFFFFF"
-                BorderBrush="#D6DFEA"
-                BorderThickness="1.5"
-                CornerRadius="16"
-                Padding="16">
+                        Background="#FFFFFF"
+                        BorderBrush="#D6DFEA"
+                        BorderThickness="1.5"
+                        CornerRadius="16"
+                        Padding="16">
 
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="12"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="10"/>
-                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="12" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
                         <!-- Filter label -->
                         <TextBlock Grid.Row="0"
-                           Text="Filter events"
-                           Foreground="#1F2937"
-                           FontSize="18"
-                           FontWeight="SemiBold"/>
+                                   Text="Filter events"
+                                   Foreground="#1F2937"
+                                   FontSize="18"
+                                   FontWeight="SemiBold" />
 
                         <!-- Filter controls -->
                         <StackPanel Grid.Row="1"
-                            Orientation="Horizontal"
-                            Margin="0,8,0,0">
+                                    Orientation="Horizontal"
+                                    Margin="0,8,0,0">
 
                             <Button Style="{StaticResource IconButtonStyle}"
-                            Width="52"
-                            Height="52"
-                            Margin="0,0,10,0">
+                                    Width="52"
+                                    Height="52"
+                                    Margin="0,0,10,0">
 
                                 <fa:FontAwesome Icon="Filter"
-                                        Foreground="#0E7EEC"
-                                        FontSize="28"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"/>
+                                                Foreground="#0E7EEC"
+                                                FontSize="28"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center" />
                             </Button>
 
                             <TextBox Width="200"
-                             Height="52"
-                             Background="#FFFFFF"
-                             BorderBrush="#C7D2E0"
-                             BorderThickness="1.5"
-                             Padding="14,12"
-                             FontSize="16"
-                             Foreground="#1F2937"
-                             VerticalContentAlignment="Center"
-                             Text=""/>
+                                     Height="52"
+                                     Background="#FFFFFF"
+                                     BorderBrush="#C7D2E0"
+                                     BorderThickness="1.5"
+                                     Padding="14,12"
+                                     FontSize="16"
+                                     Foreground="#1F2937"
+                                     VerticalContentAlignment="Center"
+                                     Text="" />
                         </StackPanel>
 
                         <!-- Available events label -->
                         <TextBlock Grid.Row="3"
-                           Text="Available Events"
-                           Foreground="#1F2937"
-                           FontSize="18"
-                           FontWeight="SemiBold"/>
+                                   Text="Available Events"
+                                   Foreground="#1F2937"
+                                   FontSize="18"
+                                   FontWeight="SemiBold" />
 
                         <!-- Small helper text -->
                         <TextBlock Grid.Row="4"
-                           Text="Select an event and drag it onto the map."
-                           Foreground="#6B7280"
-                           FontSize="13"
-                           Margin="0,4,0,0"/>
+                                   Text="Select an event and drag it onto the map."
+                                   Foreground="#6B7280"
+                                   FontSize="13"
+                                   Margin="0,4,0,0" />
 
                         <!-- Event list -->
                         <ListBox x:Name="DraggableEventsList"
-                         Grid.Row="6"
-                         Style="{StaticResource EventListBoxStyle}"
-                         PreviewMouseLeftButtonDown="DraggableEventsList_PreviewMouseLeftButtonDown"
-                         PreviewMouseMove="DraggableEventsList_PreviewMouseMove">
+                                 Grid.Row="6"
+                                 Style="{StaticResource EventListBoxStyle}"
+                                 PreviewMouseLeftButtonDown="DraggableEventsList_PreviewMouseLeftButtonDown"
+                                 PreviewMouseMove="DraggableEventsList_PreviewMouseMove">
 
-                            <ListBoxItem Tag="FI001 - Kustendorf" Padding="0" Margin="0,0,0,8">
-                                <Border BorderBrush="#D6DFEA" BorderThickness="1" CornerRadius="8" Padding="10" Background="#FFFFFF">
+                            <ListBoxItem Tag="FI001 - Kustendorf"
+                                         Padding="0"
+                                         Margin="0,0,0,8">
+                                <Border BorderBrush="#D6DFEA"
+                                        BorderThickness="1"
+                                        CornerRadius="8"
+                                        Padding="10"
+                                        Background="#FFFFFF">
                                     <StackPanel Orientation="Horizontal">
-                                        <Border Width="26" Height="26" Background="#F2C94C" CornerRadius="5" Margin="0,0,10,0">
-                                            <TextBlock Text="B" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <Border Width="26"
+                                                Height="26"
+                                                Background="#F2C94C"
+                                                CornerRadius="5"
+                                                Margin="0,0,10,0">
+                                            <TextBlock Text="B"
+                                                       Foreground="White"
+                                                       FontWeight="Bold"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center" />
                                         </Border>
-                                        <TextBlock Text="FI001 - Kustendorf" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                                        <TextBlock Text="FI001 - Kustendorf"
+                                                   VerticalAlignment="Center"
+                                                   FontWeight="SemiBold" />
                                     </StackPanel>
                                 </Border>
                             </ListBoxItem>
 
-                            <ListBoxItem Tag="AR001 - Art Basel" Padding="0" Margin="0,0,0,8">
-                                <Border BorderBrush="#D6DFEA" BorderThickness="1" CornerRadius="8" Padding="10" Background="#FFFFFF">
+                            <ListBoxItem Tag="AR001 - Art Basel"
+                                         Padding="0"
+                                         Margin="0,0,0,8">
+                                <Border BorderBrush="#D6DFEA"
+                                        BorderThickness="1"
+                                        CornerRadius="8"
+                                        Padding="10"
+                                        Background="#FFFFFF">
                                     <StackPanel Orientation="Horizontal">
-                                        <Border Width="26" Height="26" Background="#5D8AA8" CornerRadius="5" Margin="0,0,10,0">
-                                            <TextBlock Text="D" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <Border Width="26"
+                                                Height="26"
+                                                Background="#5D8AA8"
+                                                CornerRadius="5"
+                                                Margin="0,0,10,0">
+                                            <TextBlock Text="D"
+                                                       Foreground="White"
+                                                       FontWeight="Bold"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center" />
                                         </Border>
-                                        <TextBlock Text="AR001 - Art Basel" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                                        <TextBlock Text="AR001 - Art Basel"
+                                                   VerticalAlignment="Center"
+                                                   FontWeight="SemiBold" />
                                     </StackPanel>
                                 </Border>
                             </ListBoxItem>
 
-                            <ListBoxItem Tag="CU001 - Burning Man" Padding="0" Margin="0,0,0,8">
-                                <Border BorderBrush="#D6DFEA" BorderThickness="1" CornerRadius="8" Padding="10" Background="#FFFFFF">
+                            <ListBoxItem Tag="CU001 - Burning Man"
+                                         Padding="0"
+                                         Margin="0,0,0,8">
+                                <Border BorderBrush="#D6DFEA"
+                                        BorderThickness="1"
+                                        CornerRadius="8"
+                                        Padding="10"
+                                        Background="#FFFFFF">
                                     <StackPanel Orientation="Horizontal">
-                                        <Border Width="26" Height="26" Background="#6C4AB6" CornerRadius="5" Margin="0,0,10,0">
-                                            <TextBlock Text="E" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <Border Width="26"
+                                                Height="26"
+                                                Background="#6C4AB6"
+                                                CornerRadius="5"
+                                                Margin="0,0,10,0">
+                                            <TextBlock Text="E"
+                                                       Foreground="White"
+                                                       FontWeight="Bold"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center" />
                                         </Border>
-                                        <TextBlock Text="CU001 - Burning Man" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                                        <TextBlock Text="CU001 - Burning Man"
+                                                   VerticalAlignment="Center"
+                                                   FontWeight="SemiBold" />
                                     </StackPanel>
                                 </Border>
                             </ListBoxItem>
 
-                            <ListBoxItem Tag="FI002 - Sarajevo Film Festival" Padding="0" Margin="0,0,0,8">
-                                <Border BorderBrush="#D6DFEA" BorderThickness="1" CornerRadius="8" Padding="10" Background="#FFFFFF">
+                            <ListBoxItem Tag="FI002 - Sarajevo Film Festival"
+                                         Padding="0"
+                                         Margin="0,0,0,8">
+                                <Border BorderBrush="#D6DFEA"
+                                        BorderThickness="1"
+                                        CornerRadius="8"
+                                        Padding="10"
+                                        Background="#FFFFFF">
                                     <StackPanel Orientation="Horizontal">
-                                        <Border Width="26" Height="26" Background="#F29C9C" CornerRadius="5" Margin="0,0,10,0">
-                                            <TextBlock Text="K" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <Border Width="26"
+                                                Height="26"
+                                                Background="#F29C9C"
+                                                CornerRadius="5"
+                                                Margin="0,0,10,0">
+                                            <TextBlock Text="K"
+                                                       Foreground="White"
+                                                       FontWeight="Bold"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center" />
                                         </Border>
                                         <TextBlock Text="FI002 - Sarajevo Film Festival"
-                                           VerticalAlignment="Center"
-                                           FontWeight="SemiBold"
-                                           TextWrapping="Wrap"
-                                           Width="190"/>
+                                                   VerticalAlignment="Center"
+                                                   FontWeight="SemiBold"
+                                                   TextWrapping="Wrap"
+                                                   Width="190" />
                                     </StackPanel>
                                 </Border>
                             </ListBoxItem>
 
-                            <ListBoxItem Tag="SU001 - UN Summit" Padding="0" Margin="0,0,0,8">
-                                <Border BorderBrush="#D6DFEA" BorderThickness="1" CornerRadius="8" Padding="10" Background="#FFFFFF">
+                            <ListBoxItem Tag="SU001 - UN Summit"
+                                         Padding="0"
+                                         Margin="0,0,0,8">
+                                <Border BorderBrush="#D6DFEA"
+                                        BorderThickness="1"
+                                        CornerRadius="8"
+                                        Padding="10"
+                                        Background="#FFFFFF">
                                     <StackPanel Orientation="Horizontal">
-                                        <Border Width="26" Height="26" Background="#D00000" CornerRadius="5" Margin="0,0,10,0">
-                                            <TextBlock Text="P" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <Border Width="26"
+                                                Height="26"
+                                                Background="#D00000"
+                                                CornerRadius="5"
+                                                Margin="0,0,10,0">
+                                            <TextBlock Text="P"
+                                                       Foreground="White"
+                                                       FontWeight="Bold"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center" />
                                         </Border>
-                                        <TextBlock Text="SU001 - UN Summit" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                                        <TextBlock Text="SU001 - UN Summit"
+                                                   VerticalAlignment="Center"
+                                                   FontWeight="SemiBold" />
                                     </StackPanel>
                                 </Border>
                             </ListBoxItem>
 
-                            <ListBoxItem Tag="MU002 - Vienna Philharmonic" Padding="0" Margin="0,0,0,8">
-                                <Border BorderBrush="#D6DFEA" BorderThickness="1" CornerRadius="8" Padding="10" Background="#FFFFFF">
+                            <ListBoxItem Tag="MU002 - Vienna Philharmonic"
+                                         Padding="0"
+                                         Margin="0,0,0,8">
+                                <Border BorderBrush="#D6DFEA"
+                                        BorderThickness="1"
+                                        CornerRadius="8"
+                                        Padding="10"
+                                        Background="#FFFFFF">
                                     <StackPanel Orientation="Horizontal">
-                                        <Border Width="26" Height="26" Background="#FF00FF" CornerRadius="5" Margin="0,0,10,0">
-                                            <TextBlock Text="S" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <Border Width="26"
+                                                Height="26"
+                                                Background="#FF00FF"
+                                                CornerRadius="5"
+                                                Margin="0,0,10,0">
+                                            <TextBlock Text="S"
+                                                       Foreground="White"
+                                                       FontWeight="Bold"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center" />
                                         </Border>
                                         <TextBlock Text="MU002 - Vienna Philharmonic"
-                                           VerticalAlignment="Center"
-                                           FontWeight="SemiBold"
-                                           TextWrapping="Wrap"
-                                           Width="190"/>
+                                                   VerticalAlignment="Center"
+                                                   FontWeight="SemiBold"
+                                                   TextWrapping="Wrap"
+                                                   Width="190" />
                                     </StackPanel>
                                 </Border>
                             </ListBoxItem>

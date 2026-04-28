@@ -25,3 +25,7 @@ C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapp
 C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\WorldEventMapper.pdb
 C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\WorldEventMapper.genruntimeconfig.cache
 C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\ref\WorldEventMapper.dll
+C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\Views\Event List\EventList_Main.baml
+C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\Views\Event List\EventList_Main.g.cs
+C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\Views\Help\Help_Main.baml
+C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\Views\Help\Help_Main.g.cs

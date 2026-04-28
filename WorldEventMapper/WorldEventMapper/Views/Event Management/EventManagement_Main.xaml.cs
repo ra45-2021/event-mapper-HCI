@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WorldEventMapper.Home;
+using WorldEventMapper.Help;
 
 namespace WorldEventMapper.Event_Management
 {
@@ -30,11 +32,27 @@ namespace WorldEventMapper.Event_Management
 
         private void Home_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            mainWindow.Content = new HomePage();
+
+            this.Close();
         }
 
         private void EventList_Click(object sender, RoutedEventArgs e)
         {
-MainWindow mainWindow = new MainWindow();   
+            Event_List.EventList_Main eventListWindow = new Event_List.EventList_Main();
+            eventListWindow.Show();
+
+            this.Close();
+        }
+
+        private void Help_Click(object sender, RoutedEventArgs e)
+        {
+            Help_Main helpWindow = new Help_Main();
+            helpWindow.Show();
+
+            this.Close();
         }
     }
 }
