@@ -9,6 +9,14 @@
     {
       "AbsoluteMoniker": "D:0:0:{8F0B4F23-4791-46E4-B90D-537088B9A677}|WorldEventMapper\\WorldEventMapper.csproj|c:\\users\\milic\\onedrive\\desktop\\event-mapper-hci\\worldeventmapper\\worldeventmapper\\views\\event list\\eventlist_main.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8F0B4F23-4791-46E4-B90D-537088B9A677}|WorldEventMapper\\WorldEventMapper.csproj|solutionrelative:worldeventmapper\\views\\event list\\eventlist_main.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F0B4F23-4791-46E4-B90D-537088B9A677}|WorldEventMapper\\WorldEventMapper.csproj|c:\\users\\milic\\onedrive\\desktop\\event-mapper-hci\\worldeventmapper\\worldeventmapper\\viewmodels\\maindataviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F0B4F23-4791-46E4-B90D-537088B9A677}|WorldEventMapper\\WorldEventMapper.csproj|solutionrelative:worldeventmapper\\viewmodels\\maindataviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F0B4F23-4791-46E4-B90D-537088B9A677}|WorldEventMapper\\WorldEventMapper.csproj|c:\\users\\milic\\onedrive\\desktop\\event-mapper-hci\\worldeventmapper\\worldeventmapper\\services\\jsondataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F0B4F23-4791-46E4-B90D-537088B9A677}|WorldEventMapper\\WorldEventMapper.csproj|solutionrelative:worldeventmapper\\services\\jsondataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -31,6 +39,30 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "JsonDataService.cs",
+              "DocumentMoniker": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\WorldEventMapper\\Services\\JsonDataService.cs",
+              "RelativeDocumentMoniker": "WorldEventMapper\\Services\\JsonDataService.cs",
+              "ToolTip": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\WorldEventMapper\\Services\\JsonDataService.cs",
+              "RelativeToolTip": "WorldEventMapper\\Services\\JsonDataService.cs",
+              "ViewState": "AgIAAD0BAAAAAAAAAAAYwFwBAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T20:01:11.169Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainDataViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\WorldEventMapper\\ViewModels\\MainDataViewModel.cs",
+              "RelativeDocumentMoniker": "WorldEventMapper\\ViewModels\\MainDataViewModel.cs",
+              "ToolTip": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\WorldEventMapper\\ViewModels\\MainDataViewModel.cs",
+              "RelativeToolTip": "WorldEventMapper\\ViewModels\\MainDataViewModel.cs",
+              "ViewState": "AgIAAN8BAAAAAAAAAAAQwBoCAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T19:07:16.596Z"
             },
             {
               "$type": "Document",
@@ -52,7 +84,7 @@
               "RelativeDocumentMoniker": "WorldEventMapper\\Views\\Event List\\EventList_Main.xaml.cs",
               "ToolTip": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\WorldEventMapper\\Views\\Event List\\EventList_Main.xaml.cs",
               "RelativeToolTip": "WorldEventMapper\\Views\\Event List\\EventList_Main.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-28T12:54:06.925Z",
               "EditorCaption": ""

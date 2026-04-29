@@ -16,7 +16,23 @@ namespace WorldEventMapper.ViewModels
         private EventModel? _selectedEvent;
         private EventTypeModel? _selectedEventType;
         private EventTagModel? _selectedEventTag;
+
         private string _eventSearchText = "";
+
+        private string _searchId = "";
+        private string _searchName = "";
+        private string _searchDescription = "";
+        private string _searchEventTypeId = "";
+        private string _searchAttendance = "";
+        private string _searchCost = "";
+        private string _searchLocation = "";
+        private string _searchPastYears = "";
+        private DateTime? _searchUpcomingDate;
+        private string _searchTag = "";
+
+        private bool _searchHumanitarianAny = true;
+        private bool _searchHumanitarianYes;
+        private bool _searchHumanitarianNo;
 
         public ObservableCollection<EventModel> Events { get; }
         public ObservableCollection<EventTypeModel> EventTypes { get; }
@@ -49,6 +65,160 @@ namespace WorldEventMapper.ViewModels
             {
                 if (SetProperty(ref _eventSearchText, value))
                 {
+                    EventsView.Refresh();
+                }
+            }
+        }
+
+        public string SearchId
+        {
+            get => _searchId;
+            set
+            {
+                if (SetProperty(ref _searchId, value))
+                    EventsView.Refresh();
+            }
+        }
+
+        public string SearchName
+        {
+            get => _searchName;
+            set
+            {
+                if (SetProperty(ref _searchName, value))
+                    EventsView.Refresh();
+            }
+        }
+
+        public string SearchDescription
+        {
+            get => _searchDescription;
+            set
+            {
+                if (SetProperty(ref _searchDescription, value))
+                    EventsView.Refresh();
+            }
+        }
+
+        public string SearchEventTypeId
+        {
+            get => _searchEventTypeId;
+            set
+            {
+                if (SetProperty(ref _searchEventTypeId, value))
+                    EventsView.Refresh();
+            }
+        }
+
+        public string SearchAttendance
+        {
+            get => _searchAttendance;
+            set
+            {
+                if (SetProperty(ref _searchAttendance, value))
+                    EventsView.Refresh();
+            }
+        }
+
+        public string SearchCost
+        {
+            get => _searchCost;
+            set
+            {
+                if (SetProperty(ref _searchCost, value))
+                    EventsView.Refresh();
+            }
+        }
+
+        public string SearchLocation
+        {
+            get => _searchLocation;
+            set
+            {
+                if (SetProperty(ref _searchLocation, value))
+                    EventsView.Refresh();
+            }
+        }
+
+        public string SearchPastYears
+        {
+            get => _searchPastYears;
+            set
+            {
+                if (SetProperty(ref _searchPastYears, value))
+                    EventsView.Refresh();
+            }
+        }
+
+        public DateTime? SearchUpcomingDate
+        {
+            get => _searchUpcomingDate;
+            set
+            {
+                if (SetProperty(ref _searchUpcomingDate, value))
+                    EventsView.Refresh();
+            }
+        }
+
+        public string SearchTag
+        {
+            get => _searchTag;
+            set
+            {
+                if (SetProperty(ref _searchTag, value))
+                    EventsView.Refresh();
+            }
+        }
+
+        public bool SearchHumanitarianAny
+        {
+            get => _searchHumanitarianAny;
+            set
+            {
+                if (SetProperty(ref _searchHumanitarianAny, value))
+                {
+                    if (value)
+                    {
+                        SearchHumanitarianYes = false;
+                        SearchHumanitarianNo = false;
+                    }
+
+                    EventsView.Refresh();
+                }
+            }
+        }
+
+        public bool SearchHumanitarianYes
+        {
+            get => _searchHumanitarianYes;
+            set
+            {
+                if (SetProperty(ref _searchHumanitarianYes, value))
+                {
+                    if (value)
+                    {
+                        SearchHumanitarianAny = false;
+                        SearchHumanitarianNo = false;
+                    }
+
+                    EventsView.Refresh();
+                }
+            }
+        }
+
+        public bool SearchHumanitarianNo
+        {
+            get => _searchHumanitarianNo;
+            set
+            {
+                if (SetProperty(ref _searchHumanitarianNo, value))
+                {
+                    if (value)
+                    {
+                        SearchHumanitarianAny = false;
+                        SearchHumanitarianYes = false;
+                    }
+
                     EventsView.Refresh();
                 }
             }
@@ -109,11 +279,6 @@ namespace WorldEventMapper.ViewModels
             if (obj is not EventModel ev)
                 return false;
 
-            if (string.IsNullOrWhiteSpace(EventSearchText))
-                return true;
-
-            string search = EventSearchText.Trim().ToLower();
-
             EventTypeModel? type = EventTypes.FirstOrDefault(t => t.ID == ev.EventTypeId);
 
             string tagText = string.Join(" ",
@@ -142,7 +307,105 @@ namespace WorldEventMapper.ViewModels
                 tagText
             ).ToLower();
 
-            return combined.Contains(search);
+            if (!string.IsNullOrWhiteSpace(EventSearchText))
+            {
+                string generalSearch = EventSearchText.Trim().ToLower();
+
+                if (!combined.Contains(generalSearch))
+                    return false;
+            }
+
+            if (!Contains(ev.ID, SearchId))
+                return false;
+
+            if (!Contains(ev.Name, SearchName))
+                return false;
+
+            if (!Contains(ev.Description, SearchDescription))
+                return false;
+
+            if (!string.IsNullOrWhiteSpace(SearchEventTypeId) && ev.EventTypeId != SearchEventTypeId)
+                return false;
+
+            if (!string.IsNullOrWhiteSpace(SearchAttendance) && ev.Attendance != SearchAttendance)
+                return false;
+
+            if (!string.IsNullOrWhiteSpace(SearchCost) &&
+                !ev.Cost.ToString().Contains(SearchCost.Trim()))
+                return false;
+
+            if (!Contains(ev.Location, SearchLocation))
+                return false;
+
+            if (!string.IsNullOrWhiteSpace(SearchPastYears))
+            {
+                string searchYears = SearchPastYears.Trim().ToLower();
+
+                if (!years.ToLower().Contains(searchYears))
+                    return false;
+            }
+
+            if (SearchUpcomingDate.HasValue &&
+                ev.UpcomingDate.Date != SearchUpcomingDate.Value.Date)
+                return false;
+
+            if (!string.IsNullOrWhiteSpace(SearchTag))
+            {
+                string searchTag = SearchTag.Trim().ToLower();
+
+                if (!tagText.ToLower().Contains(searchTag))
+                    return false;
+            }
+
+            if (SearchHumanitarianYes && !ev.IsHumanitarian)
+                return false;
+
+            if (SearchHumanitarianNo && ev.IsHumanitarian)
+                return false;
+
+            return true;
+        }
+
+        private bool Contains(string source, string search)
+        {
+            if (string.IsNullOrWhiteSpace(search))
+                return true;
+
+            if (string.IsNullOrWhiteSpace(source))
+                return false;
+
+            return source.ToLower().Contains(search.Trim().ToLower());
+        }
+
+        public void RefreshSearch()
+        {
+            EventsView.Refresh();
+        }
+
+        public void ClearAdvancedSearch()
+        {
+            SearchId = "";
+            SearchName = "";
+            SearchDescription = "";
+            SearchEventTypeId = "";
+            SearchAttendance = "";
+            SearchCost = "";
+            SearchLocation = "";
+            SearchPastYears = "";
+            SearchUpcomingDate = null;
+            SearchTag = "";
+
+            SearchHumanitarianAny = true;
+            SearchHumanitarianYes = false;
+            SearchHumanitarianNo = false;
+
+            EventsView.Refresh();
+        }
+
+        public void ClearGeneralFilter()
+        {
+            EventSearchText = "";
+            EventsView.Refresh();
         }
 
         private void AddEvent()
