@@ -352,7 +352,7 @@
                     </Grid>
                 </Button>
 
-                <!-- Logout -->
+                <!-- Exit -->
                 <Button Grid.Row="6"
                         Style="{StaticResource NavButtonStyle}"
                         Height="58"
@@ -375,7 +375,7 @@
                                         Margin="-20,5,0,0" />
 
                         <TextBlock Grid.Column="1"
-                                   Text="Logout"
+                                   Text="Exit"
                                    Foreground="#1F2937"
                                    FontSize="19"
                                    FontWeight="SemiBold"

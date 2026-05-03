@@ -563,7 +563,7 @@
                     </Grid>
                 </Button>
 
-                <!-- Logout button -->
+                <!-- Exit button -->
                 <Button Grid.Row="6"
                         Style="{StaticResource NavButtonStyle}"
                         Height="58"
@@ -586,7 +586,7 @@
                                         Margin="-20,5,0,0" />
 
                         <TextBlock Grid.Column="1"
-                                   Text="Logout"
+                                   Text="Exit"
                                    Foreground="#1F2937"
                                    FontSize="19"
                                    FontWeight="SemiBold"
@@ -625,7 +625,8 @@
                 <Button Grid.Column="1"
                         Style="{StaticResource TopHelpButtonStyle}"
                         HorizontalAlignment="Right"
-                        VerticalAlignment="Center">
+                        VerticalAlignment="Center"
+                        Click="Help_Click">
 
                     <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Center"

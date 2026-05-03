@@ -200,7 +200,8 @@
                     BorderThickness="0"
                     Cursor="Hand"
                     Panel.ZIndex="5"
-                    Margin="0,0,0,0">
+                    Margin="0,0,0,0"
+                    Click="GoToHelpPage_Click">
 
                 <Button.Template>
                     <ControlTemplate TargetType="Button">

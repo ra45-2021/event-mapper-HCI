@@ -2,6 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:primitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework"
         xmlns:models="clr-namespace:WorldEventMapper.Models"
         Title="Event Management"
         Height="900"
@@ -312,7 +313,7 @@
             <Setter Property="BorderThickness"
                     Value="0" />
             <Setter Property="Padding"
-                    Value="14,0,48,0" />
+                    Value="6,0,48,0" />
             <Setter Property="FontSize"
                     Value="16" />
             <Setter Property="VerticalContentAlignment"
@@ -361,7 +362,10 @@
 
                                 <DatePickerTextBox x:Name="PART_TextBox"
                                                    Grid.Column="0"
-                                                   Style="{StaticResource ModernDatePickerTextBoxStyle}" />
+                                                   Style="{StaticResource ModernDatePickerTextBoxStyle}"
+                                                   IsReadOnly="True"
+                                                   Focusable="False"
+                                                   Cursor="Arrow" />
 
                                 <Button x:Name="PART_Button"
                                         Grid.Column="1"
@@ -370,26 +374,48 @@
                                         Cursor="Hand"
                                         Focusable="False">
 
-                                    <Border Width="36"
-                                            Height="36"
-                                            Background="#EAF2FF"
-                                            CornerRadius="10"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center">
-
-                                        <fa:FontAwesome Icon="Calendar"
-                                                        Foreground="{StaticResource AccentBrush}"
-                                                        FontSize="19"
-                                                        HorizontalAlignment="Center"
-                                                        VerticalAlignment="Center" />
-                                    </Border>
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Grid Background="Transparent">
+                                                <fa:FontAwesome Icon="Calendar"
+                                                                Foreground="{StaticResource AccentBrush}"
+                                                                FontSize="21"
+                                                                HorizontalAlignment="Center"
+                                                                VerticalAlignment="Center" />
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </Button.Template>
                                 </Button>
 
                                 <Popup x:Name="PART_Popup"
                                        AllowsTransparency="True"
                                        Placement="Bottom"
                                        PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                                       StaysOpen="False" />
+                                       StaysOpen="False"
+                                       PopupAnimation="Fade">
+
+                                    <Border Background="#FFFFFF"
+                                            BorderBrush="#D6DFEA"
+                                            BorderThickness="1.5"
+                                            CornerRadius="14"
+                                            Padding="6"
+                                            Margin="0,6,0,0"
+                                            SnapsToDevicePixels="True">
+
+                                        <Border.Effect>
+                                            <DropShadowEffect Color="#000000"
+                                                              BlurRadius="14"
+                                                              ShadowDepth="3"
+                                                              Opacity="0.16" />
+                                        </Border.Effect>
+
+                                        <Calendar x:Name="PART_Calendar"
+                                                  Background="#FFFFFF"
+                                                  BorderThickness="0"
+                                                  Foreground="#1F2937"
+                                                  FontSize="14" />
+                                    </Border>
+                                </Popup>
                             </Grid>
                         </Border>
 
@@ -515,11 +541,149 @@
             <Setter Property="BorderThickness"
                     Value="2" />
             <Setter Property="Padding"
-                    Value="14,8,48,8" />
+                    Value="14,0,48,0" />
             <Setter Property="FontSize"
                     Value="16" />
             <Setter Property="VerticalContentAlignment"
                     Value="Center" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border x:Name="MainBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="12">
+
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          Margin="0,0,4,0"
+                                          VerticalAlignment="Center" />
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter TargetName="MainBorder"
+                                        Property="BorderBrush"
+                                        Value="#9DB7E8" />
+                            </Trigger>
+
+                            <Trigger Property="IsKeyboardFocused"
+                                     Value="True">
+                                <Setter TargetName="MainBorder"
+                                        Property="BorderBrush"
+                                        Value="{StaticResource AccentBrush}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ModernVerticalScrollBarStyle"
+               TargetType="ScrollBar">
+            <Setter Property="Width"
+                    Value="3" />
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ScrollBar">
+                        <Grid Background="Transparent">
+                            <Track x:Name="PART_Track"
+                                   IsDirectionReversed="True">
+                                <Track.DecreaseRepeatButton>
+                                    <RepeatButton Command="ScrollBar.PageUpCommand"
+                                                  Opacity="0"
+                                                  IsHitTestVisible="False" />
+                                </Track.DecreaseRepeatButton>
+
+                                <Track.Thumb>
+                                    <Thumb>
+                                        <Thumb.Template>
+                                            <ControlTemplate TargetType="Thumb">
+                                                <Border Background="#AFC3DA"
+                                                        CornerRadius="2"
+                                                        Margin="5,0,4,0" />
+                                            </ControlTemplate>
+                                        </Thumb.Template>
+                                    </Thumb>
+                                </Track.Thumb>
+
+                                <Track.IncreaseRepeatButton>
+                                    <RepeatButton Command="ScrollBar.PageDownCommand"
+                                                  Opacity="0"
+                                                  IsHitTestVisible="False" />
+                                </Track.IncreaseRepeatButton>
+                            </Track>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="DescriptionInputStyle"
+               TargetType="TextBox">
+            <Setter Property="Height"
+                    Value="92" />
+            <Setter Property="Background"
+                    Value="#FFFFFF" />
+            <Setter Property="Foreground"
+                    Value="#1F2937" />
+            <Setter Property="BorderBrush"
+                    Value="#C7D2E0" />
+            <Setter Property="BorderThickness"
+                    Value="2" />
+            <Setter Property="FontSize"
+                    Value="16" />
+            <Setter Property="AcceptsReturn"
+                    Value="True" />
+            <Setter Property="TextWrapping"
+                    Value="Wrap" />
+            <Setter Property="VerticalScrollBarVisibility"
+                    Value="Auto" />
+            <Setter Property="VerticalContentAlignment"
+                    Value="Top" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border x:Name="MainBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="12">
+
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          Margin="10,8,35,8"
+                                          VerticalAlignment="Top"
+                                          VerticalScrollBarVisibility="Auto">
+                                <ScrollViewer.Resources>
+                                    <Style TargetType="ScrollBar"
+                                           BasedOn="{StaticResource ModernVerticalScrollBarStyle}" />
+                                </ScrollViewer.Resources>
+                            </ScrollViewer>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter TargetName="MainBorder"
+                                        Property="BorderBrush"
+                                        Value="#9DB7E8" />
+                            </Trigger>
+
+                            <Trigger Property="IsKeyboardFocused"
+                                     Value="True">
+                                <Setter TargetName="MainBorder"
+                                        Property="BorderBrush"
+                                        Value="{StaticResource AccentBrush}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
 
         <Style x:Key="ComboInputStyle"
@@ -534,10 +698,174 @@
                     Value="#C7D2E0" />
             <Setter Property="BorderThickness"
                     Value="2" />
-            <Setter Property="Padding"
-                    Value="10,6" />
             <Setter Property="FontSize"
                     Value="16" />
+            <Setter Property="VerticalContentAlignment"
+                    Value="Center" />
+            <Setter Property="Padding"
+                    Value="14,0,52,0" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <Border x:Name="MainBorder"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="12">
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="52" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <ContentPresenter x:Name="ContentSite"
+                                                      Grid.Column="0"
+                                                      Content="{TemplateBinding SelectionBoxItem}"
+                                                      ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                                      ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}"
+                                                      Margin="14,0,8,0"
+                                                      VerticalAlignment="Center"
+                                                      HorizontalAlignment="Left"
+                                                      IsHitTestVisible="False" />
+
+                                    <TextBox x:Name="PART_EditableTextBox"
+                                             Grid.Column="0"
+                                             Margin="14,0,8,0"
+                                             Background="Transparent"
+                                             BorderThickness="0"
+                                             Foreground="{TemplateBinding Foreground}"
+                                             FontSize="{TemplateBinding FontSize}"
+                                             VerticalContentAlignment="Center"
+                                             Visibility="Hidden"
+                                             IsReadOnly="{TemplateBinding IsReadOnly}" />
+
+                                    <ToggleButton x:Name="ToggleButton"
+                                                  Grid.Column="1"
+                                                  Focusable="False"
+                                                  Cursor="Hand"
+                                                  IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+
+                                        <ToggleButton.Template>
+                                            <ControlTemplate TargetType="ToggleButton">
+                                                <Grid Background="Transparent">
+                                                    <fa:FontAwesome Icon="ChevronDown"
+                                                                    Foreground="{StaticResource AccentBrush}"
+                                                                    FontSize="16"
+                                                                    HorizontalAlignment="Center"
+                                                                    VerticalAlignment="Center" />
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </ToggleButton.Template>
+                                    </ToggleButton>
+                                </Grid>
+                            </Border>
+
+                            <Popup x:Name="PART_Popup"
+                                   Placement="Bottom"
+                                   AllowsTransparency="True"
+                                   Focusable="False"
+                                   IsOpen="{TemplateBinding IsDropDownOpen}"
+                                   PopupAnimation="Slide">
+
+                                <Border Background="White"
+                                        BorderBrush="#C7D2E0"
+                                        BorderThickness="1.5"
+                                        CornerRadius="12"
+                                        Margin="0,6,0,0"
+                                        MinWidth="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}">
+
+                                    <ScrollViewer MaxHeight="180"
+                                                  Padding="4"
+                                                  VerticalScrollBarVisibility="Auto">
+                                        <ScrollViewer.Resources>
+                                            <Style TargetType="ScrollBar"
+                                                   BasedOn="{StaticResource ModernVerticalScrollBarStyle}" />
+                                        </ScrollViewer.Resources>
+
+                                        <ItemsPresenter />
+                                    </ScrollViewer>
+                                </Border>
+                            </Popup>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter TargetName="MainBorder"
+                                        Property="BorderBrush"
+                                        Value="#9DB7E8" />
+                            </Trigger>
+
+                            <Trigger Property="IsKeyboardFocusWithin"
+                                     Value="True">
+                                <Setter TargetName="MainBorder"
+                                        Property="BorderBrush"
+                                        Value="{StaticResource AccentBrush}" />
+                            </Trigger>
+
+                            <Trigger Property="IsEditable"
+                                     Value="True">
+                                <Setter TargetName="ContentSite"
+                                        Property="Visibility"
+                                        Value="Hidden" />
+                                <Setter TargetName="PART_EditableTextBox"
+                                        Property="Visibility"
+                                        Value="Visible" />
+                            </Trigger>
+
+                            <Trigger Property="IsEnabled"
+                                     Value="False">
+                                <Setter TargetName="MainBorder"
+                                        Property="Opacity"
+                                        Value="0.55" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="ComboBoxItem">
+            <Setter Property="Padding"
+                    Value="12,8" />
+            <Setter Property="FontSize"
+                    Value="15" />
+            <Setter Property="Foreground"
+                    Value="#1F2937" />
+            <Setter Property="Background"
+                    Value="Transparent" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBoxItem">
+                        <Border x:Name="Bd"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="8"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter />
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsHighlighted"
+                                     Value="True">
+                                <Setter TargetName="Bd"
+                                        Property="Background"
+                                        Value="#EAF2FF" />
+                            </Trigger>
+
+                            <Trigger Property="IsSelected"
+                                     Value="True">
+                                <Setter TargetName="Bd"
+                                        Property="Background"
+                                        Value="#DCEEFF" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
 
         <Style x:Key="DateInputStyle"
@@ -565,29 +893,165 @@
             <Setter Property="VerticalAlignment"
                     Value="Center" />
         </Style>
-        <Style x:Key="ModernCalendarStyle"
-               TargetType="Calendar">
+
+
+        <Style x:Key="ModernListBoxStyle"
+               TargetType="ListBox">
             <Setter Property="Background"
-                    Value="White" />
+                    Value="#FFFFFF" />
+            <Setter Property="Foreground"
+                    Value="#1F2937" />
             <Setter Property="BorderBrush"
                     Value="#C7D2E0" />
             <Setter Property="BorderThickness"
-                    Value="1" />
+                    Value="2" />
             <Setter Property="Padding"
-                    Value="10" />
+                    Value="6,4,48,4" />
             <Setter Property="FontSize"
                     Value="15" />
-            <Setter Property="Foreground"
-                    Value="#1F2937" />
-            <Setter Property="Effect">
+
+            <Setter Property="Template">
                 <Setter.Value>
-                    <DropShadowEffect Color="#000000"
-                                      BlurRadius="18"
-                                      ShadowDepth="4"
-                                      Opacity="0.18" />
+                    <ControlTemplate TargetType="ListBox">
+                        <Border x:Name="MainBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="12">
+
+                            <ScrollViewer Padding="{TemplateBinding Padding}"
+                                          VerticalScrollBarVisibility="Auto">
+                                <ScrollViewer.Resources>
+                                    <Style TargetType="ScrollBar"
+                                           BasedOn="{StaticResource ModernVerticalScrollBarStyle}" />
+                                </ScrollViewer.Resources>
+
+                                <ItemsPresenter />
+                            </ScrollViewer>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter TargetName="MainBorder"
+                                        Property="BorderBrush"
+                                        Value="#9DB7E8" />
+                            </Trigger>
+
+                            <Trigger Property="IsKeyboardFocusWithin"
+                                     Value="True">
+                                <Setter TargetName="MainBorder"
+                                        Property="BorderBrush"
+                                        Value="{StaticResource AccentBrush}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style x:Key="HumanitarianBulletStyle"
+               TargetType="primitives:ToggleButton">
+            <Setter Property="Height"
+                    Value="50" />
+            <Setter Property="MinWidth"
+                    Value="80" />
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="Foreground"
+                    Value="#1F2937" />
+            <Setter Property="BorderBrush"
+                    Value="Transparent" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="FontSize"
+                    Value="16" />
+            <Setter Property="FontWeight"
+                    Value="SemiBold" />
+            <Setter Property="Cursor"
+                    Value="Hand" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="primitives:ToggleButton">
+                        <Border x:Name="Bd"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Padding="0">
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="26" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Border x:Name="BulletOuter"
+                                        Grid.Column="0"
+                                        Width="17"
+                                        Height="17"
+                                        CornerRadius="9"
+                                        BorderBrush="#9CA3AF"
+                                        BorderThickness="2"
+                                        Background="White"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        Margin="0,0,8,0">
+
+                                    <Border x:Name="BulletInner"
+                                            Width="8"
+                                            Height="8"
+                                            CornerRadius="4"
+                                            Background="Transparent"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center" />
+                                </Border>
+
+                                <ContentPresenter Grid.Column="1"
+                                                  HorizontalAlignment="Left"
+                                                  VerticalAlignment="Center"
+                                                  Margin="2,0,0,0" />
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter TargetName="BulletOuter"
+                                        Property="BorderBrush"
+                                        Value="#9DB7E8" />
+                                <Setter Property="Foreground"
+                                        Value="#0E7EEC" />
+                            </Trigger>
+
+                            <Trigger Property="IsChecked"
+                                     Value="True">
+                                <Setter TargetName="BulletOuter"
+                                        Property="BorderBrush"
+                                        Value="{StaticResource AccentBrush}" />
+                                <Setter TargetName="BulletInner"
+                                        Property="Background"
+                                        Value="{StaticResource AccentBrush}" />
+                                <Setter Property="Foreground"
+                                        Value="{StaticResource AccentBrush}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="RequiredFieldLabelStyle"
+               TargetType="TextBlock">
+            <Setter Property="Foreground"
+                    Value="#1F2937" />
+            <Setter Property="FontSize"
+                    Value="17" />
+            <Setter Property="Margin"
+                    Value="0,0,0,8" />
+            <Setter Property="FontWeight"
+                    Value="SemiBold" />
+        </Style>
+
     </Window.Resources>
 
     <Grid Background="{StaticResource AppBackground}">
@@ -772,7 +1236,7 @@
                                         Margin="-20,5,0,0" />
 
                         <TextBlock Grid.Column="1"
-                                   Text="Logout"
+                                   Text="Exit"
                                    Foreground="#1F2937"
                                    FontSize="19"
                                    FontWeight="SemiBold"
@@ -961,7 +1425,7 @@
                     CornerRadius="20"
                     Padding="28">
 
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ScrollViewer VerticalScrollBarVisibility="Disabled">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -989,8 +1453,13 @@
 
                         <StackPanel Grid.Row="0"
                                     Grid.Column="0">
-                            <TextBlock Text="Event ID"
-                                       Style="{StaticResource FieldLabelStyle}" />
+                            <TextBlock Style="{StaticResource RequiredFieldLabelStyle}">
+                                <Run Text="Event ID" />
+                                <Run Text="*"
+                                Foreground="#DC2626"
+                                FontWeight="Bold"
+                                FontSize="17" />
+                            </TextBlock>
 
                             <Grid>
                                 <TextBox x:Name="EventIdTextBox"
@@ -1031,8 +1500,13 @@
 
                         <StackPanel Grid.Row="2"
                                     Grid.Column="0">
-                            <TextBlock Text="Event Name"
-                                       Style="{StaticResource FieldLabelStyle}" />
+                            <TextBlock Style="{StaticResource RequiredFieldLabelStyle}">
+                                <Run Text="Event Name" />
+                                <Run Text="*"
+                                     Foreground="#DC2626"
+                                     FontWeight="Bold"
+                                     FontSize="17" />
+                            </TextBlock>
 
                             <Grid>
                                 <TextBox x:Name="EventNameTextBox"
@@ -1078,13 +1552,7 @@
 
                             <Grid>
                                 <TextBox x:Name="DescriptionTextBox"
-                                         Style="{StaticResource TextInputStyle}"
-                                         Height="92"
-                                         AcceptsReturn="True"
-                                         TextWrapping="Wrap"
-                                         VerticalScrollBarVisibility="Auto"
-                                         VerticalContentAlignment="Top"
-                                         Padding="14,12,48,8" />
+                                         Style="{StaticResource DescriptionInputStyle}" />
 
                                 <TextBlock Text="Write a short event description">
                                     <TextBlock.Style>
@@ -1113,7 +1581,7 @@
                                             <Setter Property="VerticalAlignment"
                                                     Value="Top" />
                                             <Setter Property="Margin"
-                                                    Value="0,8,8,0" />
+                                                    Value="0,29,8,0" />
                                             <Style.Triggers>
                                                 <DataTrigger Binding="{Binding Text.Length, ElementName=DescriptionTextBox}"
                                                              Value="0">
@@ -1127,104 +1595,50 @@
                             </Grid>
                         </StackPanel>
 
-                        <StackPanel Grid.Row="6"
-                                    Grid.Column="0">
-                            <TextBlock Text="Event Type"
-                                       Style="{StaticResource FieldLabelStyle}" />
-
-                            <Grid>
-                                <ComboBox x:Name="EventTypeComboBox"
-                                          Style="{StaticResource ComboInputStyle}"
-                                          SelectionChanged="EventTypeComboBox_SelectionChanged">
-                                    <ComboBox.ItemTemplate>
-                                        <DataTemplate DataType="{x:Type models:EventTypeModel}">
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text="{Binding Name}"
-                                                           FontWeight="SemiBold" />
-                                                <TextBlock Text="  " />
-                                                <TextBlock Text="{Binding ID}"
-                                                           Foreground="#6B7280" />
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ComboBox.ItemTemplate>
-                                </ComboBox>
-
-                                <Button Content="×"
-                                        Click="ClearEventType_Click">
-                                    <Button.Style>
-                                        <Style TargetType="Button"
-                                               BasedOn="{StaticResource ClearButtonStyle}">
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding SelectedItem, ElementName=EventTypeComboBox}"
-                                                             Value="{x:Null}">
-                                                    <Setter Property="Visibility"
-                                                            Value="Collapsed" />
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Button.Style>
-                                </Button>
-                            </Grid>
-                        </StackPanel>
-
-                        <StackPanel Grid.Row="8"
-                                    Grid.Column="0">
-                            <TextBlock Text="Event Attendance"
-                                       Style="{StaticResource FieldLabelStyle}" />
-
-                            <Grid>
-                                <ComboBox x:Name="AttendanceComboBox"
-                                          Style="{StaticResource ComboInputStyle}" />
-
-                                <Button Content="×"
-                                        Click="ClearAttendance_Click">
-                                    <Button.Style>
-                                        <Style TargetType="Button"
-                                               BasedOn="{StaticResource ClearButtonStyle}">
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding SelectedItem, ElementName=AttendanceComboBox}"
-                                                             Value="{x:Null}">
-                                                    <Setter Property="Visibility"
-                                                            Value="Collapsed" />
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Button.Style>
-                                </Button>
-                            </Grid>
-                        </StackPanel>
-
-                        <Grid Grid.Row="10"
+                        <Grid Grid.Row="6"
                               Grid.Column="0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1.2*" />
+                                <ColumnDefinition Width="1*" />
                                 <ColumnDefinition Width="24" />
                                 <ColumnDefinition Width="1*" />
                             </Grid.ColumnDefinitions>
 
                             <StackPanel Grid.Column="0">
-                                <TextBlock Text="Is the Event Humanitarian?"
-                                           Style="{StaticResource FieldLabelStyle}" />
+                                <TextBlock Style="{StaticResource RequiredFieldLabelStyle}">
+                                    <Run Text="Event Type" />
+                                    <Run Text="*"
+                                    Foreground="#DC2626"
+                                    FontWeight="Bold"
+                                    FontSize="17" />
+                                </TextBlock>
 
-                                <Grid Height="50">
-                                    <Border Background="White"
-                                            BorderBrush="#C7D2E0"
-                                            BorderThickness="2" />
-
-                                    <CheckBox x:Name="HumanitarianCheckBox"
-                                              Style="{StaticResource CheckBoxStyleAccessible}"
-                                              Content="Yes"
-                                              Margin="14,0,48,0"
-                                              VerticalAlignment="Center" />
+                                <Grid>
+                                    <ComboBox x:Name="EventTypeComboBox"
+                                              Style="{StaticResource ComboInputStyle}"
+                                              SelectionChanged="EventTypeComboBox_SelectionChanged">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate DataType="{x:Type models:EventTypeModel}">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding Name}"
+                                                               FontWeight="SemiBold" />
+                                                    <TextBlock Text="  " />
+                                                    <TextBlock Text="{Binding ID}"
+                                                               Foreground="#6B7280" />
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
 
                                     <Button Content="×"
-                                            Click="ClearHumanitarian_Click">
+                                            Click="ClearEventType_Click">
                                         <Button.Style>
                                             <Style TargetType="Button"
                                                    BasedOn="{StaticResource ClearButtonStyle}">
+                                                <Setter Property="Margin"
+                                                        Value="0,0,35,0" />
                                                 <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding IsChecked, ElementName=HumanitarianCheckBox}"
-                                                                 Value="False">
+                                                    <DataTrigger Binding="{Binding SelectedItem, ElementName=EventTypeComboBox}"
+                                                                 Value="{x:Null}">
                                                         <Setter Property="Visibility"
                                                                 Value="Collapsed" />
                                                     </DataTrigger>
@@ -1236,14 +1650,186 @@
                             </StackPanel>
 
                             <StackPanel Grid.Column="2">
-                                <TextBlock Text="Event Cost"
+
+                                <TextBlock Style="{StaticResource RequiredFieldLabelStyle}">
+                                    <Run Text="Event Attendance" />
+                                    <Run Text="*"
+                                    Foreground="#DC2626"
+                                    FontWeight="Bold"
+                                    FontSize="17" />
+                                </TextBlock>
+
+                                <Grid>
+                                    <ComboBox x:Name="AttendanceComboBox"
+                                              Style="{StaticResource ComboInputStyle}" />
+
+                                    <Button Content="×"
+                                            Click="ClearAttendance_Click">
+                                        <Button.Style>
+                                            <Style TargetType="Button"
+                                                   BasedOn="{StaticResource ClearButtonStyle}">
+                                                <Setter Property="Margin"
+                                                        Value="0,0,35,0" />
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding SelectedItem, ElementName=AttendanceComboBox}"
+                                                                 Value="{x:Null}">
+                                                        <Setter Property="Visibility"
+                                                                Value="Collapsed" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+
+                        <StackPanel Grid.Row="8"
+                                    Grid.Column="0">
+                            <TextBlock Text="Event Icon"
+                                       Style="{StaticResource FieldLabelStyle}" />
+
+                            <Border Height="92"
+                                    Background="#F8FBFF"
+                                    BorderBrush="#C7D2E0"
+                                    BorderThickness="2"
+                                    CornerRadius="16"
+                                    Padding="10">
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="78" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="42" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border Grid.Column="0"
+                                            Width="74"
+                                            Height="68"
+                                            Background="#FFFFFF"
+                                            CornerRadius="12"
+                                            BorderBrush="#D6DFEA"
+                                            BorderThickness="1.5"
+                                            VerticalAlignment="Center">
+
+                                        <Grid>
+                                            <Image x:Name="SelectedImagePreview"
+                                                   Stretch="Uniform"
+                                                   Margin="0" />
+
+                                            <fa:FontAwesome x:Name="ImagePlaceholderIcon"
+                                                            Icon="Image"
+                                                            Foreground="#9CA3AF"
+                                                            FontSize="24"
+                                                            HorizontalAlignment="Center"
+                                                            VerticalAlignment="Center" />
+                                        </Grid>
+                                    </Border>
+
+                                    <StackPanel Grid.Column="1"
+                                                VerticalAlignment="Center"
+                                                Margin="10,0,0,0">
+
+                                        <TextBlock x:Name="ImagePathTextBlock"
+                                                   Text="Upload event image"
+                                                   Foreground="#1F2937"
+                                                   FontSize="16"
+                                                   FontWeight="SemiBold"
+                                                   TextTrimming="CharacterEllipsis"
+                                                   MaxWidth="180"
+                                                   Margin="0,0,210,8" />
+
+                                        <Button Style="{StaticResource ModernUploadButtonStyle}"
+                                                HorizontalAlignment="Left"
+                                                Click="UploadImage_Click">
+
+                                            <StackPanel Orientation="Horizontal"
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center">
+
+                                                <fa:FontAwesome Icon="Upload"
+                                                                FontSize="16"
+                                                                Margin="0,0,8,0"
+                                                                VerticalAlignment="Center" />
+
+                                                <TextBlock Text="Choose image"
+                                                           VerticalAlignment="Center" />
+                                            </StackPanel>
+                                        </Button>
+                                    </StackPanel>
+
+                                    <Button Grid.Column="2"
+                                            Content="×"
+                                            Click="ClearImage_Click">
+                                        <Button.Style>
+                                            <Style TargetType="Button"
+                                                   BasedOn="{StaticResource ClearButtonStyle}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=ImagePathTextBlock}"
+                                                                 Value="Upload event image">
+                                                        <Setter Property="Visibility"
+                                                                Value="Collapsed" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+
+                        <!-- RIGHT COLUMN -->
+
+                        <Grid Grid.Row="0"
+                              Grid.Column="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1.2*" />
+                                <ColumnDefinition Width="24" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="Humanitarian Event?"
                                            Style="{StaticResource FieldLabelStyle}" />
+
+                                <Grid Height="50">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="12" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <primitives:ToggleButton x:Name="HumanitarianYesToggle"
+                                                             Grid.Column="0"
+                                                             Content="Yes"
+                                                             Style="{StaticResource HumanitarianBulletStyle}"
+                                                             Checked="HumanitarianYesToggle_Checked" />
+
+                                    <primitives:ToggleButton x:Name="HumanitarianNoToggle"
+                                                             Grid.Column="2"
+                                                             Content="No"
+                                                             Style="{StaticResource HumanitarianBulletStyle}"
+                                                             Checked="HumanitarianNoToggle_Checked" />
+                                </Grid>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Style="{StaticResource RequiredFieldLabelStyle}">
+                                    <Run Text="$ Event Cost" />
+                                    <Run Text="*"
+                                    Foreground="#DC2626"
+                                    FontWeight="Bold"
+                                    FontSize="17" />
+                                </TextBlock>
 
                                 <Grid>
                                     <TextBox x:Name="CostTextBox"
-                                             Style="{StaticResource TextInputStyle}" />
+                                             Style="{StaticResource TextInputStyle}"
+                                             PreviewTextInput="CostTextBox_PreviewTextInput"
+                                             TextChanged="CostTextBox_TextChanged"
+                                             DataObject.Pasting="CostTextBox_Pasting" />
 
-                                    <TextBlock Text="Enter cost, e.g. 15000">
+                                    <TextBlock Text="$0.00">
                                         <TextBlock.Style>
                                             <Style TargetType="TextBlock"
                                                    BasedOn="{StaticResource PlaceholderTextStyle}">
@@ -1277,212 +1863,31 @@
                             </StackPanel>
                         </Grid>
 
-                        <!-- RIGHT COLUMN -->
-
-                        <StackPanel Grid.Row="0"
-                                    Grid.Column="2">
-                            <TextBlock Text="Event Icon"
-                                       Style="{StaticResource FieldLabelStyle}" />
-
-                            <Border Height="132"
-                                    Background="#F8FBFF"
-                                    BorderBrush="#C7D2E0"
-                                    BorderThickness="2"
-                                    CornerRadius="16"
-                                    Padding="14">
-
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="96" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="42" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <Border Grid.Column="0"
-                                            Width="82"
-                                            Height="82"
-                                            Background="#FFFFFF"
-                                            CornerRadius="14"
-                                            BorderBrush="#D6DFEA"
-                                            BorderThickness="1.5"
-                                            VerticalAlignment="Center">
-
-                                        <Grid>
-                                            <Image x:Name="SelectedImagePreview"
-                                                   Stretch="Uniform"
-                                                   Margin="7" />
-
-                                            <fa:FontAwesome Icon="Image"
-                                                            Foreground="#9CA3AF"
-                                                            FontSize="28"
-                                                            HorizontalAlignment="Center"
-                                                            VerticalAlignment="Center" />
-                                        </Grid>
-                                    </Border>
-
-                                    <StackPanel Grid.Column="1"
-                                                VerticalAlignment="Center"
-                                                Margin="12,0,0,0">
-
-                                        <TextBlock Text="Upload event image"
-                                                   Foreground="#1F2937"
-                                                   FontSize="16"
-                                                   FontWeight="SemiBold" />
-
-                                        <TextBlock x:Name="ImagePathTextBlock"
-                                                   Text="No image selected. Type icon will be used."
-                                                   Foreground="#6B7280"
-                                                   FontSize="14"
-                                                   TextWrapping="Wrap"
-                                                   Margin="0,3,0,0" />
-
-                                        <Button Style="{StaticResource ModernUploadButtonStyle}"
-                                                Margin="0,10,0,0"
-                                                HorizontalAlignment="Left"
-                                                Click="UploadImage_Click">
-
-                                            <StackPanel Orientation="Horizontal"
-                                                        HorizontalAlignment="Center"
-                                                        VerticalAlignment="Center">
-
-                                                <fa:FontAwesome Icon="Upload"
-                                                                FontSize="16"
-                                                                Margin="0,0,8,0"
-                                                                VerticalAlignment="Center" />
-
-                                                <TextBlock Text="Choose image"
-                                                           VerticalAlignment="Center" />
-                                            </StackPanel>
-                                        </Button>
-                                    </StackPanel>
-
-                                    <Button Grid.Column="2"
-                                            Content="×"
-                                            Click="ClearImage_Click">
-                                        <Button.Style>
-                                            <Style TargetType="Button"
-                                                   BasedOn="{StaticResource ClearButtonStyle}">
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding Text, ElementName=ImagePathTextBlock}"
-                                                                 Value="No image selected. Type icon will be used.">
-                                                        <Setter Property="Visibility"
-                                                                Value="Collapsed" />
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </Button.Style>
-                                    </Button>
-                                </Grid>
-                            </Border>
-                        </StackPanel>
-
                         <StackPanel Grid.Row="2"
                                     Grid.Column="2">
-                            <TextBlock Text="Event Past Performing Years"
-                                       Style="{StaticResource FieldLabelStyle}" />
-
-                            <Grid>
-                                <TextBox x:Name="PastYearsTextBox"
-                                         Style="{StaticResource TextInputStyle}" />
-
-                                <TextBlock Text="Enter years, e.g. 2020,2021,2022">
-                                    <TextBlock.Style>
-                                        <Style TargetType="TextBlock"
-                                               BasedOn="{StaticResource PlaceholderTextStyle}">
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding Text, ElementName=PastYearsTextBox}"
-                                                             Value="">
-                                                    <Setter Property="Visibility"
-                                                            Value="Visible" />
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </TextBlock.Style>
-                                </TextBlock>
-
-                                <Button Content="×"
-                                        Click="ClearYears_Click">
-                                    <Button.Style>
-                                        <Style TargetType="Button"
-                                               BasedOn="{StaticResource ClearButtonStyle}">
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding Text.Length, ElementName=PastYearsTextBox}"
-                                                             Value="0">
-                                                    <Setter Property="Visibility"
-                                                            Value="Collapsed" />
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Button.Style>
-                                </Button>
-                            </Grid>
-                        </StackPanel>
-
-                        <StackPanel Grid.Row="4"
-                                    Grid.Column="2">
-                            <TextBlock Text="Event Upcoming Date"
-                                       Style="{StaticResource FieldLabelStyle}" />
-
-                            <Grid>
-                                <DatePicker x:Name="UpcomingDatePicker"
-                                            Style="{StaticResource ModernDateInputStyle}" />
-
-                                <TextBlock Text="Select upcoming event date"
-                                           Margin="16,0,95,0"
-                                           Foreground="#9CA3AF"
-                                           FontSize="16"
-                                           VerticalAlignment="Center"
-                                           IsHitTestVisible="False">
-                                    <TextBlock.Style>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="Visibility"
-                                                    Value="Collapsed" />
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding SelectedDate, ElementName=UpcomingDatePicker}"
-                                                             Value="{x:Null}">
-                                                    <Setter Property="Visibility"
-                                                            Value="Visible" />
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </TextBlock.Style>
-                                </TextBlock>
-
-                                <Button Content="×"
-                                        Click="ClearDate_Click">
-                                    <Button.Style>
-                                        <Style TargetType="Button"
-                                               BasedOn="{StaticResource ClearButtonStyle}">
-                                            <Setter Property="Margin"
-                                                    Value="0,0,54,0" />
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding SelectedDate, ElementName=UpcomingDatePicker}"
-                                                             Value="{x:Null}">
-                                                    <Setter Property="Visibility"
-                                                            Value="Collapsed" />
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Button.Style>
-                                </Button>
-                            </Grid>
-                        </StackPanel>
-
-                        <StackPanel Grid.Row="6"
-                                    Grid.Column="2">
-                            <TextBlock Text="Event Location"
-                                       Style="{StaticResource FieldLabelStyle}" />
+                            <TextBlock Style="{StaticResource RequiredFieldLabelStyle}">
+                                <Run Text="Event Location" />
+                                <Run Text="*"
+                                Foreground="#DC2626"
+                                FontWeight="Bold"
+                                FontSize="17" />
+                            </TextBlock>
 
                             <Grid>
                                 <ComboBox x:Name="LocationComboBox"
                                           Style="{StaticResource ComboInputStyle}"
-                                          IsEditable="True" />
+                                          IsEditable="True"
+                                          IsTextSearchEnabled="False"
+                                          StaysOpenOnEdit="True"
+                                          Loaded="LocationComboBox_Loaded" />
 
                                 <Button Content="×"
                                         Click="ClearLocation_Click">
                                     <Button.Style>
                                         <Style TargetType="Button"
                                                BasedOn="{StaticResource ClearButtonStyle}">
+                                            <Setter Property="Margin"
+                                                    Value="0,0,35,0" />
                                             <Style.Triggers>
                                                 <DataTrigger Binding="{Binding Text.Length, ElementName=LocationComboBox}"
                                                              Value="0">
@@ -1496,36 +1901,158 @@
                             </Grid>
                         </StackPanel>
 
-                        <StackPanel Grid.Row="8"
-                                    Grid.Column="2"
-                                    Grid.RowSpan="3">
+                        <StackPanel Grid.Row="4"
+                                    Grid.Column="2">
                             <TextBlock Text="Event Tags"
                                        Style="{StaticResource FieldLabelStyle}" />
 
                             <Grid>
                                 <ListBox x:Name="TagsListBox"
-                                         Height="170"
+                                         Height="92"
                                          SelectionMode="Multiple"
                                          BorderBrush="#C7D2E0"
                                          BorderThickness="2"
-                                         Background="White"
-                                         Padding="6,4,48,4">
-                                    <ListBox.ItemTemplate>
-                                        <DataTemplate DataType="{x:Type models:EventTagModel}">
-                                            <StackPanel Orientation="Horizontal"
-                                                        Margin="8,6">
-                                                <Border Width="18"
-                                                        Height="18"
-                                                        CornerRadius="5"
-                                                        Background="{Binding Color}"
-                                                        Margin="0,0,10,0" />
+                                         Background="#FFFFFF"
+                                         Padding="0"
+                                         ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                         ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
-                                                <TextBlock Text="{Binding Description}"
-                                                           Foreground="#6B7280"
-                                                           FontSize="15" />
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ListBox.ItemTemplate>
+                                    <ListBox.Resources>
+                                        <Style TargetType="ScrollBar"
+                                               BasedOn="{StaticResource ModernVerticalScrollBarStyle}" />
+                                    </ListBox.Resources>
+
+                                    <ListBox.Template>
+                                        <ControlTemplate TargetType="ListBox">
+                                            <Border x:Name="MainBorder"
+                                                    Background="{TemplateBinding Background}"
+                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                                    CornerRadius="12">
+
+                                                <Grid>
+                                                    <ScrollViewer x:Name="TagsScrollViewer"
+                                                                  Margin="10,8,46,8"
+                                                                  MaxHeight="72"
+                                                                  VerticalAlignment="Center"
+                                                                  VerticalScrollBarVisibility="Auto"
+                                                                  HorizontalScrollBarVisibility="Disabled"
+                                                                  CanContentScroll="False">
+
+                                                        <ItemsPresenter VerticalAlignment="Center" />
+                                                    </ScrollViewer>
+                                                </Grid>
+                                            </Border>
+
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver"
+                                                         Value="True">
+                                                    <Setter TargetName="MainBorder"
+                                                            Property="BorderBrush"
+                                                            Value="#9DB7E8" />
+                                                </Trigger>
+
+                                                <Trigger Property="IsKeyboardFocusWithin"
+                                                         Value="True">
+                                                    <Setter TargetName="MainBorder"
+                                                            Property="BorderBrush"
+                                                            Value="{StaticResource AccentBrush}" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </ListBox.Template>
+
+                                    <ListBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel Orientation="Horizontal"
+                                                       Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=ScrollViewer}}"
+                                                       VerticalAlignment="Center" />
+                                        </ItemsPanelTemplate>
+                                    </ListBox.ItemsPanel>
+
+                                    <ListBox.ItemContainerStyle>
+                                        <Style TargetType="ListBoxItem">
+                                            <Setter Property="Margin"
+                                                    Value="0,0,8,6" />
+                                            <Setter Property="Padding"
+                                                    Value="0" />
+                                            <Setter Property="Height"
+                                                    Value="28" />
+                                            <Setter Property="Background"
+                                                    Value="Transparent" />
+                                            <Setter Property="BorderThickness"
+                                                    Value="0" />
+                                            <Setter Property="Cursor"
+                                                    Value="Hand" />
+                                            <Setter Property="VerticalContentAlignment"
+                                                    Value="Center" />
+
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="ListBoxItem">
+                                                        <Border x:Name="TagChip"
+                                                                Height="28"
+                                                                Background="#F8FBFF"
+                                                                BorderBrush="#C7D2E0"
+                                                                BorderThickness="1.5"
+                                                                CornerRadius="14"
+                                                                Padding="9,0"
+                                                                VerticalAlignment="Center">
+
+                                                            <StackPanel Orientation="Horizontal"
+                                                                        VerticalAlignment="Center">
+                                                                <Border Width="11"
+                                                                        Height="11"
+                                                                        CornerRadius="6"
+                                                                        Background="{Binding Color}"
+                                                                        Margin="0,0,7,0"
+                                                                        VerticalAlignment="Center" />
+
+                                                                <TextBlock Text="{Binding Description}"
+                                                                           Foreground="#1F2937"
+                                                                           FontSize="16"
+                                                                           FontWeight="SemiBold"
+                                                                           VerticalAlignment="Center" />
+
+                                                                <fa:FontAwesome x:Name="SelectedIcon"
+                                                                                Icon="Check"
+                                                                                Foreground="#0E7EEC"
+                                                                                FontSize="12"
+                                                                                Margin="4,1,0,0"
+                                                                                VerticalAlignment="Center"
+                                                                                Visibility="Collapsed" />
+                                                            </StackPanel>
+                                                        </Border>
+
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver"
+                                                                     Value="True">
+                                                                <Setter TargetName="TagChip"
+                                                                        Property="Background"
+                                                                        Value="#EEF6FF" />
+                                                                <Setter TargetName="TagChip"
+                                                                        Property="BorderBrush"
+                                                                        Value="#9DB7E8" />
+                                                            </Trigger>
+
+                                                            <Trigger Property="IsSelected"
+                                                                     Value="True">
+                                                                <Setter TargetName="TagChip"
+                                                                        Property="Background"
+                                                                        Value="#EAF2FF" />
+                                                                <Setter TargetName="TagChip"
+                                                                        Property="BorderBrush"
+                                                                        Value="#0E7EEC" />
+                                                                <Setter TargetName="SelectedIcon"
+                                                                        Property="Visibility"
+                                                                        Value="Visible" />
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </ListBox.ItemContainerStyle>
                                 </ListBox>
 
                                 <Button Content="×"
@@ -1535,8 +2062,13 @@
                                                BasedOn="{StaticResource ClearButtonStyle}">
                                             <Setter Property="VerticalAlignment"
                                                     Value="Top" />
+                                            <Setter Property="HorizontalAlignment"
+                                                    Value="Right" />
                                             <Setter Property="Margin"
-                                                    Value="0,8,8,0" />
+                                                    Value="0,29,8,0" />
+                                            <Setter Property="Panel.ZIndex"
+                                                    Value="10" />
+
                                             <Style.Triggers>
                                                 <DataTrigger Binding="{Binding SelectedIndex, ElementName=TagsListBox}"
                                                              Value="-1">
@@ -1550,18 +2082,137 @@
                             </Grid>
                         </StackPanel>
 
+                        <Grid Grid.Row="6"
+                              Grid.Column="2"
+                              Grid.ColumnSpan="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="40" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="Event Past Performing Years"
+                                           Style="{StaticResource FieldLabelStyle}" />
+
+                                <Grid>
+                                    <TextBox x:Name="PastYearsTextBox"
+                                             Style="{StaticResource TextInputStyle}"
+                                             PreviewTextInput="PastYearsTextBox_PreviewTextInput"
+                                             TextChanged="PastYearsTextBox_TextChanged"
+                                             DataObject.Pasting="PastYearsTextBox_Pasting" />
+
+                                    <TextBlock Text="Enter years, e.g. 2020,2021,2022">
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock"
+                                                   BasedOn="{StaticResource PlaceholderTextStyle}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=PastYearsTextBox}"
+                                                                 Value="">
+                                                        <Setter Property="Visibility"
+                                                                Value="Visible" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+
+                                    <Button Content="×"
+                                            Click="ClearYears_Click">
+                                        <Button.Style>
+                                            <Style TargetType="Button"
+                                                   BasedOn="{StaticResource ClearButtonStyle}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text.Length, ElementName=PastYearsTextBox}"
+                                                                 Value="0">
+                                                        <Setter Property="Visibility"
+                                                                Value="Collapsed" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                </Grid>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Style="{StaticResource RequiredFieldLabelStyle}">
+                                    <Run Text="Event Upcoming Date" />
+                                    <Run Text="*"
+                                    Foreground="#DC2626"
+                                    FontWeight="Bold"
+                                    FontSize="17" />
+                                </TextBlock>
+
+                                <Grid>
+                                    <DatePicker x:Name="UpcomingDatePicker"
+                                                Style="{StaticResource ModernDateInputStyle}" />
+
+                                    <TextBlock Text="mm/dd/yyyy"
+                                               Margin="16,0,95,0"
+                                               Foreground="#9CA3AF"
+                                               FontSize="16"
+                                               VerticalAlignment="Center"
+                                               IsHitTestVisible="False">
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="Visibility"
+                                                        Value="Collapsed" />
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding SelectedDate, ElementName=UpcomingDatePicker}"
+                                                                 Value="{x:Null}">
+                                                        <Setter Property="Visibility"
+                                                                Value="Visible" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+
+                                    <Button Content="×"
+                                            Click="ClearDate_Click">
+                                        <Button.Style>
+                                            <Style TargetType="Button"
+                                                   BasedOn="{StaticResource ClearButtonStyle}">
+                                                <Setter Property="Margin"
+                                                        Value="0,0,54,0" />
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding SelectedDate, ElementName=UpcomingDatePicker}"
+                                                                 Value="{x:Null}">
+                                                        <Setter Property="Visibility"
+                                                                Value="Collapsed" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+
+
                         <!-- SAVE ROW -->
-                        <StackPanel Grid.Row="12"
+                        <StackPanel Grid.Row="8"
                                     Grid.Column="0"
                                     Grid.ColumnSpan="3"
                                     Orientation="Horizontal"
                                     HorizontalAlignment="Right"
-                                    Margin="0,10,0,0">
+                                    Margin="0,60,0,0">
 
-                            <Button Content="Clear All"
-                                    Style="{StaticResource SecondaryButtonStyle}"
-                                    Margin="0,0,14,0"
-                                    Click="ClearAll_Click" />
+                            <Button Style="{StaticResource SecondaryButtonStyle}"
+                                    Click="ClearAll_Click"
+                                    Margin="0,3,14,0">
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:FontAwesome Icon="Trash"
+                                                    FontSize="20"
+                                                    Margin="0,0,10,0"
+                                                    VerticalAlignment="Center" />
+
+                                    <TextBlock Text="Clear All"
+                                               VerticalAlignment="Center"
+                                               FontSize="19" />
+                                </StackPanel>
+                            </Button>
 
                             <Button Style="{StaticResource SaveButtonStyle}"
                                     Click="SaveEvent_Click">
@@ -1572,7 +2223,8 @@
                                                     VerticalAlignment="Center" />
 
                                     <TextBlock Text="Save"
-                                               VerticalAlignment="Center" />
+                                               VerticalAlignment="Center"
+                                               FontSize="21" />
                                 </StackPanel>
                             </Button>
                         </StackPanel>
@@ -1580,5 +2232,70 @@
                 </ScrollViewer>
             </Border>
         </Grid>
+        
+        <Border x:Name="ToastBorder"
+                Grid.RowSpan="5"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Width="360"
+                MinHeight="76"
+                Background="#DCFCE7"
+                BorderBrush="#22C55E"
+                BorderThickness="1"
+                CornerRadius="8"
+                Padding="16,12"
+                Margin="0,0,-1250,0"
+                Visibility="Collapsed"
+                Panel.ZIndex="999">
+
+            <Border.Effect>
+                <DropShadowEffect Color="#000000"
+                                  BlurRadius="16"
+                                  ShadowDepth="3"
+                                  Opacity="0.18" />
+            </Border.Effect>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="34" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="34" />
+                </Grid.ColumnDefinitions>
+
+                <Border x:Name="ToastIconCircle"
+                        Grid.Column="0"
+                        Width="28"
+                        Height="28"
+                        CornerRadius="13"
+                        Background="#22C55E"
+                        VerticalAlignment="Top"
+                        Margin="0,9,0,0">
+
+                    <fa:FontAwesome x:Name="ToastIcon"
+                                    Icon="Check"
+                                    Foreground="White"
+                                    FontSize="14"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center" />
+                </Border>
+
+                <StackPanel Grid.Column="1"
+                            Margin="8,0,8,0">
+                    <TextBlock x:Name="ToastTitleTextBlock"
+                               Text="SUCCESS"
+                               Foreground="#166534"
+                               FontSize="17"
+                               FontWeight="Bold"
+                               Margin="0,0,0,3" />
+
+                    <TextBlock x:Name="ToastMessageTextBlock"
+                               Text="Event saved successfully."
+                               Foreground="#14532D"
+                               FontSize="16"
+                               TextWrapping="Wrap" />
+                </StackPanel>
+            </Grid>
+        </Border>
+        
     </Grid>
 </Window>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -11,6 +12,7 @@ using WorldEventMapper.Help;
 using WorldEventMapper.Home;
 using WorldEventMapper.Models;
 using WorldEventMapper.Services;
+using System.Windows.Threading;
 
 namespace WorldEventMapper.Event_Management
 {
@@ -21,6 +23,11 @@ namespace WorldEventMapper.Event_Management
 
         private string _selectedImageSourcePath = "";
         private string _storedImageRelativePath = "";
+        private bool _isFilteringLocation = false;
+        private bool _isFormattingPastYears = false;
+        private readonly DispatcherTimer _toastTimer = new DispatcherTimer();
+        private bool _isClearingForm = false;
+
 
         private readonly List<string> _attendanceOptions = new()
         {
@@ -54,6 +61,10 @@ namespace WorldEventMapper.Event_Management
             InitializeComponent();
             LoadData();
             SetupForm();
+            ConfigureUpcomingDatePicker();
+
+            _toastTimer.Interval = TimeSpan.FromSeconds(3);
+            _toastTimer.Tick += ToastTimer_Tick;
         }
 
         private void LoadData()
@@ -108,7 +119,7 @@ namespace WorldEventMapper.Event_Management
                 Description = DescriptionTextBox.Text.Trim(),
                 EventTypeId = selectedType.ID,
                 Attendance = AttendanceComboBox.SelectedItem?.ToString() ?? "< 1000",
-                IsHumanitarian = HumanitarianCheckBox.IsChecked == true,
+                IsHumanitarian = HumanitarianYesToggle.IsChecked == true,
                 Cost = double.Parse(CostTextBox.Text.Trim(), CultureInfo.InvariantCulture),
                 IconPath = iconPath,
                 PastPerformingYears = ParseYears(PastYearsTextBox.Text),
@@ -120,12 +131,62 @@ namespace WorldEventMapper.Event_Management
             _data.Events.Add(newEvent);
             _dataService.Save(_data);
 
-            MessageBox.Show("Event created successfully.", "Saved", MessageBoxButton.OK, MessageBoxImage.Information);
+            ShowSuccessToast("Event created successfully.");
 
             ClearAllFields();
             EventIdTextBox.Text = GenerateEventId();
             AttendanceComboBox.SelectedIndex = 0;
             UpcomingDatePicker.SelectedDate = DateTime.Today;
+        }
+
+        private void ShowSuccessToast(string message)
+        {
+            ShowToast("SUCCESS", message, true);
+        }
+
+        private void ShowErrorToast(string message)
+        {
+            ShowToast("ERROR", message, false);
+        }
+
+        private void ShowToast(string title, string message, bool isSuccess)
+        {
+            _toastTimer.Stop();
+
+            ToastTitleTextBlock.Text = title;
+            ToastMessageTextBlock.Text = message;
+
+            if (isSuccess)
+            {
+                ToastBorder.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(220, 252, 231));
+                ToastBorder.BorderBrush = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(134, 239, 172));
+
+                ToastIconCircle.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(34, 197, 94));
+                ToastIcon.Icon = FontAwesome.WPF.FontAwesomeIcon.Check;
+
+                ToastTitleTextBlock.Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(22, 101, 52));
+                ToastMessageTextBlock.Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(20, 83, 45));
+            }
+            else
+            {
+                ToastBorder.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(254, 226, 226));
+                ToastBorder.BorderBrush = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(252, 165, 165));
+
+                ToastIconCircle.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(239, 68, 68));
+                ToastIcon.Icon = FontAwesome.WPF.FontAwesomeIcon.Exclamation;
+
+                ToastTitleTextBlock.Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(153, 27, 27));
+                ToastMessageTextBlock.Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(127, 29, 29));
+            }
+
+            ToastBorder.Visibility = Visibility.Visible;
+            _toastTimer.Start();
+        }
+
+        private void ToastTimer_Tick(object? sender, EventArgs e)
+        {
+            _toastTimer.Stop();
+            ToastBorder.Visibility = Visibility.Collapsed;
         }
 
         private bool ValidateForm()
@@ -145,12 +206,6 @@ namespace WorldEventMapper.Event_Management
             if (string.IsNullOrWhiteSpace(EventNameTextBox.Text))
             {
                 ShowValidationMessage("Event Name is required.");
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(DescriptionTextBox.Text))
-            {
-                ShowValidationMessage("Event Description is required.");
                 return false;
             }
 
@@ -174,7 +229,7 @@ namespace WorldEventMapper.Event_Management
 
             if (!double.TryParse(CostTextBox.Text.Trim(), NumberStyles.Any, CultureInfo.InvariantCulture, out double cost) || cost < 0)
             {
-                ShowValidationMessage("Event Cost must be a valid positive number. Use format like: 15000");
+                ShowValidationMessage("Event Cost must be a valid positive number. Use format like: 15000 or 15000.05");
                 return false;
             }
 
@@ -196,18 +251,117 @@ namespace WorldEventMapper.Event_Management
                 return false;
             }
 
-            if (GetSelectedTagIds().Count == 0)
-            {
-                ShowValidationMessage("Please select at least one Event Tag.");
-                return false;
-            }
-
             return true;
         }
 
         private void ShowValidationMessage(string message)
         {
-            MessageBox.Show(message, "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            ShowErrorToast(message);
+        }
+
+        private void LocationComboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (LocationComboBox.Template.FindName("PART_EditableTextBox", LocationComboBox) is TextBox textBox)
+            {
+                textBox.TextChanged += LocationSearchTextBox_TextChanged;
+            }
+        }
+
+        private void ConfigureUpcomingDatePicker()
+        {
+            DateTime today = DateTime.Today;
+            DateTime endOfThisYear = new DateTime(today.Year, 12, 31);
+
+            UpcomingDatePicker.DisplayDateStart = today;
+            UpcomingDatePicker.DisplayDateEnd = endOfThisYear;
+            UpcomingDatePicker.DisplayDate = today;
+
+            if (UpcomingDatePicker.SelectedDate < today || UpcomingDatePicker.SelectedDate > endOfThisYear)
+            {
+                UpcomingDatePicker.SelectedDate = null;
+            }
+        }
+
+        private void LocationSearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (_isFilteringLocation || _isClearingForm)
+                return;
+
+            string searchText = LocationComboBox.Text;
+
+            _isFilteringLocation = true;
+
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                LocationComboBox.ItemsSource = _locationOptions;
+                LocationComboBox.IsDropDownOpen = false;
+            }
+            else
+            {
+                LocationComboBox.ItemsSource = _locationOptions
+                    .Where(location => location.Contains(searchText, StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+
+                LocationComboBox.IsDropDownOpen = true;
+            }
+
+            LocationComboBox.Text = searchText;
+
+            if (LocationComboBox.Template.FindName("PART_EditableTextBox", LocationComboBox) is TextBox textBox)
+            {
+                textBox.CaretIndex = textBox.Text.Length;
+            }
+
+            _isFilteringLocation = false;
+        }
+
+        private void PastYearsTextBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            e.Handled = !e.Text.All(char.IsDigit);
+        }
+
+        private void PastYearsTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (_isFormattingPastYears)
+                return;
+
+            _isFormattingPastYears = true;
+
+            string digitsOnly = new string(PastYearsTextBox.Text.Where(char.IsDigit).ToArray());
+
+            if (digitsOnly.Length > 20)
+                digitsOnly = digitsOnly.Substring(0, 20);
+
+            List<string> groups = new();
+
+            for (int i = 0; i < digitsOnly.Length; i += 4)
+            {
+                int length = Math.Min(4, digitsOnly.Length - i);
+                groups.Add(digitsOnly.Substring(i, length));
+            }
+
+            string formatted = string.Join(",", groups);
+
+            PastYearsTextBox.Text = formatted;
+            PastYearsTextBox.CaretIndex = PastYearsTextBox.Text.Length;
+
+            _isFormattingPastYears = false;
+        }
+
+        private void PastYearsTextBox_Pasting(object sender, DataObjectPastingEventArgs e)
+        {
+            if (!e.DataObject.GetDataPresent(typeof(string)))
+            {
+                e.CancelCommand();
+                return;
+            }
+
+            string pastedText = e.DataObject.GetData(typeof(string)) as string ?? "";
+
+            if (!pastedText.All(c => char.IsDigit(c) || c == ','))
+            {
+                e.CancelCommand();
+            }
         }
 
         private bool ValidateYears(string input)
@@ -215,12 +369,16 @@ namespace WorldEventMapper.Event_Management
             if (string.IsNullOrWhiteSpace(input))
                 return true;
 
-            string[] parts = input.Split(',', StringSplitOptions.RemoveEmptyEntries);
+            string trimmed = input.Trim();
 
-            foreach (string part in parts)
+            if (!System.Text.RegularExpressions.Regex.IsMatch(trimmed, @"^\d{4}(,\d{4})*$"))
+                return false;
+
+            string[] years = trimmed.Split(',');
+
+            foreach (string yearText in years)
             {
-                if (!int.TryParse(part.Trim(), out int year))
-                    return false;
+                int year = int.Parse(yearText);
 
                 if (year < 1900 || year > 2100)
                     return false;
@@ -298,7 +456,7 @@ namespace WorldEventMapper.Event_Management
             if (dialog.ShowDialog() == true)
             {
                 _selectedImageSourcePath = dialog.FileName;
-                ImagePathTextBlock.Text = _selectedImageSourcePath;
+                ImagePathTextBlock.Text = Path.GetFileName(_selectedImageSourcePath);
 
                 BitmapImage bitmap = new BitmapImage();
                 bitmap.BeginInit();
@@ -307,6 +465,7 @@ namespace WorldEventMapper.Event_Management
                 bitmap.EndInit();
 
                 SelectedImagePreview.Source = bitmap;
+                ImagePlaceholderIcon.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -351,6 +510,8 @@ namespace WorldEventMapper.Event_Management
 
         private void ClearAllFields()
         {
+            _isClearingForm = true;
+
             EventIdTextBox.Clear();
             EventNameTextBox.Clear();
             DescriptionTextBox.Clear();
@@ -358,14 +519,17 @@ namespace WorldEventMapper.Event_Management
             EventTypeComboBox.SelectedItem = null;
             AttendanceComboBox.SelectedItem = null;
 
-            HumanitarianCheckBox.IsChecked = false;
+            HumanitarianYesToggle.IsChecked = false;
+            HumanitarianNoToggle.IsChecked = false;
             CostTextBox.Clear();
             PastYearsTextBox.Clear();
 
             UpcomingDatePicker.SelectedDate = null;
 
+            LocationComboBox.ItemsSource = _locationOptions;
             LocationComboBox.SelectedItem = null;
             LocationComboBox.Text = "";
+            LocationComboBox.IsDropDownOpen = false;
 
             TagsListBox.SelectedItems.Clear();
 
@@ -373,7 +537,10 @@ namespace WorldEventMapper.Event_Management
             _storedImageRelativePath = "";
 
             SelectedImagePreview.Source = null;
-            ImagePathTextBlock.Text = "No image selected. Type icon will be used.";
+            ImagePlaceholderIcon.Visibility = Visibility.Visible;
+            ImagePathTextBlock.Text = "Upload event image";
+
+            _isClearingForm = false;
         }
 
         private void ClearEventId_Click(object sender, RoutedEventArgs e)
@@ -394,7 +561,7 @@ namespace WorldEventMapper.Event_Management
         private void ClearEventType_Click(object sender, RoutedEventArgs e)
         {
             EventTypeComboBox.SelectedItem = null;
-            ImagePathTextBlock.Text = "No image selected. Type icon will be used.";
+            ImagePathTextBlock.Text = "Upload event image";
         }
 
         private void ClearAttendance_Click(object sender, RoutedEventArgs e)
@@ -404,12 +571,114 @@ namespace WorldEventMapper.Event_Management
 
         private void ClearHumanitarian_Click(object sender, RoutedEventArgs e)
         {
-            HumanitarianCheckBox.IsChecked = false;
+            HumanitarianYesToggle.IsChecked = false;
+            HumanitarianNoToggle.IsChecked = false;
+        }
+
+        private void HumanitarianYesToggle_Checked(object sender, RoutedEventArgs e)
+        {
+            HumanitarianNoToggle.IsChecked = false;
+        }
+
+        private void HumanitarianNoToggle_Checked(object sender, RoutedEventArgs e)
+        {
+            HumanitarianYesToggle.IsChecked = false;
         }
 
         private void ClearCost_Click(object sender, RoutedEventArgs e)
         {
             CostTextBox.Clear();
+        }
+
+        private void CostTextBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+
+            string newText = textBox.Text
+                .Remove(textBox.SelectionStart, textBox.SelectionLength)
+                .Insert(textBox.SelectionStart, e.Text);
+
+            e.Handled = !IsValidFullCostValue(newText);
+        }
+
+        private void CostTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(CostTextBox.Text))
+                return;
+
+            string fixedText = FixCostInput(CostTextBox.Text);
+
+            if (CostTextBox.Text != fixedText)
+            {
+                int caretIndex = CostTextBox.CaretIndex;
+
+                CostTextBox.Text = fixedText;
+                CostTextBox.CaretIndex = Math.Min(caretIndex, CostTextBox.Text.Length);
+            }
+        }
+
+        private void CostTextBox_Pasting(object sender, DataObjectPastingEventArgs e)
+        {
+            if (!e.DataObject.GetDataPresent(typeof(string)))
+            {
+                e.CancelCommand();
+                return;
+            }
+
+            TextBox textBox = (TextBox)sender;
+            string pastedText = e.DataObject.GetData(typeof(string)) as string ?? "";
+
+            string newText = textBox.Text
+                .Remove(textBox.SelectionStart, textBox.SelectionLength)
+                .Insert(textBox.SelectionStart, pastedText);
+
+            if (!IsValidFullCostValue(newText))
+                e.CancelCommand();
+        }
+
+        private bool IsValidFullCostValue(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+                return true;
+
+            value = value.Replace(",", ".");
+
+            return Regex.IsMatch(value, @"^\d+(\.\d{0,2})?$|^\d*\.$");
+        }
+
+        private string FixCostInput(string value)
+        {
+            value = value.Replace(",", ".");
+
+            string result = "";
+            bool hasDecimalPoint = false;
+            int decimalCount = 0;
+
+            foreach (char c in value)
+            {
+                if (char.IsDigit(c))
+                {
+                    if (hasDecimalPoint)
+                    {
+                        if (decimalCount < 2)
+                        {
+                            result += c;
+                            decimalCount++;
+                        }
+                    }
+                    else
+                    {
+                        result += c;
+                    }
+                }
+                else if (c == '.' && !hasDecimalPoint)
+                {
+                    result += c;
+                    hasDecimalPoint = true;
+                }
+            }
+
+            return result;
         }
 
         private void ClearYears_Click(object sender, RoutedEventArgs e)
@@ -424,6 +693,7 @@ namespace WorldEventMapper.Event_Management
 
         private void ClearLocation_Click(object sender, RoutedEventArgs e)
         {
+            LocationComboBox.ItemsSource = _locationOptions;
             LocationComboBox.SelectedItem = null;
             LocationComboBox.Text = "";
         }
@@ -439,7 +709,8 @@ namespace WorldEventMapper.Event_Management
             _storedImageRelativePath = "";
 
             SelectedImagePreview.Source = null;
-            ImagePathTextBlock.Text = "No image selected. Type icon will be used.";
+            ImagePlaceholderIcon.Visibility = Visibility.Visible;
+            ImagePathTextBlock.Text = "Upload event image";
         }
 
         private void CloseToMain_Click(object sender, RoutedEventArgs e)
