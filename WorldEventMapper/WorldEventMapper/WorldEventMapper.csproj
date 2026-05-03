@@ -18,4 +18,8 @@
 		<Resource Include="Assets\map.png" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Images\" />
+	</ItemGroup>
+
 </Project>

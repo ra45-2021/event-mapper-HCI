@@ -10,7 +10,7 @@ namespace WorldEventMapper.Models
         private string _name = "";
         private string _description = "";
         private string _eventTypeId = "";
-        private string _attendance = "<1000";
+        private string _attendance = "< 1000";
         private bool _isHumanitarian;
         private double _cost;
         private string _iconPath = "";
