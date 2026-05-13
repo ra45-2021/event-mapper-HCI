@@ -1736,8 +1736,8 @@
                                                    FontSize="16"
                                                    FontWeight="SemiBold"
                                                    TextTrimming="CharacterEllipsis"
-                                                   MaxWidth="180"
-                                                   Margin="0,0,210,8" />
+                                                   MaxWidth="420"
+                                                   Margin="0,0,20,8" />
 
                                         <Button Style="{StaticResource ModernUploadButtonStyle}"
                                                 HorizontalAlignment="Left"

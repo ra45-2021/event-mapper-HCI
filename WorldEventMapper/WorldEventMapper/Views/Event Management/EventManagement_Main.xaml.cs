@@ -477,7 +477,7 @@ namespace WorldEventMapper.Event_Management
             if (EventTypeComboBox.SelectedItem is not EventTypeModel selectedType)
                 return;
 
-            ImagePathTextBlock.Text = $"No image selected. Default type icon will be used: {selectedType.IconPath}";
+            ImagePathTextBlock.Text = $"No image selected. Default type icon will be used.";
         }
 
         private void NewEvent_Click(object sender, RoutedEventArgs e)

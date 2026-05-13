@@ -8,6 +8,9 @@
     <Compile Update="Views\Event Management\EventManagement_Main.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\Event Management\ManageEventsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\Help\Help_Main.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

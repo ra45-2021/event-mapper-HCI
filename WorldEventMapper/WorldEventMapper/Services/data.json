@@ -412,6 +412,23 @@
       "UpcomingDate": "2026-05-04T00:00:00+02:00",
       "Location": "33",
       "TagIds": []
+    },
+    {
+      "ID": "EV022",
+      "Name": "ihbjn",
+      "Description": "",
+      "EventTypeId": "ET002",
+      "Attendance": "\u003C 1000",
+      "IsHumanitarian": false,
+      "Cost": 9,
+      "IconPath": "/Assets/music.png",
+      "PastPerformingYears": [
+        2020,
+        2021
+      ],
+      "UpcomingDate": "2026-05-13T00:00:00+02:00",
+      "Location": "Ni\u0161, Serbia",
+      "TagIds": []
     }
   ],
   "EventTypes": [
