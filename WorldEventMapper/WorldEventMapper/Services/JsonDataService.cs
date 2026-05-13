@@ -203,7 +203,7 @@ namespace WorldEventMapper.Services
                         IconPath = "",
                         PastPerformingYears = new() { 2020, 2021, 2022, 2023 },
                         UpcomingDate = DateTime.Today.AddMonths(2),
-                        Location = "Mokra Gora, Serbia",
+                        Location = "Mokra Gora, SRB",
                         TagIds = new() { "TAG001", "TAG003" }
                     },
                     new EventModel
@@ -218,13 +218,13 @@ namespace WorldEventMapper.Services
                         IconPath = "",
                         PastPerformingYears = new() { 2021, 2022, 2023 },
                         UpcomingDate = DateTime.Today.AddMonths(1),
-                        Location = "Vienna, Austria",
+                        Location = "Vienna, AUT",
                         TagIds = new() { "TAG001", "TAG008" }
                     },
                     new EventModel
                     {
                         ID = "AR001",
-                        Name = "Art Basel",
+                        Name = "Art London",
                         Description = "Contemporary art fair with international galleries and artists.",
                         EventTypeId = "ET004",
                         Attendance = "5000-10000",
@@ -233,7 +233,7 @@ namespace WorldEventMapper.Services
                         IconPath = "",
                         PastPerformingYears = new() { 2019, 2021, 2022, 2023, 2024 },
                         UpcomingDate = DateTime.Today.AddMonths(3),
-                        Location = "Basel, Switzerland",
+                        Location = "London, UK",
                         TagIds = new() { "TAG001", "TAG008" }
                     },
                     new EventModel
@@ -248,7 +248,7 @@ namespace WorldEventMapper.Services
                         IconPath = "",
                         PastPerformingYears = new() { 2018, 2019, 2021, 2022, 2023, 2024 },
                         UpcomingDate = DateTime.Today.AddMonths(4),
-                        Location = "Belgrade, Serbia",
+                        Location = "Belgrade, SRB",
                         TagIds = new() { "TAG002", "TAG004", "TAG007" }
                     },
                     new EventModel
@@ -263,7 +263,7 @@ namespace WorldEventMapper.Services
                         IconPath = "",
                         PastPerformingYears = new() { 2021, 2022, 2023 },
                         UpcomingDate = DateTime.Today.AddMonths(5),
-                        Location = "Rome, Italy",
+                        Location = "Rome, ITA",
                         TagIds = new() { "TAG003", "TAG007", "TAG008" }
                     },
                     new EventModel
@@ -278,7 +278,7 @@ namespace WorldEventMapper.Services
                         IconPath = "",
                         PastPerformingYears = new() { 2020, 2021, 2022, 2023, 2024 },
                         UpcomingDate = DateTime.Today.AddMonths(6),
-                        Location = "Lisbon, Portugal",
+                        Location = "Lisbon, PRT",
                         TagIds = new() { "TAG005", "TAG006", "TAG008" }
                     },
                     new EventModel
@@ -293,7 +293,7 @@ namespace WorldEventMapper.Services
                         IconPath = "",
                         PastPerformingYears = new() { 2020, 2022, 2023 },
                         UpcomingDate = DateTime.Today.AddMonths(2).AddDays(10),
-                        Location = "Vienna, Austria",
+                        Location = "Vienna, AUT",
                         TagIds = new() { "TAG005", "TAG008" }
                     },
                     new EventModel
@@ -308,7 +308,7 @@ namespace WorldEventMapper.Services
                         IconPath = "",
                         PastPerformingYears = new() { 2021, 2022, 2023, 2024 },
                         UpcomingDate = DateTime.Today.AddMonths(1).AddDays(15),
-                        Location = "Paris, France",
+                        Location = "Paris, FRA",
                         TagIds = new() { "TAG002", "TAG004", "TAG007", "TAG008" }
                     },
                     new EventModel
@@ -323,7 +323,7 @@ namespace WorldEventMapper.Services
                         IconPath = "",
                         PastPerformingYears = new() { 2018, 2019, 2021, 2022, 2023, 2024 },
                         UpcomingDate = DateTime.Today.AddMonths(7),
-                        Location = "Novi Sad, Serbia",
+                        Location = "Novi Sad, SRB",
                         TagIds = new() { "TAG001", "TAG003", "TAG008" }
                     },
                     new EventModel
@@ -338,7 +338,7 @@ namespace WorldEventMapper.Services
                         IconPath = "",
                         PastPerformingYears = new() { 2019, 2020, 2021, 2022, 2023, 2024 },
                         UpcomingDate = DateTime.Today.AddMonths(3).AddDays(20),
-                        Location = "Sarajevo, Bosnia and Herzegovina",
+                        Location = "Sarajevo, BIH",
                         TagIds = new() { "TAG001", "TAG003", "TAG008" }
                     },
                     new EventModel
@@ -353,7 +353,7 @@ namespace WorldEventMapper.Services
                         IconPath = "",
                         PastPerformingYears = new() { 2022, 2023 },
                         UpcomingDate = DateTime.Today.AddMonths(2).AddDays(5),
-                        Location = "Paris, France",
+                        Location = "Paris, FRA",
                         TagIds = new() { "TAG001", "TAG003" }
                     },
                     new EventModel
@@ -368,7 +368,7 @@ namespace WorldEventMapper.Services
                         IconPath = "",
                         PastPerformingYears = new() { 2019, 2020, 2021, 2022, 2023 },
                         UpcomingDate = DateTime.Today.AddMonths(8),
-                        Location = "Tokyo, Japan",
+                        Location = "Tokyo, JPN",
                         TagIds = new() { "TAG006", "TAG008" }
                     }
                 }

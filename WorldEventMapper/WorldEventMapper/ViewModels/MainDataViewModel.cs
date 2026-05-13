@@ -256,6 +256,12 @@ namespace WorldEventMapper.ViewModels
             EventTypes = new ObservableCollection<EventTypeModel>(data.EventTypes);
             EventTags = new ObservableCollection<EventTagModel>(data.EventTags);
 
+            foreach (EventModel ev in Events)
+            {
+                ev.EventTypeName = EventTypes
+                    .FirstOrDefault(type => type.ID == ev.EventTypeId)?.Name ?? ev.EventTypeId;
+            }
+
             EventsView = CollectionViewSource.GetDefaultView(Events);
             EventsView.Filter = FilterEvent;
 

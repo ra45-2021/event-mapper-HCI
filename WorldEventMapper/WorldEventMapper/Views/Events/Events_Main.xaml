@@ -1,0 +1,1581 @@
+﻿<Window x:Class="WorldEventMapper.Events.Events_Main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        Title="Events"
+        Height="900"
+        Width="1250"
+        WindowStartupLocation="CenterScreen"
+        Background="#F7F9FC"
+        WindowState="Maximized"
+        ResizeMode="NoResize">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="AppBackground"
+                         Color="#F3F6FB" />
+        <SolidColorBrush x:Key="PanelBackground"
+                         Color="#FFFFFF" />
+        <SolidColorBrush x:Key="BorderBrushColor"
+                         Color="#D6DFEA" />
+        <SolidColorBrush x:Key="AccentBrush"
+                         Color="#0E7EEC" />
+        <SolidColorBrush x:Key="TextBrush"
+                         Color="#0F172A" />
+        <SolidColorBrush x:Key="MutedTextBrush"
+                         Color="#6B7280" />
+
+        <Style x:Key="NavButtonStyle"
+               TargetType="Button">
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="Foreground"
+                    Value="#1F2937" />
+            <Setter Property="BorderBrush"
+                    Value="Transparent" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="Padding"
+                    Value="18,0" />
+            <Setter Property="Cursor"
+                    Value="Hand" />
+            <Setter Property="FontSize"
+                    Value="18" />
+            <Setter Property="FontWeight"
+                    Value="SemiBold" />
+            <Setter Property="Height"
+                    Value="58" />
+            <Setter Property="HorizontalContentAlignment"
+                    Value="Stretch" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="14"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Stretch"
+                                              VerticalAlignment="Center" />
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter TargetName="Bd"
+                                        Property="Background"
+                                        Value="#EEF6FF" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed"
+                                     Value="True">
+                                <Setter TargetName="Bd"
+                                        Property="Background"
+                                        Value="#E0F0FF" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ActiveNavButtonStyle"
+               TargetType="Button"
+               BasedOn="{StaticResource NavButtonStyle}">
+            <Setter Property="Background"
+                    Value="#EAF2FF" />
+            <Setter Property="BorderBrush"
+                    Value="#D6E8FF" />
+            <Setter Property="BorderThickness"
+                    Value="1" />
+        </Style>
+
+        <Style x:Key="TableActionButtonStyle"
+               TargetType="Button">
+            <Setter Property="Height"
+                    Value="38" />
+            <Setter Property="Background"
+                    Value="#FFFFFF" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource AccentBrush}" />
+            <Setter Property="BorderBrush"
+                    Value="#C7D2E0" />
+            <Setter Property="BorderThickness"
+                    Value="1.5" />
+            <Setter Property="Cursor"
+                    Value="Hand" />
+            <Setter Property="FontSize"
+                    Value="15" />
+            <Setter Property="FontWeight"
+                    Value="SemiBold" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="10"
+                                Padding="10,0">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter TargetName="Bd"
+                                        Property="Background"
+                                        Value="#EEF6FF" />
+                                <Setter TargetName="Bd"
+                                        Property="BorderBrush"
+                                        Value="#9DB7E8" />
+                            </Trigger>
+                            <Trigger Property="IsPressed"
+                                     Value="True">
+                                <Setter TargetName="Bd"
+                                        Property="Background"
+                                        Value="#E0F0FF" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="PrimaryActionButtonStyle"
+               TargetType="Button"
+               BasedOn="{StaticResource TableActionButtonStyle}">
+            <Setter Property="Background"
+                    Value="#0E7EEC" />
+            <Setter Property="Foreground"
+                    Value="White" />
+            <Setter Property="BorderBrush"
+                    Value="#0E7EEC" />
+        </Style>
+
+        <Style x:Key="TopHelpButtonStyle"
+               TargetType="Button">
+            <Setter Property="Width"
+                    Value="120" />
+            <Setter Property="Height"
+                    Value="54" />
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="Cursor"
+                    Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd"
+                                Background="Transparent"
+                                CornerRadius="12"
+                                Padding="6">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter TargetName="Bd"
+                                        Property="Background"
+                                        Value="#EEF6FF" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed"
+                                     Value="True">
+                                <Setter TargetName="Bd"
+                                        Property="Background"
+                                        Value="#E0F0FF" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="IconButtonStyle"
+               TargetType="Button">
+            <Setter Property="Width"
+                    Value="52" />
+            <Setter Property="Height"
+                    Value="52" />
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="BorderBrush"
+                    Value="Transparent" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="Cursor"
+                    Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="14">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter TargetName="Bd"
+                                        Property="Background"
+                                        Value="#EEF6FF" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed"
+                                     Value="True">
+                                <Setter TargetName="Bd"
+                                        Property="Background"
+                                        Value="#E0F0FF" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="TextOnlyButtonStyle"
+               TargetType="Button">
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="Cursor"
+                    Value="Hand" />
+            <Setter Property="Foreground"
+                    Value="#1F2937" />
+            <Setter Property="FontSize"
+                    Value="18" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="10"
+                                Padding="8">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter TargetName="Bd"
+                                        Property="Background"
+                                        Value="#EEF6FF" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed"
+                                     Value="True">
+                                <Setter TargetName="Bd"
+                                        Property="Background"
+                                        Value="#E0F0FF" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SearchTextBoxStyle"
+               TargetType="TextBox">
+            <Setter Property="Height"
+                    Value="45" />
+            <Setter Property="Background"
+                    Value="#FFFFFF" />
+            <Setter Property="Foreground"
+                    Value="#1F2937" />
+            <Setter Property="BorderBrush"
+                    Value="#C7D2E0" />
+            <Setter Property="BorderThickness"
+                    Value="1.5" />
+            <Setter Property="Padding"
+                    Value="14,10" />
+            <Setter Property="FontSize"
+                    Value="16" />
+            <Setter Property="VerticalContentAlignment"
+                    Value="Center" />
+        </Style>
+
+        <Style x:Key="FieldLabelStyle"
+               TargetType="TextBlock">
+            <Setter Property="Foreground"
+                    Value="#1F2937" />
+            <Setter Property="FontSize"
+                    Value="15" />
+            <Setter Property="FontWeight"
+                    Value="SemiBold" />
+            <Setter Property="Margin"
+                    Value="0,0,0,6" />
+        </Style>
+
+        <Style x:Key="PlaceholderBaseStyle"
+               TargetType="TextBlock">
+            <Setter Property="Foreground"
+                    Value="#9CA3AF" />
+            <Setter Property="FontSize"
+                    Value="15" />
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="Margin"
+                    Value="14,0,0,0" />
+            <Setter Property="IsHitTestVisible"
+                    Value="False" />
+        </Style>
+
+        <Style x:Key="PopupComboBoxStyle"
+               TargetType="ComboBox">
+            <Setter Property="Height"
+                    Value="50" />
+            <Setter Property="FontSize"
+                    Value="16" />
+            <Setter Property="Background"
+                    Value="#FFFFFF" />
+            <Setter Property="BorderBrush"
+                    Value="#C7D2E0" />
+            <Setter Property="BorderThickness"
+                    Value="1.5" />
+            <Setter Property="Padding"
+                    Value="12,8" />
+        </Style>
+
+        <Style x:Key="EventDataGridStyle"
+               TargetType="DataGrid">
+            <Setter Property="Background"
+                    Value="#FFFFFF" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="GridLinesVisibility"
+                    Value="None" />
+            <Setter Property="RowHeight"
+                    Value="62" />
+            <Setter Property="HeadersVisibility"
+                    Value="Column" />
+            <Setter Property="CanUserSortColumns"
+                    Value="True" />
+            <Setter Property="FontSize"
+                    Value="14" />
+            <Setter Property="CanUserAddRows"
+                    Value="False" />
+            <Setter Property="CanUserDeleteRows"
+                    Value="False" />
+            <Setter Property="AutoGenerateColumns"
+                    Value="False" />
+            <Setter Property="SelectionMode"
+                    Value="Single" />
+            <Setter Property="SelectionUnit"
+                    Value="FullRow" />
+            <Setter Property="AlternatingRowBackground"
+                    Value="#F8FAFC" />
+            <Setter Property="RowBackground"
+                    Value="#FFFFFF" />
+            <Setter Property="HorizontalScrollBarVisibility"
+                    Value="Auto" />
+            <Setter Property="VerticalScrollBarVisibility"
+                    Value="Auto" />
+
+            <Setter Property="ColumnHeaderStyle">
+                <Setter.Value>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="Background"
+                                Value="#E4E7EB" />
+                        <Setter Property="Foreground"
+                                Value="#334155" />
+                        <Setter Property="FontSize"
+                                Value="13" />
+                        <Setter Property="FontWeight"
+                                Value="SemiBold" />
+                        <Setter Property="Padding"
+                                Value="14,12" />
+                        <Setter Property="BorderThickness"
+                                Value="0,0,0,1" />
+                        <Setter Property="BorderBrush"
+                                Value="#E2E8F0" />
+                        <Setter Property="HorizontalContentAlignment"
+                                Value="Left" />
+                        
+                    </Style>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="RowStyle">
+                <Setter.Value>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="BorderThickness"
+                                Value="0,0,0,1" />
+                        <Setter Property="BorderBrush"
+                                Value="#E5ECF5" />
+                        <Setter Property="Cursor"
+                                Value="Hand" />
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="#EEF6FF" />
+                            </Trigger>
+
+                            <Trigger Property="IsSelected"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="#DDEEFF" />
+                                <Setter Property="Foreground"
+                                        Value="#0F172A" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="CellStyle">
+                <Setter.Value>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="Padding"
+                                Value="14,8" />
+                        <Setter Property="HorizontalContentAlignment"
+                                Value="Left" />
+                        <Setter Property="BorderThickness"
+                                Value="0" />
+                        <Setter Property="VerticalContentAlignment"
+                                Value="Center" />
+                        <Setter Property="FocusVisualStyle"
+                                Value="{x:Null}" />
+                        <Setter Property="TextBlock.VerticalAlignment"
+                                Value="Center" />
+
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="Transparent" />
+                                <Setter Property="Foreground"
+                                        Value="#0F172A" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="{StaticResource AppBackground}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="280" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <Border Grid.Column="0"
+                Background="#FFFFFF"
+                BorderBrush="{StaticResource BorderBrushColor}"
+                BorderThickness="0,0,1.5,0">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="138" />
+                    <RowDefinition Height="70" />
+                    <RowDefinition Height="70" />
+                    <RowDefinition Height="70" />
+                    <RowDefinition Height="70" />
+                    <RowDefinition Height="70" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="80" />
+                </Grid.RowDefinitions>
+
+                <!-- Logo -->
+                <Border Grid.Row="0"
+                        BorderBrush="#E5ECF5"
+                        BorderThickness="0,0,0,1"
+                        Padding="0">
+
+                    <Button Background="Transparent"
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            Click="Home_Click"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch">
+
+                        <Grid HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch">
+
+                            <Border Width="720"
+                                    Height="720"
+                                    Background="White"
+                                    CornerRadius="36"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+
+                                <Image Source="/Assets/logo.png"
+                                       Width="200"
+                                       Height="200"
+                                       Stretch="Uniform"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       RenderOptions.BitmapScalingMode="HighQuality" />
+                            </Border>
+                        </Grid>
+                    </Button>
+                </Border>
+
+                <!-- Home -->
+                <Button Grid.Row="1"
+                        Style="{StaticResource NavButtonStyle}"
+                        Margin="18,10,18,0"
+                        Click="Home_Click">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="36" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <fa:FontAwesome Grid.Column="0"
+                                        Icon="Home"
+                                        Foreground="{StaticResource AccentBrush}"
+                                        FontSize="30"
+                                        VerticalAlignment="Center"
+                                        Margin="-20,0,0,0" />
+
+                        <TextBlock Grid.Column="1"
+                                   Text="Home"
+                                   Foreground="#1F2937"
+                                   FontSize="19"
+                                   VerticalAlignment="Center" />
+                    </Grid>
+                </Button>
+
+                <!-- Events ACTIVE -->
+                <Button Grid.Row="2"
+                        Style="{StaticResource ActiveNavButtonStyle}"
+                        Margin="18,8,18,0">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="36" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <fa:FontAwesome Grid.Column="0"
+                                        Icon="Calendar"
+                                        Foreground="{StaticResource AccentBrush}"
+                                        FontSize="30"
+                                        VerticalAlignment="Center"
+                                        Margin="-20,5,0,0" />
+
+                        <TextBlock Grid.Column="1"
+                                   Text="Events"
+                                   Foreground="#1F2937"
+                                   FontSize="19"
+                                   VerticalAlignment="Center" />
+                    </Grid>
+                </Button>
+
+                <!-- Event Types -->
+                <Button Grid.Row="3"
+                        Style="{StaticResource NavButtonStyle}"
+                        Margin="18,8,18,0"
+                        Click="EventTypes_Click">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="36" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <fa:FontAwesome Grid.Column="0"
+                                        Icon="Clone"
+                                        Foreground="{StaticResource AccentBrush}"
+                                        FontSize="30"
+                                        VerticalAlignment="Center"
+                                        Margin="-20,5,0,0" />
+
+                        <TextBlock Grid.Column="1"
+                                   Text="Event Types"
+                                   Foreground="#1F2937"
+                                   FontSize="18"
+                                   VerticalAlignment="Center" />
+                    </Grid>
+                </Button>
+
+                <!-- Event Tags -->
+                <Button Grid.Row="4"
+                        Style="{StaticResource NavButtonStyle}"
+                        Margin="18,8,18,0"
+                        Click="EventTags_Click">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="36" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <fa:FontAwesome Grid.Column="0"
+                                        Icon="Tag"
+                                        Foreground="{StaticResource AccentBrush}"
+                                        FontSize="30"
+                                        VerticalAlignment="Center"
+                                        Margin="-20,5,0,0" />
+
+                        <TextBlock Grid.Column="1"
+                                   Text="Event Tags"
+                                   Foreground="#1F2937"
+                                   FontSize="18"
+                                   VerticalAlignment="Center" />
+                    </Grid>
+                </Button>
+
+                <!-- Help -->
+                <Button Grid.Row="5"
+                        Style="{StaticResource NavButtonStyle}"
+                        Margin="18,8,18,0"
+                        Click="Help_Click">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="36" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <fa:FontAwesome Grid.Column="0"
+                                        Icon="QuestionCircle"
+                                        Foreground="{StaticResource AccentBrush}"
+                                        FontSize="30"
+                                        VerticalAlignment="Center"
+                                        Margin="-20,5,0,0" />
+
+                        <TextBlock Grid.Column="1"
+                                   Text="Help"
+                                   Foreground="#1F2937"
+                                   FontSize="19"
+                                   VerticalAlignment="Center" />
+                    </Grid>
+                </Button>
+
+                <!-- Exit -->
+                <Button Grid.Row="7"
+                        Style="{StaticResource NavButtonStyle}"
+                        Height="58"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Center"
+                        Margin="18,0,18,0"
+                        Click="CloseToMain_Click">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="36" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <fa:FontAwesome Grid.Column="0"
+                                        Icon="SignOut"
+                                        Foreground="{StaticResource AccentBrush}"
+                                        FontSize="30"
+                                        VerticalAlignment="Center"
+                                        Margin="-20,5,0,0" />
+
+                        <TextBlock Grid.Column="1"
+                                   Text="Exit"
+                                   Foreground="#1F2937"
+                                   FontSize="19"
+                                   FontWeight="SemiBold"
+                                   VerticalAlignment="Center" />
+                    </Grid>
+                </Button>
+            </Grid>
+        </Border>
+
+        <!-- Main content -->
+        <Grid Grid.Column="1"
+              Margin="32,20,32,32">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="16" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Events"
+                           Foreground="{StaticResource TextBrush}"
+                           FontSize="42"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+
+                <Button Grid.Column="1"
+                        Style="{StaticResource TopHelpButtonStyle}"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Click="Help_Click">
+
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+
+                        <Border Width="42"
+                                Height="42"
+                                Background="#0E7EEC"
+                                CornerRadius="21"
+                                Margin="0,0,6,0">
+
+                            <TextBlock Text="?"
+                                       Foreground="White"
+                                       FontSize="24"
+                                       FontWeight="Bold"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center" />
+                        </Border>
+
+                        <TextBlock Text="Help"
+                                   Foreground="#0E7EEC"
+                                   FontSize="19"
+                                   VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+            <!-- Search / filter row -->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220" />
+                    <ColumnDefinition Width="14" />
+                    <ColumnDefinition Width="420" />
+                    <ColumnDefinition Width="14" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- New Event -->
+                <Button Grid.Column="0"
+                        Height="60"
+                        Style="{StaticResource PrimaryActionButtonStyle}"
+                        Click="NewEvent_Click">
+
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+
+                        <fa:FontAwesome Icon="PlusCircle"
+                                        Foreground="White"
+                                        FontSize="24"
+                                        Margin="0,0,10,0"
+                                        VerticalAlignment="Center" />
+
+                        <TextBlock Text="New Event"
+                                   Foreground="White"
+                                   FontSize="20"
+                                   FontWeight="SemiBold"
+                                   VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+
+                <!-- Advanced search card -->
+                <Border Grid.Column="2"
+                        Background="#FFFFFF"
+                        BorderBrush="#D6DFEA"
+                        BorderThickness="1.5"
+                        CornerRadius="18"
+                        Height="60"
+                        Width="420">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="58" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Button x:Name="OpenSearchPopupButton"
+                                Grid.Column="0"
+                                Style="{StaticResource IconButtonStyle}"
+                                Click="OpenSearchPopup_Click"
+                                ToolTip="Open advanced search">
+
+                            <fa:FontAwesome Icon="Search"
+                                            Foreground="{StaticResource AccentBrush}"
+                                            FontSize="30"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Margin="-3,0,0,0"/>
+                        </Button>
+
+                        <StackPanel Grid.Column="1"
+                                    Margin="2,17,0,0">
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel>
+                                    <TextBlock Text="Advanced Search"
+                                               Foreground="#1F2937"
+                                               FontSize="18"
+                                               FontWeight="SemiBold" />
+
+                                </StackPanel>
+                            </Grid>
+
+                            <!-- Search chips -->
+                            <ItemsControl ItemsSource="{Binding ActiveSearchChips}"
+                                          Margin="0,12,0,0">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Background="#EAF2FF"
+                                                BorderBrush="#BFDFFF"
+                                                BorderThickness="1"
+                                                CornerRadius="14"
+                                                Padding="10,5"
+                                                Margin="0,0,8,6">
+                                            <TextBlock Text="{Binding}"
+                                                       Foreground="#0F172A"
+                                                       FontSize="13"
+                                                       VerticalAlignment="Center" />
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+
+                        <!-- Advanced search popup -->
+                        <Popup x:Name="AdvancedSearchPopup"
+                               PlacementTarget="{Binding ElementName=OpenSearchPopupButton}"
+                               Placement="Bottom"
+                               AllowsTransparency="True"
+                               StaysOpen="False"
+                               PopupAnimation="Fade">
+
+                            <Border Width="720"
+                                    Background="#FFFFFF"
+                                    BorderBrush="#C7D2E0"
+                                    BorderThickness="1.5"
+                                    CornerRadius="20"
+                                    Padding="24"
+                                    Margin="0,10,0,0">
+
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="18" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="18" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Popup title -->
+                                    <Grid Grid.Row="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel>
+                                            <TextBlock Text="Advanced Event Search"
+                                                       Foreground="#0F172A"
+                                                       FontSize="24"
+                                                       FontWeight="Bold" />
+
+                                            <TextBlock Text="Fill one or more fields, then click Search."
+                                                       Foreground="#6B7280"
+                                                       FontSize="14"
+                                                       Margin="0,4,0,0" />
+                                        </StackPanel>
+
+                                        <Button Grid.Column="1"
+                                                Width="38"
+                                                Height="38"
+                                                Style="{StaticResource TextOnlyButtonStyle}"
+                                                Click="CloseSearchPopup_Click"
+                                                ToolTip="Close search popup">
+
+                                            <fa:FontAwesome Icon="TimesCircle"
+                                                            Foreground="#1F2937"
+                                                            FontSize="24" />
+                                        </Button>
+                                    </Grid>
+
+                                    <!-- Search fields -->
+                                    <Grid Grid.Row="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="30" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="14" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="14" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="14" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="14" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="14" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+
+                                        <!-- Event ID -->
+                                        <StackPanel Grid.Row="0"
+                                                    Grid.Column="0">
+                                            <TextBlock Text="Event ID"
+                                                       Style="{StaticResource FieldLabelStyle}" />
+                                            <Grid>
+                                                <TextBox x:Name="SearchIdBox"
+                                                         Style="{StaticResource SearchTextBoxStyle}"
+                                                         Text="{Binding SearchId, UpdateSourceTrigger=Explicit}" />
+
+                                                <TextBlock Text="Example: FI001">
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="TextBlock"
+                                                               BasedOn="{StaticResource PlaceholderBaseStyle}">
+                                                            <Setter Property="Visibility"
+                                                                    Value="Collapsed" />
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding Text, ElementName=SearchIdBox}"
+                                                                             Value="">
+                                                                    <Setter Property="Visibility"
+                                                                            Value="Visible" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                </TextBlock>
+
+                                                <Button Width="34"
+                                                        Height="34"
+                                                        HorizontalAlignment="Right"
+                                                        VerticalAlignment="Center"
+                                                        Margin="0,0,8,0"
+                                                        Style="{StaticResource TextOnlyButtonStyle}"
+                                                        Click="ClearSearchId_Click">
+                                                    <TextBlock Text="×"
+                                                               FontSize="22" />
+                                                </Button>
+                                            </Grid>
+                                        </StackPanel>
+
+                                        <!-- Cost -->
+                                        <StackPanel Grid.Row="0"
+                                                    Grid.Column="2">
+                                            <TextBlock Text="Cost"
+                                                       Style="{StaticResource FieldLabelStyle}" />
+                                            <Grid>
+                                                <TextBox x:Name="SearchCostBox"
+                                                         Style="{StaticResource SearchTextBoxStyle}"
+                                                         Text="{Binding SearchCost, UpdateSourceTrigger=Explicit}" />
+
+                                                <TextBlock Text="Example: 25000">
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="TextBlock"
+                                                               BasedOn="{StaticResource PlaceholderBaseStyle}">
+                                                            <Setter Property="Visibility"
+                                                                    Value="Collapsed" />
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding Text, ElementName=SearchCostBox}"
+                                                                             Value="">
+                                                                    <Setter Property="Visibility"
+                                                                            Value="Visible" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                </TextBlock>
+
+                                                <Button Width="34"
+                                                        Height="34"
+                                                        HorizontalAlignment="Right"
+                                                        VerticalAlignment="Center"
+                                                        Margin="0,0,8,0"
+                                                        Style="{StaticResource TextOnlyButtonStyle}"
+                                                        Click="ClearSearchCost_Click">
+                                                    <TextBlock Text="×"
+                                                               FontSize="22" />
+                                                </Button>
+                                            </Grid>
+                                        </StackPanel>
+
+                                        <!-- Name -->
+                                        <StackPanel Grid.Row="2"
+                                                    Grid.Column="0">
+                                            <TextBlock Text="Name"
+                                                       Style="{StaticResource FieldLabelStyle}" />
+                                            <Grid>
+                                                <TextBox x:Name="SearchNameBox"
+                                                         Style="{StaticResource SearchTextBoxStyle}"
+                                                         Text="{Binding SearchName, UpdateSourceTrigger=Explicit}" />
+
+                                                <TextBlock Text="Example: Kustendorf">
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="TextBlock"
+                                                               BasedOn="{StaticResource PlaceholderBaseStyle}">
+                                                            <Setter Property="Visibility"
+                                                                    Value="Collapsed" />
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding Text, ElementName=SearchNameBox}"
+                                                                             Value="">
+                                                                    <Setter Property="Visibility"
+                                                                            Value="Visible" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                </TextBlock>
+
+                                                <Button Width="34"
+                                                        Height="34"
+                                                        HorizontalAlignment="Right"
+                                                        VerticalAlignment="Center"
+                                                        Margin="0,0,8,0"
+                                                        Style="{StaticResource TextOnlyButtonStyle}"
+                                                        Click="ClearSearchName_Click">
+                                                    <TextBlock Text="×"
+                                                               FontSize="22" />
+                                                </Button>
+                                            </Grid>
+                                        </StackPanel>
+
+                                        <!-- Location -->
+                                        <StackPanel Grid.Row="2"
+                                                    Grid.Column="2">
+                                            <TextBlock Text="Location"
+                                                       Style="{StaticResource FieldLabelStyle}" />
+                                            <Grid>
+                                                <TextBox x:Name="SearchLocationBox"
+                                                         Style="{StaticResource SearchTextBoxStyle}"
+                                                         Text="{Binding SearchLocation, UpdateSourceTrigger=Explicit}" />
+
+                                                <TextBlock Text="Example: Vienna, Austria">
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="TextBlock"
+                                                               BasedOn="{StaticResource PlaceholderBaseStyle}">
+                                                            <Setter Property="Visibility"
+                                                                    Value="Collapsed" />
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding Text, ElementName=SearchLocationBox}"
+                                                                             Value="">
+                                                                    <Setter Property="Visibility"
+                                                                            Value="Visible" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                </TextBlock>
+
+                                                <Button Width="34"
+                                                        Height="34"
+                                                        HorizontalAlignment="Right"
+                                                        VerticalAlignment="Center"
+                                                        Margin="0,0,8,0"
+                                                        Style="{StaticResource TextOnlyButtonStyle}"
+                                                        Click="ClearSearchLocation_Click">
+                                                    <TextBlock Text="×"
+                                                               FontSize="22" />
+                                                </Button>
+                                            </Grid>
+                                        </StackPanel>
+
+                                        <!-- Description -->
+                                        <StackPanel Grid.Row="4"
+                                                    Grid.Column="0">
+                                            <TextBlock Text="Description"
+                                                       Style="{StaticResource FieldLabelStyle}" />
+                                            <Grid>
+                                                <TextBox x:Name="SearchDescriptionBox"
+                                                         Style="{StaticResource SearchTextBoxStyle}"
+                                                         Text="{Binding SearchDescription, UpdateSourceTrigger=Explicit}" />
+
+                                                <TextBlock Text="Example: film festival">
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="TextBlock"
+                                                               BasedOn="{StaticResource PlaceholderBaseStyle}">
+                                                            <Setter Property="Visibility"
+                                                                    Value="Collapsed" />
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding Text, ElementName=SearchDescriptionBox}"
+                                                                             Value="">
+                                                                    <Setter Property="Visibility"
+                                                                            Value="Visible" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                </TextBlock>
+
+                                                <Button Width="34"
+                                                        Height="34"
+                                                        HorizontalAlignment="Right"
+                                                        VerticalAlignment="Center"
+                                                        Margin="0,0,8,0"
+                                                        Style="{StaticResource TextOnlyButtonStyle}"
+                                                        Click="ClearSearchDescription_Click">
+                                                    <TextBlock Text="×"
+                                                               FontSize="22" />
+                                                </Button>
+                                            </Grid>
+                                        </StackPanel>
+
+                                        <!-- Past Performing Years -->
+                                        <StackPanel Grid.Row="4"
+                                                    Grid.Column="2">
+                                            <TextBlock Text="Past Performing Years"
+                                                       Style="{StaticResource FieldLabelStyle}" />
+                                            <Grid>
+                                                <TextBox x:Name="SearchPastYearsBox"
+                                                         Style="{StaticResource SearchTextBoxStyle}"
+                                                         Text="{Binding SearchPastYears, UpdateSourceTrigger=Explicit}" />
+
+                                                <TextBlock Text="Example: 2020, 2021">
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="TextBlock"
+                                                               BasedOn="{StaticResource PlaceholderBaseStyle}">
+                                                            <Setter Property="Visibility"
+                                                                    Value="Collapsed" />
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding Text, ElementName=SearchPastYearsBox}"
+                                                                             Value="">
+                                                                    <Setter Property="Visibility"
+                                                                            Value="Visible" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                </TextBlock>
+
+                                                <Button Width="34"
+                                                        Height="34"
+                                                        HorizontalAlignment="Right"
+                                                        VerticalAlignment="Center"
+                                                        Margin="0,0,8,0"
+                                                        Style="{StaticResource TextOnlyButtonStyle}"
+                                                        Click="ClearSearchPastYears_Click">
+                                                    <TextBlock Text="×"
+                                                               FontSize="22" />
+                                                </Button>
+                                            </Grid>
+                                        </StackPanel>
+
+                                        <!-- Event Type -->
+                                        <StackPanel Grid.Row="6"
+                                                    Grid.Column="0">
+                                            <TextBlock Text="Event Type"
+                                                       Style="{StaticResource FieldLabelStyle}" />
+                                            <Grid>
+                                                <ComboBox x:Name="SearchEventTypeBox"
+                                                          Style="{StaticResource PopupComboBoxStyle}"
+                                                          SelectedValue="{Binding SearchEventTypeId, UpdateSourceTrigger=Explicit}"
+                                                          SelectedValuePath="ID"
+                                                          DisplayMemberPath="Name"
+                                                          ItemsSource="{Binding EventTypes}" />
+
+                                                <Button Width="34"
+                                                        Height="34"
+                                                        HorizontalAlignment="Right"
+                                                        VerticalAlignment="Center"
+                                                        Margin="0,0,8,0"
+                                                        Style="{StaticResource TextOnlyButtonStyle}"
+                                                        Click="ClearSearchEventType_Click">
+                                                    <TextBlock Text="×"
+                                                               FontSize="22" />
+                                                </Button>
+                                            </Grid>
+                                        </StackPanel>
+
+                                        <!-- Upcoming Date -->
+                                        <StackPanel Grid.Row="6"
+                                                    Grid.Column="2">
+                                            <TextBlock Text="Upcoming Date"
+                                                       Style="{StaticResource FieldLabelStyle}" />
+                                            <Grid>
+                                                <DatePicker x:Name="SearchUpcomingDateBox"
+                                                            Height="50"
+                                                            FontSize="16"
+                                                            BorderBrush="#C7D2E0"
+                                                            BorderThickness="1.5"
+                                                            SelectedDate="{Binding SearchUpcomingDate, UpdateSourceTrigger=Explicit}" />
+
+                                                <Button Width="34"
+                                                        Height="34"
+                                                        HorizontalAlignment="Right"
+                                                        VerticalAlignment="Center"
+                                                        Margin="0,0,36,0"
+                                                        Style="{StaticResource TextOnlyButtonStyle}"
+                                                        Click="ClearSearchUpcomingDate_Click">
+                                                    <TextBlock Text="×"
+                                                               FontSize="22" />
+                                                </Button>
+                                            </Grid>
+                                        </StackPanel>
+
+                                        <!-- Attendance -->
+                                        <StackPanel Grid.Row="8"
+                                                    Grid.Column="0">
+                                            <TextBlock Text="Attendance"
+                                                       Style="{StaticResource FieldLabelStyle}" />
+                                            <Grid>
+                                                <ComboBox x:Name="SearchAttendanceBox"
+                                                          Style="{StaticResource PopupComboBoxStyle}"
+                                                          SelectedItem="{Binding SearchAttendance, UpdateSourceTrigger=Explicit}"
+                                                          ItemsSource="{Binding AttendanceOptions}" />
+
+                                                <Button Width="34"
+                                                        Height="34"
+                                                        HorizontalAlignment="Right"
+                                                        VerticalAlignment="Center"
+                                                        Margin="0,0,8,0"
+                                                        Style="{StaticResource TextOnlyButtonStyle}"
+                                                        Click="ClearSearchAttendance_Click">
+                                                    <TextBlock Text="×"
+                                                               FontSize="22" />
+                                                </Button>
+                                            </Grid>
+                                        </StackPanel>
+
+                                        <!-- Tag -->
+                                        <StackPanel Grid.Row="8"
+                                                    Grid.Column="2">
+                                            <TextBlock Text="Tag"
+                                                       Style="{StaticResource FieldLabelStyle}" />
+                                            <Grid>
+                                                <TextBox x:Name="SearchTagBox"
+                                                         Style="{StaticResource SearchTextBoxStyle}"
+                                                         Text="{Binding SearchTag, UpdateSourceTrigger=Explicit}" />
+
+                                                <TextBlock Text="Example: Culture">
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="TextBlock"
+                                                               BasedOn="{StaticResource PlaceholderBaseStyle}">
+                                                            <Setter Property="Visibility"
+                                                                    Value="Collapsed" />
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding Text, ElementName=SearchTagBox}"
+                                                                             Value="">
+                                                                    <Setter Property="Visibility"
+                                                                            Value="Visible" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                </TextBlock>
+
+                                                <Button Width="34"
+                                                        Height="34"
+                                                        HorizontalAlignment="Right"
+                                                        VerticalAlignment="Center"
+                                                        Margin="0,0,8,0"
+                                                        Style="{StaticResource TextOnlyButtonStyle}"
+                                                        Click="ClearSearchTag_Click">
+                                                    <TextBlock Text="×"
+                                                               FontSize="22" />
+                                                </Button>
+                                            </Grid>
+                                        </StackPanel>
+
+                                        <!-- Humanitarian -->
+                                        <StackPanel Grid.Row="10"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="3">
+                                            <TextBlock Text="Humanitarian"
+                                                       Style="{StaticResource FieldLabelStyle}" />
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <RadioButton x:Name="SearchHumanitarianAny"
+                                                             Content="Any"
+                                                             GroupName="HumanitarianSearch"
+                                                             IsChecked="{Binding SearchHumanitarianAny, UpdateSourceTrigger=Explicit}"
+                                                             FontSize="16"
+                                                             Margin="0,0,18,0" />
+
+                                                <RadioButton x:Name="SearchHumanitarianYes"
+                                                             Content="Yes"
+                                                             GroupName="HumanitarianSearch"
+                                                             IsChecked="{Binding SearchHumanitarianYes, UpdateSourceTrigger=Explicit}"
+                                                             FontSize="16"
+                                                             Margin="0,0,18,0" />
+
+                                                <RadioButton x:Name="SearchHumanitarianNo"
+                                                             Content="No"
+                                                             GroupName="HumanitarianSearch"
+                                                             IsChecked="{Binding SearchHumanitarianNo, UpdateSourceTrigger=Explicit}"
+                                                             FontSize="16" />
+
+                                                <Button Width="38"
+                                                        Height="34"
+                                                        Margin="18,0,0,0"
+                                                        Style="{StaticResource TextOnlyButtonStyle}"
+                                                        Click="ClearSearchHumanitarian_Click">
+                                                    <TextBlock Text="×"
+                                                               FontSize="22" />
+                                                </Button>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Grid>
+
+                                    <!-- Actions -->
+                                    <Grid Grid.Row="4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="12" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Button Grid.Column="1"
+                                                Content="Clear All"
+                                                Width="120"
+                                                Height="50"
+                                                Background="#FFFFFF"
+                                                BorderBrush="#C7D2E0"
+                                                BorderThickness="1.5"
+                                                FontSize="17"
+                                                Cursor="Hand"
+                                                Click="ClearAdvancedSearch_Click" />
+
+                                        <Button Grid.Column="3"
+                                                Width="150"
+                                                Height="50"
+                                                Background="#0E7EEC"
+                                                BorderBrush="#0E7EEC"
+                                                BorderThickness="1.5"
+                                                Cursor="Hand"
+                                                Click="ApplyAdvancedSearch_Click">
+
+                                            <StackPanel Orientation="Horizontal"
+                                                        HorizontalAlignment="Center">
+                                                <fa:FontAwesome Icon="Search"
+                                                                Foreground="White"
+                                                                FontSize="22"
+                                                                Margin="0,0,10,0"
+                                                                VerticalAlignment="Center" />
+
+                                                <TextBlock Text="Search"
+                                                           Foreground="White"
+                                                           FontSize="19"
+                                                           FontWeight="SemiBold"
+                                                           VerticalAlignment="Center" />
+                                            </StackPanel>
+                                        </Button>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </Popup>
+                    </Grid>
+                </Border>
+
+                <!-- Filter input -->
+                <Border Grid.Column="4"
+                        CornerRadius="18"
+                        Padding="1">
+
+                    <StackPanel>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="38" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="34" />
+                            </Grid.ColumnDefinitions>
+
+                            <fa:FontAwesome Grid.Column="0"
+                                            Icon="Filter"
+                                            Foreground="{StaticResource AccentBrush}"
+                                            FontSize="30"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Left"
+                                            Margin="3,15,0,8"/>
+
+                            <Grid Grid.Column="1"
+                                  Margin="3,10,0,8">
+                                <TextBox x:Name="QuickFilterBox"
+                                         Style="{StaticResource SearchTextBoxStyle}"
+                                         Text="{Binding EventSearchText, UpdateSourceTrigger=PropertyChanged}" />
+
+                                <TextBlock Text="Filter Events...">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock"
+                                               BasedOn="{StaticResource PlaceholderBaseStyle}">
+                                            <Setter Property="Visibility"
+                                                    Value="Collapsed" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Text, ElementName=QuickFilterBox}"
+                                                             Value="">
+                                                    <Setter Property="Visibility"
+                                                            Value="Visible" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </Grid>
+
+                            <Button Grid.Column="2"
+                                    Width="34"
+                                    Height="34"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource TextOnlyButtonStyle}"
+                                    Click="ClearFilter_Click"
+                                    ToolTip="Clear quick filter">
+                                <TextBlock Text="×"
+                                           FontSize="22"
+                                           Foreground="#1F2937"
+                                           Margin="0,-7,0,0"/>
+                            </Button>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- Event table -->
+            <Border Grid.Row="4"
+                    Background="#FFFFFF"
+                    BorderBrush="#E2E8F0"
+                    BorderThickness="1"
+                    CornerRadius="22"
+                    Padding="0">
+
+                <Border.Effect>
+                    <DropShadowEffect Color="#CBD5E1"
+                                      BlurRadius="18"
+                                      ShadowDepth="2"
+                                      Opacity="0.25" />
+                </Border.Effect>
+
+                <DataGrid Style="{StaticResource EventDataGridStyle}"
+                          ItemsSource="{Binding EventsView}"
+                          SelectedItem="{Binding SelectedEvent}"
+                          Margin="0"
+                          Padding="0">
+
+                    <DataGrid.Columns>
+                       
+                        <DataGridTemplateColumn Header="Icon"
+                                                Width="80">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Width="44"
+                                            Height="44"
+                                            CornerRadius="8"
+                                            BorderBrush="#D6DFEA"
+                                            BorderThickness="1"
+                                            Background="#F8FBFF">
+                                        <Image Source="{Binding IconPath}"
+                                               Stretch="UniformToFill"
+                                               Margin="3"
+                                               RenderOptions.BitmapScalingMode="HighQuality" />
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTextColumn Header="ID"
+                                            Binding="{Binding ID}"
+                                            Width="70" />
+
+                        <DataGridTextColumn Header="Name"
+                                            Binding="{Binding Name}"
+                                            Width="150" />
+                        
+                        <DataGridTextColumn Header="Attendance"
+                                            Binding="{Binding Attendance}"
+                                            Width="100" />
+
+                        <DataGridTextColumn Header="Type"
+                                            Binding="{Binding EventTypeName}"
+                                            Width="95" />
+
+                        <DataGridCheckBoxColumn Header="Humanit.?"
+                                                Binding="{Binding IsHumanitarian}"
+                                                Width="90" />
+
+                        <DataGridTextColumn Header="Cost"
+                                            Binding="{Binding Cost, StringFormat=${0:N1}}"
+                                            Width="90" />
+
+                        <DataGridTextColumn Header="Location"
+                                            Binding="{Binding Location}"
+                                            Width="110" />
+
+                        <DataGridTextColumn Header="Date"
+                                            Binding="{Binding UpcomingDate, StringFormat={}{0:dd.MM.yyyy}}"
+                                            Width="70" />
+
+                        <DataGridTemplateColumn Header=""
+                                                Width="310">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal"
+                                                HorizontalAlignment="Center">
+                                        <Button Width="86"
+                                                Height="36"
+                                                Margin="0,0,8,0"
+                                                Style="{StaticResource TableActionButtonStyle}"
+                                                Click="ViewEvent_Click">
+                                            <StackPanel Orientation="Horizontal">
+                                                <fa:FontAwesome Icon="Eye"
+                                                                FontSize="18"
+                                                                Margin="0,0,6,0" />
+                                                <TextBlock Text="View"
+                                                           FontSize="16"
+                                                           FontWeight="SemiBold" />
+                                            </StackPanel>
+                                        </Button>
+
+                                        <Button Width="78"
+                                                Height="36"
+                                                Margin="0,0,8,0"
+                                                Style="{StaticResource TableActionButtonStyle}"
+                                                Click="EditEvent_Click">
+                                            <StackPanel Orientation="Horizontal">
+                                                <fa:FontAwesome Icon="Pencil"
+                                                                FontSize="18"
+                                                                Margin="0,0,6,0" />
+                                                <TextBlock Text="Edit"
+                                                           FontSize="16"
+                                                           FontWeight="SemiBold" />
+                                            </StackPanel>
+                                        </Button>
+
+                                        <Button Width="96"
+                                                Height="36"
+                                                Style="{StaticResource TableActionButtonStyle}"
+                                                Click="DeleteEvent_Click">
+                                            <StackPanel Orientation="Horizontal">
+                                                <fa:FontAwesome Icon="Trash"
+                                                                FontSize="18"
+                                                                Margin="0,0,6,0" />
+                                                <TextBlock Text="Delete"
+                                                           FontSize="16"
+                                                           FontWeight="SemiBold" />
+                                            </StackPanel>
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

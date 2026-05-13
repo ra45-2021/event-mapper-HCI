@@ -9,6 +9,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="Images\EV013_20260513230518.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
 	</ItemGroup>
 
@@ -16,10 +20,9 @@
 		<Resource Include="Assets\event-map.png" />
 		<Resource Include="Assets\logo.png" />
 		<Resource Include="Assets\map.png" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Images\" />
+		<Resource Include="Images\EV013_20260513230518.png">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</Resource>
 	</ItemGroup>
 
 </Project>

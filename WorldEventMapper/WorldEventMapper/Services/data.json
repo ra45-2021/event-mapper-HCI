@@ -5,6 +5,7 @@
       "Name": "Kustendorf",
       "Description": "International film and music festival.",
       "EventTypeId": "ET001",
+      "EventTypeName": "",
       "Attendance": "1000-5000",
       "IsHumanitarian": false,
       "Cost": 25000,
@@ -15,8 +16,8 @@
         2022,
         2023
       ],
-      "UpcomingDate": "2026-07-02T00:00:00+02:00",
-      "Location": "Mokra Gora, Serbia",
+      "UpcomingDate": "2026-07-13T00:00:00+02:00",
+      "Location": "Mokra Gora, SRB",
       "TagIds": [
         "TAG001",
         "TAG003"
@@ -27,6 +28,7 @@
       "Name": "Vienna Philharmonic",
       "Description": "Classical music performance event.",
       "EventTypeId": "ET002",
+      "EventTypeName": "",
       "Attendance": "5000-10000",
       "IsHumanitarian": false,
       "Cost": 50000,
@@ -36,8 +38,8 @@
         2022,
         2023
       ],
-      "UpcomingDate": "2026-06-02T00:00:00+02:00",
-      "Location": "Vienna, Austria",
+      "UpcomingDate": "2026-06-13T00:00:00+02:00",
+      "Location": "Vienna, AUT",
       "TagIds": [
         "TAG001",
         "TAG008"
@@ -45,9 +47,10 @@
     },
     {
       "ID": "AR001",
-      "Name": "Art Basel",
+      "Name": "Art London",
       "Description": "Contemporary art fair with international galleries and artists.",
       "EventTypeId": "ET004",
+      "EventTypeName": "",
       "Attendance": "5000-10000",
       "IsHumanitarian": false,
       "Cost": 75000,
@@ -59,8 +62,8 @@
         2023,
         2024
       ],
-      "UpcomingDate": "2026-08-02T00:00:00+02:00",
-      "Location": "Basel, Switzerland",
+      "UpcomingDate": "2026-08-13T00:00:00+02:00",
+      "Location": "London, UK",
       "TagIds": [
         "TAG001",
         "TAG008"
@@ -71,6 +74,7 @@
       "Name": "Belgrade Marathon",
       "Description": "Large public running event through central Belgrade.",
       "EventTypeId": "ET005",
+      "EventTypeName": "",
       "Attendance": "\u003E 10000",
       "IsHumanitarian": true,
       "Cost": 60000,
@@ -83,8 +87,8 @@
         2023,
         2024
       ],
-      "UpcomingDate": "2026-09-02T00:00:00+02:00",
-      "Location": "Belgrade, Serbia",
+      "UpcomingDate": "2026-09-13T00:00:00+02:00",
+      "Location": "Belgrade, SRB",
       "TagIds": [
         "TAG002",
         "TAG004",
@@ -96,6 +100,7 @@
       "Name": "Taste of Italy",
       "Description": "Food festival focused on Italian cuisine and local producers.",
       "EventTypeId": "ET006",
+      "EventTypeName": "",
       "Attendance": "1000-5000",
       "IsHumanitarian": false,
       "Cost": 18000,
@@ -105,8 +110,8 @@
         2022,
         2023
       ],
-      "UpcomingDate": "2026-10-02T00:00:00+02:00",
-      "Location": "Rome, Italy",
+      "UpcomingDate": "2026-10-13T00:00:00+02:00",
+      "Location": "Rome, ITA",
       "TagIds": [
         "TAG003",
         "TAG007",
@@ -118,6 +123,7 @@
       "Name": "Web Summit",
       "Description": "Technology conference focused on startups, AI, and digital products.",
       "EventTypeId": "ET007",
+      "EventTypeName": "",
       "Attendance": "\u003E 10000",
       "IsHumanitarian": false,
       "Cost": 120000,
@@ -129,8 +135,8 @@
         2023,
         2024
       ],
-      "UpcomingDate": "2026-11-02T00:00:00+01:00",
-      "Location": "Lisbon, Portugal",
+      "UpcomingDate": "2026-11-13T00:00:00+01:00",
+      "Location": "Lisbon, PRT",
       "TagIds": [
         "TAG005",
         "TAG006",
@@ -142,6 +148,7 @@
       "Name": "TEDx Vienna",
       "Description": "Talks by innovators, researchers, and creative professionals.",
       "EventTypeId": "ET003",
+      "EventTypeName": "",
       "Attendance": "1000-5000",
       "IsHumanitarian": false,
       "Cost": 30000,
@@ -151,8 +158,8 @@
         2022,
         2023
       ],
-      "UpcomingDate": "2026-07-12T00:00:00+02:00",
-      "Location": "Vienna, Austria",
+      "UpcomingDate": "2026-07-23T00:00:00+02:00",
+      "Location": "Vienna, AUT",
       "TagIds": [
         "TAG005",
         "TAG008"
@@ -163,6 +170,7 @@
       "Name": "Global Charity Run",
       "Description": "Humanitarian running event for fundraising and community support.",
       "EventTypeId": "ET008",
+      "EventTypeName": "",
       "Attendance": "5000-10000",
       "IsHumanitarian": true,
       "Cost": 22000,
@@ -173,8 +181,8 @@
         2023,
         2024
       ],
-      "UpcomingDate": "2026-06-17T00:00:00+02:00",
-      "Location": "Paris, France",
+      "UpcomingDate": "2026-06-28T00:00:00+02:00",
+      "Location": "Paris, FRA",
       "TagIds": [
         "TAG002",
         "TAG004",
@@ -187,6 +195,7 @@
       "Name": "Exit Festival",
       "Description": "Large music festival held at Petrovaradin Fortress.",
       "EventTypeId": "ET002",
+      "EventTypeName": "",
       "Attendance": "\u003E 10000",
       "IsHumanitarian": false,
       "Cost": 95000,
@@ -199,8 +208,8 @@
         2023,
         2024
       ],
-      "UpcomingDate": "2026-12-02T00:00:00+01:00",
-      "Location": "Novi Sad, Serbia",
+      "UpcomingDate": "2026-12-13T00:00:00+01:00",
+      "Location": "Novi Sad, SRB",
       "TagIds": [
         "TAG001",
         "TAG003",
@@ -212,6 +221,7 @@
       "Name": "Sarajevo Film Festival",
       "Description": "Regional film festival with screenings, awards, and industry events.",
       "EventTypeId": "ET001",
+      "EventTypeName": "",
       "Attendance": "5000-10000",
       "IsHumanitarian": false,
       "Cost": 45000,
@@ -224,8 +234,8 @@
         2023,
         2024
       ],
-      "UpcomingDate": "2026-08-22T00:00:00+02:00",
-      "Location": "Sarajevo, Bosnia and Herzegovina",
+      "UpcomingDate": "2026-09-02T00:00:00+02:00",
+      "Location": "Sarajevo, BIH",
       "TagIds": [
         "TAG001",
         "TAG003",
@@ -237,6 +247,7 @@
       "Name": "Louvre Night Exhibition",
       "Description": "Evening art exhibition with guided tours and special collections.",
       "EventTypeId": "ET004",
+      "EventTypeName": "",
       "Attendance": "\u003C 1000",
       "IsHumanitarian": false,
       "Cost": 15000,
@@ -245,8 +256,8 @@
         2022,
         2023
       ],
-      "UpcomingDate": "2026-07-07T00:00:00+02:00",
-      "Location": "Paris, France",
+      "UpcomingDate": "2026-07-18T00:00:00+02:00",
+      "Location": "Paris, FRA",
       "TagIds": [
         "TAG001",
         "TAG003"
@@ -257,6 +268,7 @@
       "Name": "Tokyo Game Show",
       "Description": "Technology and gaming expo presenting new games and devices.",
       "EventTypeId": "ET007",
+      "EventTypeName": "",
       "Attendance": "\u003E 10000",
       "IsHumanitarian": false,
       "Cost": 110000,
@@ -268,8 +280,8 @@
         2022,
         2023
       ],
-      "UpcomingDate": "2027-01-02T00:00:00+01:00",
-      "Location": "Tokyo, Japan",
+      "UpcomingDate": "2027-01-13T00:00:00+01:00",
+      "Location": "Tokyo, JPN",
       "TagIds": [
         "TAG006",
         "TAG008"
@@ -277,157 +289,32 @@
     },
     {
       "ID": "EV013",
-      "Name": "test",
-      "Description": "test",
-      "EventTypeId": "ET007",
-      "Attendance": "\u003C 1000",
-      "IsHumanitarian": true,
-      "Cost": 12,
-      "IconPath": "/Images/EV013_20260502150248.png",
-      "PastPerformingYears": [
-        2021
-      ],
-      "UpcomingDate": "2026-05-02T00:00:00+02:00",
-      "Location": "Tokyo, Japan",
-      "TagIds": [
-        "TAG002",
-        "TAG004"
-      ]
-    },
-    {
-      "ID": "EV014",
-      "Name": "test2",
-      "Description": "test2",
-      "EventTypeId": "ET001",
-      "Attendance": "\u003C 1000",
-      "IsHumanitarian": false,
-      "Cost": 12,
-      "IconPath": "/Images/EV014_20260504000335.png",
-      "PastPerformingYears": [
-        2020,
-        2020,
-        2020
-      ],
-      "UpcomingDate": "2026-05-04T00:00:00+02:00",
-      "Location": "rr",
-      "TagIds": [
-        "TAG001",
-        "TAG005"
-      ]
-    },
-    {
-      "ID": "EV015",
-      "Name": "test3",
-      "Description": "",
-      "EventTypeId": "ET002",
-      "Attendance": "\u003C 1000",
-      "IsHumanitarian": false,
-      "Cost": 3,
-      "IconPath": "/Assets/music.png",
-      "PastPerformingYears": [],
-      "UpcomingDate": "2026-05-04T00:00:00+02:00",
-      "Location": "333",
-      "TagIds": []
-    },
-    {
-      "ID": "EV016",
-      "Name": "f",
-      "Description": "",
-      "EventTypeId": "ET003",
-      "Attendance": "\u003C 1000",
-      "IsHumanitarian": false,
-      "Cost": 1,
-      "IconPath": "/Assets/conference.png",
-      "PastPerformingYears": [],
-      "UpcomingDate": "2026-05-04T00:00:00+02:00",
-      "Location": "ff",
-      "TagIds": []
-    },
-    {
-      "ID": "EV017",
-      "Name": "r",
+      "Name": "ggg",
       "Description": "",
       "EventTypeId": "ET001",
-      "Attendance": "\u003C 1000",
-      "IsHumanitarian": false,
-      "Cost": 2,
-      "IconPath": "/Assets/film.png",
-      "PastPerformingYears": [],
-      "UpcomingDate": "2026-05-04T00:00:00+02:00",
-      "Location": "rr2",
-      "TagIds": []
-    },
-    {
-      "ID": "EV018",
-      "Name": "cc",
-      "Description": "",
-      "EventTypeId": "ET001",
-      "Attendance": "\u003C 1000",
-      "IsHumanitarian": false,
-      "Cost": 23,
-      "IconPath": "/Assets/film.png",
-      "PastPerformingYears": [],
-      "UpcomingDate": "2026-05-04T00:00:00+02:00",
-      "Location": "Mokra Gora, Serbia",
-      "TagIds": []
-    },
-    {
-      "ID": "EV019",
-      "Name": "d",
-      "Description": "",
-      "EventTypeId": "ET001",
-      "Attendance": "\u003C 1000",
-      "IsHumanitarian": false,
-      "Cost": 2,
-      "IconPath": "/Assets/film.png",
-      "PastPerformingYears": [],
-      "UpcomingDate": "2026-05-04T00:00:00+02:00",
-      "Location": "Ni\u0161, Serbia",
-      "TagIds": []
-    },
-    {
-      "ID": "EV020",
-      "Name": "bb",
-      "Description": "",
-      "EventTypeId": "ET002",
-      "Attendance": "\u003C 1000",
-      "IsHumanitarian": false,
-      "Cost": 44,
-      "IconPath": "/Assets/music.png",
-      "PastPerformingYears": [],
-      "UpcomingDate": "2026-05-04T00:00:00+02:00",
-      "Location": "r",
-      "TagIds": []
-    },
-    {
-      "ID": "EV021",
-      "Name": "hgg",
-      "Description": "",
-      "EventTypeId": "ET001",
+      "EventTypeName": "",
       "Attendance": "\u003C 1000",
       "IsHumanitarian": false,
       "Cost": 33,
-      "IconPath": "/Assets/film.png",
+      "IconPath": "/Images/EV013_20260513230518.png",
       "PastPerformingYears": [],
-      "UpcomingDate": "2026-05-04T00:00:00+02:00",
-      "Location": "33",
+      "UpcomingDate": "2026-05-13T00:00:00+02:00",
+      "Location": "ggg33",
       "TagIds": []
     },
     {
-      "ID": "EV022",
-      "Name": "ihbjn",
+      "ID": "EV014",
+      "Name": "6tt",
       "Description": "",
-      "EventTypeId": "ET002",
+      "EventTypeId": "ET001",
+      "EventTypeName": "",
       "Attendance": "\u003C 1000",
       "IsHumanitarian": false,
-      "Cost": 9,
-      "IconPath": "/Assets/music.png",
-      "PastPerformingYears": [
-        2020,
-        2021
-      ],
+      "Cost": 3,
+      "IconPath": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\WorldEventMapper\\Images\\EV014_20260513231029.png",
+      "PastPerformingYears": [],
       "UpcomingDate": "2026-05-13T00:00:00+02:00",
-      "Location": "Ni\u0161, Serbia",
+      "Location": "tt4",
       "TagIds": []
     }
   ],
@@ -477,12 +364,6 @@
     {
       "ID": "ET008",
       "Name": "Humanitarian Event",
-      "Description": "Charity, donation, and social impact events.",
-      "IconPath": "/Assets/humanitarian.png"
-    },
-    {
-      "ID": "ET009",
-      "Name": "Test",
       "Description": "Charity, donation, and social impact events.",
       "IconPath": "/Assets/humanitarian.png"
     }

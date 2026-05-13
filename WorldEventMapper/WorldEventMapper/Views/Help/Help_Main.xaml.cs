@@ -1,7 +1,8 @@
 ﻿using System.Windows;
-using WorldEventMapper.Event_List;
-using WorldEventMapper.Event_Management;
 using WorldEventMapper.Home;
+using WorldEventMapper.Events;
+using WorldEventMapper.EventTags;
+using WorldEventMapper.EventTypes;
 
 namespace WorldEventMapper.Help
 {
@@ -21,18 +22,26 @@ namespace WorldEventMapper.Help
             this.Close();
         }
 
-        private void EventList_Click(object sender, RoutedEventArgs e)
+        private void Events_Click(object sender, RoutedEventArgs e)
         {
-            EventList_Main eventListWindow = new EventList_Main();
-            eventListWindow.Show();
+            Events_Main eventsWindow = new Events_Main();
+            eventsWindow.Show();
 
             this.Close();
         }
 
-        private void EventManagement_Click(object sender, RoutedEventArgs e)
+        private void EventTypes_Click(object sender, RoutedEventArgs e)
         {
-            EventManagement_Main eventManagementWindow = new EventManagement_Main();
-            eventManagementWindow.Show();
+            EventTypes_Main eventTypesWindow = new EventTypes_Main();
+            eventTypesWindow.Show();
+
+            this.Close();
+        }
+
+        private void EventTags_Click(object sender, RoutedEventArgs e)
+        {
+            EventTags_Main eventTagsWindow = new EventTags_Main();
+            eventTagsWindow.Show();
 
             this.Close();
         }

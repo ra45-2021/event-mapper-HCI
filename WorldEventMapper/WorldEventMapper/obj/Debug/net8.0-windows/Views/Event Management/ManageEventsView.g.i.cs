@@ -53,8 +53,7 @@ namespace WorldEventMapper.Views.Event_Management {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/WorldEventMapper;V1.0.0.0;component/views/event%20management/manageeventsview.xa" +
-                    "ml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/WorldEventMapper;component/views/event%20management/manageeventsview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Views\Event Management\ManageEventsView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

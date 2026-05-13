@@ -207,6 +207,7 @@
                     <RowDefinition Height="70" />
                     <RowDefinition Height="70" />
                     <RowDefinition Height="70" />
+                    <RowDefinition Height="70" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="80" />
                 </Grid.RowDefinitions>
@@ -271,11 +272,11 @@
                     </Grid>
                 </Button>
 
-                <!-- Event List -->
+                <!-- Events -->
                 <Button Grid.Row="2"
                         Style="{StaticResource NavButtonStyle}"
                         Margin="18,8,18,0"
-                        Click="EventList_Click">
+                        Click="Events_Click">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="36" />
@@ -283,25 +284,25 @@
                         </Grid.ColumnDefinitions>
 
                         <fa:FontAwesome Grid.Column="0"
-                                        Icon="List"
+                                        Icon="Calendar"
                                         Foreground="{StaticResource AccentBrush}"
                                         FontSize="30"
                                         VerticalAlignment="Center"
                                         Margin="-20,5,0,0" />
 
                         <TextBlock Grid.Column="1"
-                                   Text="Event List"
+                                   Text="Events"
                                    Foreground="#1F2937"
                                    FontSize="19"
                                    VerticalAlignment="Center" />
                     </Grid>
                 </Button>
 
-                <!-- Event Management -->
+                <!-- Event Types -->
                 <Button Grid.Row="3"
                         Style="{StaticResource NavButtonStyle}"
                         Margin="18,8,18,0"
-                        Click="EventManagement_Click">
+                        Click="EventTypes_Click">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="36" />
@@ -309,14 +310,40 @@
                         </Grid.ColumnDefinitions>
 
                         <fa:FontAwesome Grid.Column="0"
-                                        Icon="Edit"
+                                        Icon="Clone"
                                         Foreground="{StaticResource AccentBrush}"
                                         FontSize="30"
                                         VerticalAlignment="Center"
                                         Margin="-20,5,0,0" />
 
                         <TextBlock Grid.Column="1"
-                                   Text="Event Management"
+                                   Text="Event Types"
+                                   Foreground="#1F2937"
+                                   FontSize="18"
+                                   VerticalAlignment="Center" />
+                    </Grid>
+                </Button>
+
+                <!-- Event Tags -->
+                <Button Grid.Row="4"
+                        Style="{StaticResource NavButtonStyle}"
+                        Margin="18,8,18,0"
+                        Click="EventTags_Click">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="36" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <fa:FontAwesome Grid.Column="0"
+                                        Icon="Tag"
+                                        Foreground="{StaticResource AccentBrush}"
+                                        FontSize="30"
+                                        VerticalAlignment="Center"
+                                        Margin="-20,5,0,0" />
+
+                        <TextBlock Grid.Column="1"
+                                   Text="Event Tags"
                                    Foreground="#1F2937"
                                    FontSize="18"
                                    VerticalAlignment="Center" />
@@ -324,7 +351,7 @@
                 </Button>
 
                 <!-- Help -->
-                <Button Grid.Row="4"
+                <Button Grid.Row="5"
                         Style="{StaticResource NavButtonStyle}"
                         Margin="18,8,18,0"
                         Click="Help_Click">
@@ -350,7 +377,7 @@
                 </Button>
 
                 <!-- Exit button -->
-                <Button Grid.Row="6"
+                <Button Grid.Row="7"
                         Style="{StaticResource NavButtonStyle}"
                         Height="58"
                         HorizontalAlignment="Stretch"

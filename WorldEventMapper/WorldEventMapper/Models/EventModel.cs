@@ -10,6 +10,7 @@ namespace WorldEventMapper.Models
         private string _name = "";
         private string _description = "";
         private string _eventTypeId = "";
+        private string _eventTypeName = "";
         private string _attendance = "< 1000";
         private bool _isHumanitarian;
         private double _cost;
@@ -41,6 +42,12 @@ namespace WorldEventMapper.Models
         {
             get => _eventTypeId;
             set => SetProperty(ref _eventTypeId, value);
+        }
+
+        public string EventTypeName
+        {
+            get => _eventTypeName;
+            set => SetProperty(ref _eventTypeName, value);
         }
 
         public string Attendance
