@@ -9,7 +9,18 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="Images\EV013_20260513230518.png" />
+	  <None Remove="Images\Events\art-london.png" />
+	  <None Remove="Images\Events\exit-festival.png" />
+	  <None Remove="Images\Events\global-charity-run.png" />
+	  <None Remove="Images\Events\louvre-night.png" />
+	  <None Remove="Images\Events\taste-of-italy.png" />
+	  <None Remove="Images\Events\vienna-philharmonic.png" />
+	  <None Remove="Images\Types\art.png" />
+	  <None Remove="Images\Types\conference.png" />
+	  <None Remove="Images\Types\film.png" />
+	  <None Remove="Images\Types\food.png" />
+	  <None Remove="Images\Types\music.png" />
+	  <None Remove="Images\Types\sport.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -20,7 +31,43 @@
 		<Resource Include="Assets\event-map.png" />
 		<Resource Include="Assets\logo.png" />
 		<Resource Include="Assets\map.png" />
-		<Resource Include="Images\EV013_20260513230518.png">
+		<Resource Include="Images\Events\art-london.png">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Images\Events\exit-festival.png">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Images\Events\global-charity-run.png">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Images\Events\kustendorf.png">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Images\Events\louvre-night.png">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Images\Events\taste-of-italy.png">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Images\Events\vienna-philharmonic.png">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Images\Types\art.png">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Images\Types\conference.png">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Images\Types\film.png">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Images\Types\food.png">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Images\Types\music.png">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Images\Types\sport.png">
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</Resource>
 	</ItemGroup>

@@ -418,17 +418,18 @@ namespace WorldEventMapper.Events
 
             string projectRoot = GetProjectRoot();
 
-            string imagesFolder = Path.Combine(projectRoot, "Images");
+            string imagesFolder = Path.Combine(projectRoot, "Images", "Events");
             Directory.CreateDirectory(imagesFolder);
 
             string extension = Path.GetExtension(_selectedImageSourcePath);
             string safeEventId = EventIdTextBox.Text.Trim().Replace(" ", "_");
             string fileName = $"{safeEventId}_{DateTime.Now:yyyyMMddHHmmss}{extension}";
+
             string destinationPath = Path.Combine(imagesFolder, fileName);
 
             File.Copy(_selectedImageSourcePath, destinationPath, true);
 
-            _storedImageRelativePath = destinationPath;
+            _storedImageRelativePath = $"Images/Events/{fileName}";
 
             return _storedImageRelativePath;
         }

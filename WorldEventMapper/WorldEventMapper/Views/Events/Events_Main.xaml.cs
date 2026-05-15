@@ -1,12 +1,13 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Media;
+using WorldEventMapper.EventTags;
+using WorldEventMapper.EventTypes;
 using WorldEventMapper.Help;
 using WorldEventMapper.Home;
 using WorldEventMapper.Models;
 using WorldEventMapper.ViewModels;
-using WorldEventMapper.EventTags;
-using WorldEventMapper.EventTypes;
 
 namespace WorldEventMapper.Events
 {
@@ -120,7 +121,39 @@ namespace WorldEventMapper.Events
 
             ViewModel.RefreshSearch();
 
+            ClearAdvancedSearchButton.Visibility =
+                HasAdvancedSearchValue() ? Visibility.Visible : Visibility.Collapsed;
+
             AdvancedSearchPopup.IsOpen = false;
+        }
+
+        private void QuickFilterBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            FilterEventsBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(14, 126, 236));
+            FilterEventsBorder.Background = Brushes.White;
+        }
+
+        private void QuickFilterBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            FilterEventsBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(199, 210, 224));
+            FilterEventsBorder.Background = Brushes.White;
+        }
+
+        private void QuickFilterBox_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            if (!QuickFilterBox.IsKeyboardFocused)
+            {
+                FilterEventsBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(14, 126, 236));
+            }
+        }
+
+        private void QuickFilterBox_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            if (!QuickFilterBox.IsKeyboardFocused)
+            {
+                FilterEventsBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(199, 210, 224));
+                FilterEventsBorder.Background = Brushes.White;
+            }
         }
 
         private void ClearFilter_Click(object sender, RoutedEventArgs e)
@@ -136,7 +169,20 @@ namespace WorldEventMapper.Events
             ViewModel.ClearAdvancedSearch();
             ViewModel.RefreshSearch();
 
+            ClearAdvancedSearchButton.Visibility = Visibility.Collapsed;
+
             AdvancedSearchPopup.IsOpen = false;
+        }
+
+        private void AdvancedSearchBorder_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            AdvancedSearchBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(14, 126, 236));
+        }
+
+        private void AdvancedSearchBorder_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            AdvancedSearchBorder.Background = Brushes.White;
+            AdvancedSearchBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(199, 210, 224));
         }
 
         private void ClearSearchId_Click(object sender, RoutedEventArgs e)
@@ -239,6 +285,22 @@ namespace WorldEventMapper.Events
             SearchHumanitarianAny.IsChecked = true;
             SearchHumanitarianYes.IsChecked = false;
             SearchHumanitarianNo.IsChecked = false;
+        }
+
+        private bool HasAdvancedSearchValue()
+        {
+            return !string.IsNullOrWhiteSpace(SearchIdBox.Text)
+                || !string.IsNullOrWhiteSpace(SearchNameBox.Text)
+                || !string.IsNullOrWhiteSpace(SearchDescriptionBox.Text)
+                || !string.IsNullOrWhiteSpace(SearchCostBox.Text)
+                || !string.IsNullOrWhiteSpace(SearchLocationBox.Text)
+                || !string.IsNullOrWhiteSpace(SearchPastYearsBox.Text)
+                || !string.IsNullOrWhiteSpace(SearchTagBox.Text)
+                || SearchEventTypeBox.SelectedValue != null
+                || SearchAttendanceBox.SelectedItem != null
+                || SearchUpcomingDateBox.SelectedDate != null
+                || SearchHumanitarianYes.IsChecked == true
+                || SearchHumanitarianNo.IsChecked == true;
         }
 
         private static void UpdateBinding(FrameworkElement element, DependencyProperty property)

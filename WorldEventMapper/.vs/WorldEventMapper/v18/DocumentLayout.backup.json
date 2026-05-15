@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8F0B4F23-4791-46E4-B90D-537088B9A677}|WorldEventMapper\\WorldEventMapper.csproj|c:\\users\\milic\\onedrive\\desktop\\event-mapper-hci\\worldeventmapper\\worldeventmapper\\views\\events\\events_main.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F0B4F23-4791-46E4-B90D-537088B9A677}|WorldEventMapper\\WorldEventMapper.csproj|solutionrelative:worldeventmapper\\views\\events\\events_main.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8F0B4F23-4791-46E4-B90D-537088B9A677}|WorldEventMapper\\WorldEventMapper.csproj|c:\\users\\milic\\onedrive\\desktop\\event-mapper-hci\\worldeventmapper\\worldeventmapper\\views\\events\\events_main.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{8F0B4F23-4791-46E4-B90D-537088B9A677}|WorldEventMapper\\WorldEventMapper.csproj|solutionrelative:worldeventmapper\\views\\events\\events_main.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F0B4F23-4791-46E4-B90D-537088B9A677}|WorldEventMapper\\WorldEventMapper.csproj|c:\\users\\milic\\onedrive\\desktop\\event-mapper-hci\\worldeventmapper\\worldeventmapper\\views\\events\\events_main.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F0B4F23-4791-46E4-B90D-537088B9A677}|WorldEventMapper\\WorldEventMapper.csproj|solutionrelative:worldeventmapper\\views\\events\\events_main.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,25 +34,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Events_Main.xaml.cs",
               "DocumentMoniker": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\WorldEventMapper\\Views\\Events\\Events_Main.xaml.cs",
               "RelativeDocumentMoniker": "WorldEventMapper\\Views\\Events\\Events_Main.xaml.cs",
               "ToolTip": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\WorldEventMapper\\Views\\Events\\Events_Main.xaml.cs",
               "RelativeToolTip": "WorldEventMapper\\Views\\Events\\Events_Main.xaml.cs",
-              "ViewState": "AgIAAGQAAAAAAAAAAAAnwHQAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-13T20:42:26.494Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-15T18:01:48.722Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Events_Main.xaml",
               "DocumentMoniker": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\WorldEventMapper\\Views\\Events\\Events_Main.xaml",
               "RelativeDocumentMoniker": "WorldEventMapper\\Views\\Events\\Events_Main.xaml",
-              "ToolTip": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\WorldEventMapper\\Views\\Events\\Events_Main.xaml",
-              "RelativeToolTip": "WorldEventMapper\\Views\\Events\\Events_Main.xaml",
+              "ToolTip": "C:\\Users\\milic\\OneDrive\\Desktop\\event-mapper-HCI\\WorldEventMapper\\WorldEventMapper\\Views\\Events\\Events_Main.xaml*",
+              "RelativeToolTip": "WorldEventMapper\\Views\\Events\\Events_Main.xaml*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-05-13T20:42:21.655Z",
               "EditorCaption": ""
