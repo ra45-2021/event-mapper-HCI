@@ -9,7 +9,7 @@ C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapp
 C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\Views\Help\Help_Main.baml
 C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\Views\Home\HomePage.baml
 C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\MainWindow.g.cs
-C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\Views\Events\Events_Add.g.cs
+C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\Views\Events\Events_Add_Edit.g.cs
 C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\Views\Events\Events_Main.g.cs
 C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\Views\EventTags\EventTags_Main.g.cs
 C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\Views\EventTypes\EventTypes_Main.g.cs
@@ -19,7 +19,7 @@ C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapp
 C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\WorldEventMapper_MarkupCompile.cache
 C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\WorldEventMapper_MarkupCompile.lref
-C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\Views\Events\Events_Add.baml
+C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\Views\Events\Events_Add_Edit.baml
 C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\Views\Events\Events_Main.baml
 C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\Views\EventTags\EventTags_Main.baml
 C:\Users\milic\OneDrive\Desktop\event-mapper-HCI\WorldEventMapper\WorldEventMapper\obj\Debug\net8.0-windows\Views\EventTypes\EventTypes_Main.baml

@@ -2,10 +2,10 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
-    <Compile Update="Views\Events\Events_Main.xaml.cs">
+    <Compile Update="Views\Events\Events_Add_Edit.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Events\Events_Add.xaml.cs">
+    <Compile Update="Views\Events\Events_Main.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\EventTags\EventTags_Main.xaml.cs">

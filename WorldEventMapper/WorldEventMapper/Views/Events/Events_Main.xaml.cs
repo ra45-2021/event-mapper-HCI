@@ -2,23 +2,52 @@
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
+using System.Windows.Threading;
 using WorldEventMapper.EventTags;
 using WorldEventMapper.EventTypes;
 using WorldEventMapper.Help;
 using WorldEventMapper.Home;
 using WorldEventMapper.Models;
 using WorldEventMapper.ViewModels;
+using WorldEventMapper.Services;
+using System.Linq;
 
 namespace WorldEventMapper.Events
 {
     public partial class Events_Main : Window
     {
         private MainDataViewModel ViewModel => (MainDataViewModel)DataContext;
+        private readonly DispatcherTimer _toastTimer = new DispatcherTimer();
+        private EventModel? _eventToDelete;
+        private readonly JsonDataService _dataService = new JsonDataService();
 
         public Events_Main()
         {
             InitializeComponent();
             DataContext = new MainDataViewModel();
+
+            _toastTimer.Interval = TimeSpan.FromSeconds(3);
+            _toastTimer.Tick += ToastTimer_Tick;
+
+            NotificationService.NotificationRequested += OnNotificationRequested;
+        }
+
+        private void OnNotificationRequested(NotificationMessage notification)
+        {
+            if (notification.Type == NotificationType.Success)
+            {
+                ShowSuccessToast(notification.Message);
+            }
+            else
+            {
+                ShowErrorToast(notification.Message);
+            }
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            NotificationService.NotificationRequested -= OnNotificationRequested;
+            base.OnClosed(e);
         }
 
         private void Home_Click(object sender, RoutedEventArgs e)
@@ -64,11 +93,24 @@ namespace WorldEventMapper.Events
 
         private void NewEvent_Click(object sender, RoutedEventArgs e)
         {
-            Events_Add addWindow = new Events_Add();
-            addWindow.Show();
+            PopupOverlay.Visibility = Visibility.Visible;
 
-            Close();
+            Events_Add_Edit addEditWindow = new Events_Add_Edit();
+            addEditWindow.Owner = this;
+            addEditWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+
+            bool? result = addEditWindow.ShowDialog();
+
+            PopupOverlay.Visibility = Visibility.Collapsed;
+
+            if (result == true)
+            {
+                NotificationService.ShowSuccess("Event created successfully.");
+
+                DataContext = new MainDataViewModel();
+            }
         }
+
 
         private void ViewEvent_Click(object sender, RoutedEventArgs e)
         {
@@ -87,7 +129,22 @@ namespace WorldEventMapper.Events
             if (selectedEvent == null)
                 return;
 
-            MessageBox.Show($"Edit event: {selectedEvent.Name}", "Edit Event");
+            PopupOverlay.Visibility = Visibility.Visible;
+
+            Events_Add_Edit addEditWindow = new Events_Add_Edit(selectedEvent);
+            addEditWindow.Owner = this;
+            addEditWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+
+            bool? result = addEditWindow.ShowDialog();
+
+            PopupOverlay.Visibility = Visibility.Collapsed;
+
+            if (result == true)
+            {
+                NotificationService.ShowSuccess("Event updated successfully.");
+            }
+
+            DataContext = new MainDataViewModel();
         }
 
         private void DeleteEvent_Click(object sender, RoutedEventArgs e)
@@ -97,7 +154,63 @@ namespace WorldEventMapper.Events
             if (selectedEvent == null)
                 return;
 
-            MessageBox.Show($"Delete event: {selectedEvent.Name}", "Delete Event");
+            _eventToDelete = selectedEvent;
+
+            DeleteEventNameTextBlock.Text = selectedEvent.Name;
+
+            DeleteEventIdTextBlock.Text = selectedEvent.ID;
+            DeleteEventCostTextBlock.Text = $"${selectedEvent.Cost:N0}";
+
+            AppData data = _dataService.Load();
+
+            EventTypeModel? eventType = data.EventTypes
+                .FirstOrDefault(t => t.ID == selectedEvent.EventTypeId);
+
+            DeleteEventTypeTextBlock.Text = eventType?.Name ?? "Unknown";
+
+            DeleteEventIconImage.Source = new ImagePathConverter().Convert(
+                selectedEvent.IconPath,
+                typeof(ImageSource),
+                null,
+                System.Globalization.CultureInfo.CurrentCulture
+            ) as ImageSource;
+
+            PopupOverlay.Visibility = Visibility.Visible;
+            DeleteConfirmPopup.Visibility = Visibility.Visible;
+        }
+
+        private void CancelDelete_Click(object sender, RoutedEventArgs e)
+        {
+            _eventToDelete = null;
+
+            DeleteConfirmPopup.Visibility = Visibility.Collapsed;
+            PopupOverlay.Visibility = Visibility.Collapsed;
+        }
+
+        private void ConfirmDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (_eventToDelete == null)
+                return;
+
+            AppData data = _dataService.Load();
+
+            EventModel? eventToRemove = data.Events
+                .FirstOrDefault(e => e.ID == _eventToDelete.ID);
+
+            if (eventToRemove != null)
+            {
+                data.Events.Remove(eventToRemove);
+                _dataService.Save(data);
+
+                NotificationService.ShowSuccess("Event deleted successfully.");
+            }
+
+            _eventToDelete = null;
+
+            DeleteConfirmPopup.Visibility = Visibility.Collapsed;
+            PopupOverlay.Visibility = Visibility.Collapsed;
+
+            DataContext = new MainDataViewModel();
         }
 
         private static EventModel? GetEventFromButton(object sender)
@@ -307,6 +420,62 @@ namespace WorldEventMapper.Events
         {
             BindingExpression? binding = element.GetBindingExpression(property);
             binding?.UpdateSource();
+        }
+
+        public void ShowSuccessToast(string message)
+        {
+            ShowToast("SUCCESS", message, true);
+        }
+
+        public void ShowErrorToast(string message)
+        {
+            ShowToast("ERROR", message, false);
+        }
+
+        private void ShowToast(string title, string message, bool isSuccess)
+        {
+            _toastTimer.Stop();
+
+            ToastTitleTextBlock.Text = title;
+            ToastMessageTextBlock.Text = message;
+
+            if (isSuccess)
+            {
+                ToastBorder.Background = new SolidColorBrush(Color.FromRgb(220, 252, 231));
+                ToastBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(134, 239, 172));
+
+                ToastIconCircle.Background = new SolidColorBrush(Color.FromRgb(34, 197, 94));
+                ToastIcon.Icon = FontAwesome.WPF.FontAwesomeIcon.Check;
+
+                ToastTitleTextBlock.Foreground = new SolidColorBrush(Color.FromRgb(22, 101, 52));
+                ToastMessageTextBlock.Foreground = new SolidColorBrush(Color.FromRgb(20, 83, 45));
+            }
+            else
+            {
+                ToastBorder.Background = new SolidColorBrush(Color.FromRgb(254, 226, 226));
+                ToastBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(252, 165, 165));
+
+                ToastIconCircle.Background = new SolidColorBrush(Color.FromRgb(239, 68, 68));
+                ToastIcon.Icon = FontAwesome.WPF.FontAwesomeIcon.Exclamation;
+
+                ToastTitleTextBlock.Foreground = new SolidColorBrush(Color.FromRgb(153, 27, 27));
+                ToastMessageTextBlock.Foreground = new SolidColorBrush(Color.FromRgb(127, 29, 29));
+            }
+
+            Topmost = true;
+            Activate();
+
+            ToastBorder.Visibility = Visibility.Visible;
+
+            _toastTimer.Start();
+
+            Topmost = false;
+        }
+
+        private void ToastTimer_Tick(object? sender, EventArgs e)
+        {
+            _toastTimer.Stop();
+            ToastBorder.Visibility = Visibility.Collapsed;
         }
     }
 }

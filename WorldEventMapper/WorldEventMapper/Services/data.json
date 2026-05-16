@@ -16,7 +16,7 @@
         2022,
         2023
       ],
-      "UpcomingDate": "2026-07-15T00:00:00+02:00",
+      "UpcomingDate": "2026-07-16T00:00:00+02:00",
       "Location": "Mokra Gora, SRB",
       "TagIds": [
         "TAG001",
@@ -38,7 +38,7 @@
         2022,
         2023
       ],
-      "UpcomingDate": "2026-06-15T00:00:00+02:00",
+      "UpcomingDate": "2026-06-16T00:00:00+02:00",
       "Location": "Vienna, AUT",
       "TagIds": [
         "TAG001",
@@ -62,7 +62,7 @@
         2023,
         2024
       ],
-      "UpcomingDate": "2026-08-15T00:00:00+02:00",
+      "UpcomingDate": "2026-08-16T00:00:00+02:00",
       "Location": "London, UK",
       "TagIds": [
         "TAG001",
@@ -87,7 +87,7 @@
         2023,
         2024
       ],
-      "UpcomingDate": "2026-09-15T00:00:00+02:00",
+      "UpcomingDate": "2026-09-16T00:00:00+02:00",
       "Location": "Belgrade, SRB",
       "TagIds": [
         "TAG002",
@@ -109,7 +109,7 @@
         2022,
         2023
       ],
-      "UpcomingDate": "2026-10-15T00:00:00+02:00",
+      "UpcomingDate": "2026-10-16T00:00:00+02:00",
       "Location": "Rome, ITA",
       "TagIds": [
         "TAG003",
@@ -131,7 +131,7 @@
         2022,
         2023
       ],
-      "UpcomingDate": "2026-07-25T00:00:00+02:00",
+      "UpcomingDate": "2026-07-26T00:00:00+02:00",
       "Location": "Vienna, AUT",
       "TagIds": [
         "TAG005",
@@ -156,7 +156,7 @@
         2023,
         2024
       ],
-      "UpcomingDate": "2026-12-15T00:00:00+01:00",
+      "UpcomingDate": "2026-12-16T00:00:00+01:00",
       "Location": "Novi Sad, SRB",
       "TagIds": [
         "TAG001",
@@ -182,7 +182,7 @@
         2023,
         2024
       ],
-      "UpcomingDate": "2026-09-04T00:00:00+02:00",
+      "UpcomingDate": "2026-09-05T00:00:00+02:00",
       "Location": "Sarajevo, BIH",
       "TagIds": [
         "TAG001",
@@ -204,7 +204,7 @@
         2022,
         2023
       ],
-      "UpcomingDate": "2026-07-20T00:00:00+02:00",
+      "UpcomingDate": "2026-07-21T00:00:00+02:00",
       "Location": "Paris, FRA",
       "TagIds": [
         "TAG001",
@@ -227,43 +227,13 @@
         2023,
         2024
       ],
-      "UpcomingDate": "2026-06-30T00:00:00+02:00",
+      "UpcomingDate": "2026-07-01T00:00:00+02:00",
       "Location": "Paris, FRA",
       "TagIds": [
         "TAG002",
         "TAG004",
         "TAG006"
       ]
-    },
-    {
-      "ID": "EV011",
-      "Name": "rr",
-      "Description": "",
-      "EventTypeId": "ET003",
-      "EventTypeName": "",
-      "Attendance": "\u003C 1000",
-      "IsHumanitarian": false,
-      "Cost": 22,
-      "IconPath": "Images/Events/EV011_20260515200842.png",
-      "PastPerformingYears": [],
-      "UpcomingDate": "2026-05-15T00:00:00+02:00",
-      "Location": "Novi Sad, Serbia",
-      "TagIds": []
-    },
-    {
-      "ID": "EV012",
-      "Name": "ee",
-      "Description": "",
-      "EventTypeId": "ET002",
-      "EventTypeName": "",
-      "Attendance": "\u003C 1000",
-      "IsHumanitarian": false,
-      "Cost": 2,
-      "IconPath": "Images/Types/music.png",
-      "PastPerformingYears": [],
-      "UpcomingDate": "2026-05-15T00:00:00+02:00",
-      "Location": "s",
-      "TagIds": []
     }
   ],
   "EventTypes": [
