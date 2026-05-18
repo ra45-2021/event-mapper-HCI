@@ -151,10 +151,7 @@
       "PastPerformingYears": [
         2018,
         2019,
-        2021,
-        2022,
-        2023,
-        2024
+        2023
       ],
       "UpcomingDate": "2026-12-16T00:00:00+01:00",
       "Location": "Novi Sad, SRB",
@@ -232,6 +229,34 @@
       "TagIds": [
         "TAG002",
         "TAG004",
+        "TAG006"
+      ]
+    },
+    {
+      "ID": "EV011",
+      "Name": "3",
+      "Description": "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+      "EventTypeId": "ET002",
+      "EventTypeName": "",
+      "Attendance": "\u003C 1000",
+      "IsHumanitarian": false,
+      "Cost": 4,
+      "IconPath": "Images/Events/EV011_20260518112451.png",
+      "PastPerformingYears": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "UpcomingDate": "2026-05-18T00:00:00+02:00",
+      "Location": "f",
+      "TagIds": [
+        "TAG001",
+        "TAG002",
+        "TAG003",
+        "TAG004",
+        "TAG005",
         "TAG006"
       ]
     }

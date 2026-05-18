@@ -119,7 +119,75 @@ namespace WorldEventMapper.Events
             if (selectedEvent == null)
                 return;
 
-            MessageBox.Show($"View event: {selectedEvent.Name}", "View Event");
+            AppData data = _dataService.Load();
+
+            EventTypeModel? eventType = data.EventTypes
+                .FirstOrDefault(t => t.ID == selectedEvent.EventTypeId);
+
+            var tagNames = data.EventTags
+                .Where(t => selectedEvent.TagIds.Contains(t.ID))
+                .Select(t => t.Description);
+
+            ViewEventIconImage.Source = new ImagePathConverter().Convert(
+                selectedEvent.IconPath,
+                typeof(ImageSource),
+                null,
+                System.Globalization.CultureInfo.CurrentCulture
+            ) as ImageSource;
+
+            ViewEventNameTextBlock.Text = selectedEvent.Name;
+
+            ViewEventIdTextBlock.Text = selectedEvent.ID;
+            ViewEventDescriptionTextBlock.Text = selectedEvent.Description;
+            ViewEventTypeTextBlock.Text = eventType?.Name ?? "Unknown";
+
+            var selectedTags = data.EventTags
+    .Where(t => selectedEvent.TagIds.Contains(t.ID))
+    .ToList();
+
+            ViewEventTagsItemsControl.ItemsSource = selectedTags.Any()
+                ? selectedTags
+                : new List<EventTagModel>
+                {
+        new EventTagModel
+        {
+            Description = "No tags",
+            Color = "#CBD5E1"
+        }
+                };
+
+            ViewEventLocationTextBlock.Text = selectedEvent.Location;
+
+            DateTime date = selectedEvent.UpcomingDate;
+
+            string daySuffix =
+                date.Day % 10 == 1 && date.Day != 11 ? "st" :
+                date.Day % 10 == 2 && date.Day != 12 ? "nd" :
+                date.Day % 10 == 3 && date.Day != 13 ? "rd" :
+                "th";
+
+            ViewEventUpcomingDateTextBlock.Text =
+                $"{date:MMMM d}{daySuffix}, {date:yyyy}";
+
+            ViewEventPastYearsTextBlock.Text =
+                selectedEvent.PastPerformingYears.Any()
+                ? string.Join(",",selectedEvent.PastPerformingYears)
+                : "No past dates";
+
+            ViewEventAttendanceTextBlock.Text = selectedEvent.Attendance;
+
+            ViewEventHumanitarianTextBlock.Text =
+                selectedEvent.IsHumanitarian ? "Yes" : "No";
+
+            ViewEventCostTextBlock.Text =
+                $"${selectedEvent.Cost:N0}";
+
+            ViewEventPopup.IsOpen = true;
+        }
+
+        private void CloseViewEventPopup_Click(object sender, RoutedEventArgs e)
+        {
+            ViewEventPopup.IsOpen = false;
         }
 
         private void EditEvent_Click(object sender, RoutedEventArgs e)

@@ -1229,6 +1229,24 @@
                                             </ComboBox.ItemTemplate>
                                         </ComboBox>
 
+                                        <TextBlock Text="Click to select a type">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock"
+                                                       BasedOn="{StaticResource PlaceholderTextStyle}">
+                                                    <Setter Property="Margin"
+                                                            Value="16,-1,52,0" />
+
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding SelectedItem, ElementName=EventTypeComboBox}"
+                                                                     Value="{x:Null}">
+                                                            <Setter Property="Visibility"
+                                                                    Value="Visible" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+
                                         <Button Content="×"
                                                 Click="ClearEventType_Click">
                                             <Button.Style>
@@ -1480,6 +1498,24 @@
                                               IsTextSearchEnabled="False"
                                               StaysOpenOnEdit="True"
                                               Loaded="LocationComboBox_Loaded" />
+
+                                    <TextBlock Text="Enter or select a location">
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock"
+                                                   BasedOn="{StaticResource PlaceholderTextStyle}">
+                                                <Setter Property="Margin"
+                                                        Value="16,0,52,0" />
+
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=LocationComboBox}"
+                                                                 Value="">
+                                                        <Setter Property="Visibility"
+                                                                Value="Visible" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
 
                                     <Button Content="×"
                                             Click="ClearLocation_Click">
